@@ -11,9 +11,11 @@ import { strFromU8, unzipSync } from 'fflate';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const ffmpeg = process.env.PRISM_FFMPEG || 'ffmpeg';
 const requireAll = process.argv.includes('--require-all');
-const outputPath = 'docs/export-validation.json';
+const composite = process.argv.includes('--composite');
+const minimumDurationSeconds = composite ? 5 : 10;
+const outputPath = composite ? 'docs/composite-export-validation.json' : 'docs/export-validation.json';
 const scenes = ['ribbon', 'gravity', 'portal'];
-const targets = [
+const targets = composite ? scenes.map(scene => ({ scene, kind: 'real-model-input', path: `public/showcase/real-${scene}.webm`, project: `public/examples/real-${scene}.prismstage` })) : [
   ...scenes.map(scene => ({ scene, kind: 'real-model-input', path: `.local/exports/${scene}-real.webm`, project: `tests/fixtures/${scene}-gestures.prismstage` })),
   ...scenes.map(scene => ({ scene, kind: 'authored-demo', path: `public/showcase/${scene}.webm`, project: `public/examples/${scene}.prismstage` })),
 ];
@@ -102,7 +104,7 @@ async function provenance(target) {
     handSamples: samples.filter(sample => sample.hands?.length).length,
     pinchingSamples: samples.filter(sample => sample.hands?.some(hand => hand.pinch)).length,
     maskSamples: samples.filter(sample => sample.mask).length,
-    inputEvidence: target.kind === 'authored-demo' ? 'scripts/make-examples.ts' : 'docs/vision-gesture-results.json',
+    inputEvidence: composite ? 'docs/composite-validation.json' : target.kind === 'authored-demo' ? 'scripts/make-examples.ts' : 'docs/vision-gesture-results.json',
     assetLicenseEvidence: target.kind === 'authored-demo' ? 'THIRD_PARTY_NOTICES.md' : 'docs/validation-assets.json',
     association: 'Capture workflow associates this filename with the editable take above. Decoding verifies media integrity and motion, not model accuracy or a cryptographic linkage between input and output.',
   };
@@ -114,14 +116,14 @@ const report = {
   generatedAt: new Date().toISOString(),
   method: 'Decode the entire first video stream using FFmpeg -xerror with timestamp passthrough and framemd5. No mock encoder, re-encoding, resizing, or frame interpolation is used.',
   commandTemplate: 'ffmpeg -hide_banner -nostdin -nostats -v info -xerror -i INPUT -map 0:v:0 -an -sn -dn -fps_mode passthrough -f framemd5 pipe:1',
-  invocation: 'node scripts/validate-media.mjs --require-all (set PRISM_FFMPEG when FFmpeg is not on PATH)',
+  invocation: `node scripts/validate-media.mjs ${composite ? '--composite ' : ''}--require-all (set PRISM_FFMPEG when FFmpeg is not on PATH)`,
   ffmpeg: { executableName: path.basename(ffmpeg), version: versionProbe.stdout.split(/\r?\n/)[0] || null, available: versionProbe.code === 0 && !versionProbe.error },
-  requirements: { width: 1280, height: 720, minimumDurationSeconds: 10, minimumUniqueFrames: 2, fullDecodeExitCode: 0, noAudioStream: true },
+  requirements: { width: 1280, height: 720, minimumDurationSeconds, minimumUniqueFrames: 2, fullDecodeExitCode: 0, noAudioStream: true },
   notes: [
     'Real-model-input clips come from saved observations produced by the production vision worker on licensed real-person test footage; no physical camera was used for these checks.',
     'Authored-demo clips use procedural example takes. Their visual quality and successful encoding are separate from real-model inference validation.',
     'Decoded frame hashes establish changing pixel content, not tracking correctness. Effective frame cadence is measured rather than assumed to be 30 fps.',
-    'Original input videos and real-input exports in .local are not distributed with the app. Processed model observations are committed in tests/fixtures, with project hashes and upstream input provenance in the validation records.',
+    composite ? 'The attributed real-* examples retain the licensed original video; their composite exports are distributed in public/showcase. These finite-source v1.1 studies are separate from the ten-second v1.0 abstract-output checks.' : 'Original input videos and real-input exports in .local are not distributed with the v1.0 app. Processed model observations are committed in tests/fixtures, with project hashes and upstream input provenance in the validation records.',
     'Missing files are pending; --require-all exits nonzero for pending results. Existing invalid files always make this script exit nonzero.',
   ],
   results: [],
@@ -145,7 +147,7 @@ for (const target of targets) {
     result.decoded.hasAudioStream = /Stream #0:\d+[^\r\n]*Audio:/.test(decoded.stderr);
     result.checks = {
       dimensions: result.decoded.width === 1280 && result.decoded.height === 720,
-      duration: result.decoded.durationSeconds >= 10,
+      duration: result.decoded.durationSeconds >= minimumDurationSeconds,
       changingFrames: result.decoded.uniqueDecodedFrameHashes >= 2 && result.decoded.consecutiveFrameChanges > 0,
       fullDecode: result.fullDecode.ok,
       timestamps: result.decoded.timestampsNondecreasing,

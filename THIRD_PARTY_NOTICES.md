@@ -35,15 +35,46 @@ The hand model is intended for visible, prominent hands; occlusion and image qua
 
 [RESEARCH.md](docs/RESEARCH.md) records nine inspected projects and their source/license links. They are references, not bundled dependencies. No code or media was copied from `bhavyantu/invisible-cloak`, `collidingScopes/iron-interface`, or `Mruchus/dance-sync-analysis`, whose inspected repositories did not contain a LICENSE file. Public repository access alone is not treated as permission to reuse their work. Robust Video Matting's GPL code and weights are not bundled.
 
-Procedural demo motion, generated masks used in demo mode, palettes, shaders, sample project parameters, and artwork rendered from those samples are created for Prism Stage. Demo provenance is retained in project files. A demo mask is not presented as a real segmentation result. Third-party music, dance clips, avatars, and research-project screenshots are not part of the application's sample assets. Any separately documented validation footage keeps its own source and permission record and is not relicensed by the application.
+Procedural demo motion, generated masks used in demo mode, palettes, shaders, and synthetic sample parameters are created for Prism Stage. Demo provenance is retained in project files. A demo mask is not presented as a real segmentation result. Third-party music, dance clips, avatars, and research-project screenshots are not part of the application's sample assets. The separately identified original-video examples below retain their source license; they are not relicensed as MIT artwork.
 
 The processed observations in `tests/fixtures/*-gestures.prismstage` derive from
 Google's Apache-2.0 MediaPipe test video, at the exact commit and checksum recorded
 in [validation-assets.json](docs/validation-assets.json). Copyright Google LLC and
 MediaPipe contributors. The test projects store hand positions/person masks, not
 the original RGB footage. They retain the source's Apache-2.0 provenance; see
-[the fixture explanation](tests/fixtures/README.md). The original videos are fetched
-only for optional local validation and are not distributed with the application.
+[the fixture explanation](tests/fixtures/README.md).
+
+### Original-video composite examples in v1.1
+
+The v2 examples `public/examples/real-ribbon.prismstage`,
+`public/examples/real-gravity.prismstage`, and
+`public/examples/real-portal.prismstage` embed the original, unmodified
+`gestures.mp4` source video from Google's MediaPipe samples repository. Unlike the
+v1 test projects above, these portable projects retain the RGB footage so the
+person and visible setting can appear beneath the generated effects.
+
+- Source: [official gesture-recognizer test video](https://github.com/google-ai-edge/mediapipe-samples/blob/7f3cf17410db91f8e084a46f7517df15bce3479a/examples/gesture_recognizer/android/app/src/androidTest/assets/test_video.mp4).
+- Source commit: `7f3cf17410db91f8e084a46f7517df15bce3479a`.
+- Source SHA-256: `d7aca9a2477f2360adc8daa7990ef42eac7ea488db041fad722c46a86bfd7088` (2,576,749 bytes).
+- Copyright: Google LLC and MediaPipe contributors. License: Apache-2.0;
+  [upstream license](https://github.com/google-ai-edge/mediapipe-samples/blob/7f3cf17410db91f8e084a46f7517df15bce3479a/LICENSE),
+  [distributed full license](public/models/LICENSE-APACHE-2.0.txt).
+- Modifications: the embedded source video is unchanged. Prism Stage adds
+  separately recorded model observations, configurable generated effects, and
+  composite screenshots/films. Those composites remain identified as using
+  Google's licensed source footage; Google does not endorse this application.
+
+Each original-video example carries a `source-notice.txt` resource containing
+the source attribution and complete Apache-2.0 license. Its checked-in source is
+[VIDEO_EXAMPLE_NOTICE.txt](docs/VIDEO_EXAMPLE_NOTICE.txt).
+
+The corresponding `docs/images/composite-*` screenshots and
+`public/showcase/real-*.webm` films are outputs of the application using this
+source. Their generation and validation are recorded separately from v1
+abstract examples. Exact source and distribution records are in
+[validation-assets.json](docs/validation-assets.json). The separate `hands.mp4`
+fixture remains an optional validation download and is not embedded in these
+three examples.
 
 ## MIT permission notice
 

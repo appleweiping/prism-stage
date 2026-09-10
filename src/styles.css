@@ -625,8 +625,15 @@ kbd {
 }
 .input-actions {
   display: flex;
+  flex-wrap: wrap;
   gap: 5px;
 }
+.input-button.real-example {
+  color: #e6f1d6;
+  border-color: #718457;
+  background: #2a3424;
+}
+.drawing-controls { margin-bottom: 18px; }
 .input-button {
   font-size: 9px;
   color: #929d87;
@@ -758,6 +765,9 @@ kbd {
   background: #35422d;
   color: #dbe7c9;
 }
+.composition-controls .segmented { margin-top: 12px; }
+.composition-controls .segmented button { padding: 10px 4px; font-size: 11px; }
+.composition-hint { color: #819176; font-size: 10px; line-height: 1.6; margin: 10px 0 0; }
 .sliders {
   display: flex;
   flex-direction: column;

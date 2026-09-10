@@ -1,6 +1,6 @@
 {
   "name": "prism-stage",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "type": "module",
   "description": "A local-first motion-to-art studio. Perform once. Reimagine endlessly.",
@@ -19,6 +19,10 @@
     "test:fixtures": "node scripts/setup-test-fixtures.mjs",
     "test:browser": "node tests/production-browser.mjs",
     "test:media": "node scripts/validate-media.mjs --require-all",
+    "test:composite": "node tests/composite-browser.mjs",
+    "test:camera": "node tests/camera-composite-browser.mjs",
+    "test:composite:smoke": "node tests/composite-release-smoke.mjs",
+    "test:composite:media": "node scripts/validate-media.mjs --composite --require-all",
     "release:package": "npm run build && node scripts/package-release.mjs"
   },
   "dependencies": {

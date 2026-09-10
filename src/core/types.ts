@@ -2,6 +2,8 @@ export type SceneId = "ribbon" | "gravity" | "portal";
 export type SourceKind = "demo" | "camera" | "video" | "replay" | "pointer";
 export type Quality = "auto" | "high" | "balanced" | "low";
 export interface VisualParams {
+  /** Version 2 projects only when present. Does not alter recorded pinch observations. */
+  drawingMode?: "pinch" | "follow";
   palette: string;
   intensity: number;
   width: number;
@@ -56,12 +58,14 @@ export interface StageEngine {
   reset(seed: number): void;
   undo(): void;
   setParams(params: VisualParams): void;
+  setVideoBackground?(video: HTMLVideoElement | null): void;
+  setInputSourceSize?(width: number, height: number): void;
   getStats(): StageStats;
   dispose(): void;
 }
 export interface ProjectManifest {
   format: "prism-stage";
-  version: 1;
+  version: 1 | 2;
   engineVersion: "1.0.0";
   id: string;
   name: string;
@@ -74,11 +78,25 @@ export interface ProjectManifest {
   trim: { start: number; end: number };
   aspect: "landscape" | "portrait";
   source: SourceKind;
+  /** Version 2 only. Original source video is retained locally when present. */
+  composition?: "video" | "abstract";
+  video?: {
+    mimeType: "video/mp4" | "video/webm";
+    width: number;
+    height: number;
+    duration: number;
+    /** Seconds into the retained source video where this take begins. */
+    offset: number;
+  };
 }
 export interface PrismProject {
   manifest: ProjectManifest;
   samples: InputSample[];
   thumbnail?: string;
+  /** Optional original video bytes, stored locally in version 2 archives. */
+  video?: Blob;
+  /** Optional UTF-8 attribution/license notice for the retained source video. */
+  videoNotice?: string;
 }
 export interface SavedProjectSummary {
   id: string;

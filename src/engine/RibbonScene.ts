@@ -232,14 +232,15 @@ export class RibbonScene implements ScenePlugin {
     input.hands.forEach((hand, i) => {
       present.add(hand.id);
       const point = handPosition(hand);
+      const drawing = this.params.drawingMode === "follow" || hand.pinch;
       if (i < this.cursors.length) {
         this.cursors[i].visible =
           input.source !== "demo" && input.source !== "replay";
         this.cursors[i].position.copy(point);
         this.cursors[i].position.z += 0.1;
-        this.cursorMaterials[i].uniforms.uPinch.value = hand.pinch ? 1 : 0;
+        this.cursorMaterials[i].uniforms.uPinch.value = drawing ? 1 : 0;
       }
-      if (!hand.pinch) {
+      if (!drawing) {
         this.active.delete(hand.id);
         return;
       }

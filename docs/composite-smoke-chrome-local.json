@@ -1,0 +1,779 @@
+{
+  "startedAt": "2026-09-10T21:25:56.644Z",
+  "base": "http://127.0.0.1:4173/",
+  "channel": "chrome",
+  "location": "local",
+  "method": "An isolated native browser uses the public studio controls to open packaged real-model examples, replay, switch composition, export PNG and portrait film, download editable projects, save/reopen IndexedDB, and reopen all three examples with networking disabled after complete caching.",
+  "checks": [
+    {
+      "name": "real-gravity deep link opens its original video and recorded effects",
+      "ok": true,
+      "elapsedMs": 2767,
+      "url": "http://127.0.0.1:4173/?example=real-gravity",
+      "scene": "gravity",
+      "originalVideoAndEffects": true,
+      "oneClickExampleReady": true,
+      "duration": 6.283333333333333
+    },
+    {
+      "name": "one-click ribbon example, replay and composition",
+      "ok": true,
+      "elapsedMs": 4359,
+      "scene": "ribbon",
+      "duration": 7.683333333333334,
+      "motion": {
+        "meanAbsoluteRgbDifference": 8.17541666666665,
+        "changedPixelFraction": 0.24736111111111111
+      },
+      "composition": {
+        "meanAbsoluteRgbDifference": 28.854374999999873,
+        "changedPixelFraction": 0.7159027777777778
+      },
+      "toggleRetainsTime": true
+    },
+    {
+      "name": "ribbon full-resolution PNG",
+      "ok": true,
+      "elapsedMs": 1216,
+      "path": ".local/composite-smoke/chrome-local/ribbon.png",
+      "bytes": 1065294,
+      "sha256": "621c652eaa7d952a26ed413638c251ea460ebf7895b1dac32ea03fd820f7ffea",
+      "width": 1280,
+      "height": 720
+    },
+    {
+      "name": "ribbon portable original, notice and IndexedDB reopen",
+      "ok": true,
+      "elapsedMs": 3233,
+      "original": {
+        "path": ".local/composite-smoke/chrome-local/portable-ribbon.prismstage",
+        "bytes": 2682885,
+        "sha256": "aa4846cfb5cfc900582e5564c298bf92f6dd4015c43d8b708e47b43ca75220d9",
+        "scene": "ribbon",
+        "duration": 7.683333333333334,
+        "sourceSha256": "d7aca9a2477f2360adc8daa7990ef42eac7ea488db041fad722c46a86bfd7088",
+        "samplesSha256": "99c026d3e7522d461b0dc14e08904e1af62d05ba41ec8ad16080a90435bf5317",
+        "noticeSha256": "cee7f9e131afe55beff5c3d75fa5d98851bcd40ac3ac2e8a163241e8917d4de1",
+        "sourceBytes": 2576749
+      },
+      "reopened": {
+        "path": ".local/composite-smoke/chrome-local/reopened-ribbon.prismstage",
+        "bytes": 2681776,
+        "sha256": "0b53472f2c1ef89e55fb268cb10fb4e13cd346080173e337878937ae5b5033f7",
+        "scene": "ribbon",
+        "duration": 7.683333333333334,
+        "sourceSha256": "d7aca9a2477f2360adc8daa7990ef42eac7ea488db041fad722c46a86bfd7088",
+        "samplesSha256": "99c026d3e7522d461b0dc14e08904e1af62d05ba41ec8ad16080a90435bf5317",
+        "noticeSha256": "cee7f9e131afe55beff5c3d75fa5d98851bcd40ac3ac2e8a163241e8917d4de1",
+        "sourceBytes": 2576749
+      },
+      "retainedSourceObservationsAndNotice": true
+    },
+    {
+      "name": "one-click gravity example, replay and composition",
+      "ok": true,
+      "elapsedMs": 4460,
+      "scene": "gravity",
+      "duration": 6.283333333333333,
+      "motion": {
+        "meanAbsoluteRgbDifference": 11.797407407407395,
+        "changedPixelFraction": 0.2915277777777778
+      },
+      "composition": {
+        "meanAbsoluteRgbDifference": 27.765000000000022,
+        "changedPixelFraction": 0.6846527777777778
+      },
+      "toggleRetainsTime": true
+    },
+    {
+      "name": "gravity full-resolution PNG",
+      "ok": true,
+      "elapsedMs": 933,
+      "path": ".local/composite-smoke/chrome-local/gravity.png",
+      "bytes": 1132192,
+      "sha256": "b57ce8c4c738fdb2f9aceed0ac6b8a9788285d564cdd19a48ace47b069471ee5",
+      "width": 1280,
+      "height": 720
+    },
+    {
+      "name": "gravity portable original, notice and IndexedDB reopen",
+      "ok": true,
+      "elapsedMs": 3259,
+      "original": {
+        "path": ".local/composite-smoke/chrome-local/portable-gravity.prismstage",
+        "bytes": 2687064,
+        "sha256": "22f50be6ba40fed29c44355390feb64b7a513496ae961b533163ab99dfb12fb4",
+        "scene": "gravity",
+        "duration": 6.283333333333333,
+        "sourceSha256": "d7aca9a2477f2360adc8daa7990ef42eac7ea488db041fad722c46a86bfd7088",
+        "samplesSha256": "1c9bf0dbd1db5d14e5e06f0887c4e19ffce2cc85c95d1b2dfca4108f0d44afe7",
+        "noticeSha256": "cee7f9e131afe55beff5c3d75fa5d98851bcd40ac3ac2e8a163241e8917d4de1",
+        "sourceBytes": 2576749
+      },
+      "reopened": {
+        "path": ".local/composite-smoke/chrome-local/reopened-gravity.prismstage",
+        "bytes": 2687511,
+        "sha256": "06db8ef9769b325d83803719342d5daef25a9dd241b7d1298f8f0cc06df53106",
+        "scene": "gravity",
+        "duration": 6.283333333333333,
+        "sourceSha256": "d7aca9a2477f2360adc8daa7990ef42eac7ea488db041fad722c46a86bfd7088",
+        "samplesSha256": "1c9bf0dbd1db5d14e5e06f0887c4e19ffce2cc85c95d1b2dfca4108f0d44afe7",
+        "noticeSha256": "cee7f9e131afe55beff5c3d75fa5d98851bcd40ac3ac2e8a163241e8917d4de1",
+        "sourceBytes": 2576749
+      },
+      "retainedSourceObservationsAndNotice": true
+    },
+    {
+      "name": "one-click portal example, replay and composition",
+      "ok": true,
+      "elapsedMs": 5474,
+      "scene": "portal",
+      "duration": 6.2,
+      "motion": {
+        "meanAbsoluteRgbDifference": 8.961412037037016,
+        "changedPixelFraction": 0.29909722222222224
+      },
+      "composition": {
+        "meanAbsoluteRgbDifference": 3.150324074074078,
+        "changedPixelFraction": 0.38048611111111114
+      },
+      "toggleRetainsTime": true
+    },
+    {
+      "name": "portal full-resolution PNG",
+      "ok": true,
+      "elapsedMs": 745,
+      "path": ".local/composite-smoke/chrome-local/portal.png",
+      "bytes": 1062326,
+      "sha256": "82f639e130f559c8a636593305cfefddd43480353d0a86e67c7832b512868b0f",
+      "width": 1280,
+      "height": 720
+    },
+    {
+      "name": "portal portable original, notice and IndexedDB reopen",
+      "ok": true,
+      "elapsedMs": 4234,
+      "original": {
+        "path": ".local/composite-smoke/chrome-local/portable-portal.prismstage",
+        "bytes": 3212129,
+        "sha256": "091288ec138e47ca9e4ebb2edc9d23b2dbd0bf8c7554b3cb6dfcf62b3df4fb4a",
+        "scene": "portal",
+        "duration": 6.2,
+        "sourceSha256": "d7aca9a2477f2360adc8daa7990ef42eac7ea488db041fad722c46a86bfd7088",
+        "samplesSha256": "ff413eee22d3f71113d0f114cf0c343269afc67b7122b31241dea3de23b15454",
+        "noticeSha256": "cee7f9e131afe55beff5c3d75fa5d98851bcd40ac3ac2e8a163241e8917d4de1",
+        "sourceBytes": 2576749
+      },
+      "reopened": {
+        "path": ".local/composite-smoke/chrome-local/reopened-portal.prismstage",
+        "bytes": 3213785,
+        "sha256": "d6223559a364db130117fe369d311b3eb45ad5bc541f0ece9ace1fb346d60bd2",
+        "scene": "portal",
+        "duration": 6.2,
+        "sourceSha256": "d7aca9a2477f2360adc8daa7990ef42eac7ea488db041fad722c46a86bfd7088",
+        "samplesSha256": "ff413eee22d3f71113d0f114cf0c343269afc67b7122b31241dea3de23b15454",
+        "noticeSha256": "cee7f9e131afe55beff5c3d75fa5d98851bcd40ac3ac2e8a163241e8917d4de1",
+        "sourceBytes": 2576749
+      },
+      "retainedSourceObservationsAndNotice": true
+    },
+    {
+      "name": "portrait real-video film and native playback",
+      "ok": true,
+      "elapsedMs": 8832,
+      "width": 720,
+      "height": 1280,
+      "duration": 2.777,
+      "decodedFrames": 113,
+      "sampledFrames": 18,
+      "distinctFrameFingerprints": 18,
+      "mediaError": null,
+      "requestedSeconds": 3,
+      "path": ".local/composite-smoke/chrome-local/portrait.webm",
+      "bytes": 1688265,
+      "sha256": "147492077f970a9bc8dd4276b386d4bcacc2266b3b2603097ae2a94779f5fa6d"
+    },
+    {
+      "name": "twenty stage switches with no visible or WebGL errors",
+      "ok": true,
+      "elapsedMs": 8319,
+      "switches": [
+        {
+          "scene": "ribbon",
+          "glError": 0
+        },
+        {
+          "scene": "gravity",
+          "glError": 0
+        },
+        {
+          "scene": "portal",
+          "glError": 0
+        },
+        {
+          "scene": "ribbon",
+          "glError": 0
+        },
+        {
+          "scene": "gravity",
+          "glError": 0
+        },
+        {
+          "scene": "portal",
+          "glError": 0
+        },
+        {
+          "scene": "ribbon",
+          "glError": 0
+        },
+        {
+          "scene": "gravity",
+          "glError": 0
+        },
+        {
+          "scene": "portal",
+          "glError": 0
+        },
+        {
+          "scene": "ribbon",
+          "glError": 0
+        },
+        {
+          "scene": "gravity",
+          "glError": 0
+        },
+        {
+          "scene": "portal",
+          "glError": 0
+        },
+        {
+          "scene": "ribbon",
+          "glError": 0
+        },
+        {
+          "scene": "gravity",
+          "glError": 0
+        },
+        {
+          "scene": "portal",
+          "glError": 0
+        },
+        {
+          "scene": "ribbon",
+          "glError": 0
+        },
+        {
+          "scene": "gravity",
+          "glError": 0
+        },
+        {
+          "scene": "portal",
+          "glError": 0
+        },
+        {
+          "scene": "ribbon",
+          "glError": 0
+        },
+        {
+          "scene": "gravity",
+          "glError": 0
+        }
+      ]
+    },
+    {
+      "name": "narrow layout retains accessible example and composition controls",
+      "ok": true,
+      "elapsedMs": 1429,
+      "scrollWidth": 390,
+      "viewport": 390,
+      "screenshot": ".local/composite-smoke/chrome-local/narrow.png"
+    },
+    {
+      "name": "complete offline cache includes all three retained-video examples",
+      "ok": true,
+      "elapsedMs": 1984,
+      "version": "f3fd1305674aa67c",
+      "totalBytes": 55172488,
+      "files": 32,
+      "missing": [],
+      "realExamples": [
+        "examples/real-gravity.prismstage",
+        "examples/real-portal.prismstage",
+        "examples/real-ribbon.prismstage"
+      ]
+    },
+    {
+      "name": "fresh offline page reopens all three real examples",
+      "ok": true,
+      "elapsedMs": 7082,
+      "navigatorOnline": true,
+      "uncachedNetworkRejected": true,
+      "examples": [
+        {
+          "scene": "ribbon",
+          "duration": 7.683333333333334,
+          "pixelSha256": "6fca767d663a5658a935922d4d6fd26ff5be5f7d6c93cf1a4301dc9fdcbf4532"
+        },
+        {
+          "scene": "gravity",
+          "duration": 6.283333333333333,
+          "pixelSha256": "357a16ed907c8919396af9a296f939c49fdc46eceda968fb086ac01856591879"
+        },
+        {
+          "scene": "portal",
+          "duration": 6.2,
+          "pixelSha256": "78e6731643cc535c03cb849f8dff8278c75223860146a8c3f8f8e6ee6ce12b8d"
+        }
+      ]
+    },
+    {
+      "name": "offline local save/reopen and portrait film",
+      "ok": true,
+      "elapsedMs": 11699,
+      "project": {
+        "path": ".local/composite-smoke/chrome-local/offline-project.prismstage",
+        "bytes": 3213789,
+        "sha256": "5bfcc17474f8640dd5defb73ca7ee334166be83d0f3cd5fc056837d0359f18db",
+        "scene": "portal",
+        "duration": 6.2,
+        "sourceSha256": "d7aca9a2477f2360adc8daa7990ef42eac7ea488db041fad722c46a86bfd7088",
+        "samplesSha256": "ff413eee22d3f71113d0f114cf0c343269afc67b7122b31241dea3de23b15454",
+        "noticeSha256": "cee7f9e131afe55beff5c3d75fa5d98851bcd40ac3ac2e8a163241e8917d4de1",
+        "sourceBytes": 2576749
+      },
+      "film": {
+        "width": 720,
+        "height": 1280,
+        "duration": 2.893,
+        "decodedFrames": 157,
+        "sampledFrames": 18,
+        "distinctFrameFingerprints": 18,
+        "mediaError": null,
+        "requestedSeconds": 3,
+        "path": ".local/composite-smoke/chrome-local/offline-portrait.webm",
+        "bytes": 2018502,
+        "sha256": "b4a03925b5e63983ce9f71f486148b4aff199461ff8f6d49104b3bf0591b25bc"
+      }
+    },
+    {
+      "name": "no external HTTP requests, uploads or uncaught render errors",
+      "ok": true,
+      "elapsedMs": 3,
+      "observedHttpRequests": 84,
+      "external": [],
+      "writes": [],
+      "renderErrors": []
+    }
+  ],
+  "consoleErrors": [
+    "Failed to load resource: net::ERR_FAILED"
+  ],
+  "pageErrors": [],
+  "requests": [
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/index-M-enqBYh.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/index-CXMhvoEf.css"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/favicon.svg"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/sw.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/inter-latin-wght-normal-Dx4kXJAl.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/favicon.svg"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/offline-manifest.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/?example=real-gravity"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/?example=real-gravity"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/index-M-enqBYh.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/index-CXMhvoEf.css"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/index-M-enqBYh.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/index-CXMhvoEf.css"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/favicon.svg"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/favicon.svg"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/inter-latin-wght-normal-Dx4kXJAl.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/inter-latin-wght-normal-Dx4kXJAl.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/favicon.svg"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/favicon.svg"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/offline-manifest.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/examples/real-gravity.prismstage"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/examples/real-gravity.prismstage"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/GravityScene-CbuvHvgH.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/GravityScene-CbuvHvgH.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/rapier-DBjBuyhF.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/rapier-DBjBuyhF.js"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/265decba-5504-4067-a010-972cf5fb4719"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/examples/real-ribbon.prismstage"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/examples/real-ribbon.prismstage"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/871c1a09-cc15-4756-93c1-5aacd6e80435"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/adc3c2c0-d8f2-4755-81ec-9314bd0ce9ef"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/examples/real-gravity.prismstage"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/examples/real-gravity.prismstage"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/d434dd83-59ea-403c-a879-bff7895b7a9d"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/ede17ecd-bd0a-4635-8558-bb07f9f5ba0c"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/examples/real-portal.prismstage"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/examples/real-portal.prismstage"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/df19657e-77ec-4757-bef2-6a930d220f0c"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/5b4665a1-9234-4431-b8be-ddbc6b6a4fb2"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/d6adba5b-b24b-4a57-9875-154a850b9ae9"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/examples/real-ribbon.prismstage"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/examples/real-ribbon.prismstage"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/470664d8-056e-4801-880b-f3d97fda733b"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/offline-manifest.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/LICENSE"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/GravityScene-CbuvHvgH.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/index-CXMhvoEf.css"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/index-M-enqBYh.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/inter-cyrillic-ext-wght-normal-BOeWTOD4.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/inter-cyrillic-wght-normal-DqGufNeO.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/inter-greek-ext-wght-normal-DlzME5K_.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/inter-greek-wght-normal-CkhJZR-_.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/inter-latin-ext-wght-normal-DO1Apj_S.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/inter-latin-wght-normal-Dx4kXJAl.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/inter-vietnamese-wght-normal-CBcvBZtf.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/rapier-DBjBuyhF.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/vision.worker-BM1Lm-Nh.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/examples/gravity.prismstage"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/examples/portal.prismstage"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/examples/real-gravity.prismstage"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/examples/real-portal.prismstage"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/examples/real-ribbon.prismstage"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/examples/ribbon.prismstage"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/favicon.svg"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/index.html"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/LICENSE-APACHE-2.0.txt"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/hand_landmarker.task"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/manifest.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/selfie_segmenter_landscape.tflite"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/wasm/vision_wasm_internal.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/wasm/vision_wasm_internal.wasm"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/wasm/vision_wasm_module_internal.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/wasm/vision_wasm_module_internal.wasm"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/wasm/vision_wasm_nosimd_internal.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/wasm/vision_wasm_nosimd_internal.wasm"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/offline-manifest.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/index-M-enqBYh.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/index-CXMhvoEf.css"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/favicon.svg"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/inter-latin-wght-normal-Dx4kXJAl.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/favicon.svg"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/offline-manifest.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/uncached-smoke-1789075613193"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/uncached-smoke-1789075613193"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/examples/real-ribbon.prismstage"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/3b0eb4df-6dc1-4a71-a8f1-2b328b92d294"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/GravityScene-CbuvHvgH.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/rapier-DBjBuyhF.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/examples/real-gravity.prismstage"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/18abfdb2-538f-408e-a2e4-b45937dcb31a"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/examples/real-portal.prismstage"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/58c33dbc-fa0a-41d9-866e-7fc0211ff2a4"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/e16e2935-94f3-4a40-8156-5364408bad90"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/ba6d37a7-a052-46fb-95e2-6a8b663a25a7"
+    }
+  ],
+  "browserInternalRequestCount": 0,
+  "limitations": [
+    "Packaged examples replay observations from genuine prior MediaPipe inference; this smoke test does not run a fresh model or open a physical camera.",
+    "Native film playback verifies decoding, dimensions and changing frames. Independent FFmpeg reports provide full-stream media inspection.",
+    "Twenty stage changes check visible failures and WebGL errors, not exact GPU allocation accounting.",
+    "Offline networking is disabled in the browser context after the UI reports complete caching."
+  ],
+  "browserVersion": "152.0.7977.83",
+  "title": "Prism Stage — Motion becomes art.",
+  "buildVersion": "f3fd1305674aa67c",
+  "ok": true,
+  "finishedAt": "2026-09-10T21:27:12.830Z",
+  "consoleErrorContext": "A failed uncached fetch is expected during the offline proof. Browser-owned download resources are counted separately; outbound HTTP writes and external origins are explicitly rejected."
+}

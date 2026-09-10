@@ -1,0 +1,273 @@
+{
+  "startedAt": "2026-09-10T21:19:22.570Z",
+  "base": "http://127.0.0.1:4173/",
+  "requestedScenes": [
+    "ribbon"
+  ],
+  "method": "Fresh isolated Chrome context against the production application. Imported licensed original video drives actual MediaPipe inference. Record, seek, restyle, PNG, project save/reopen, and film export use the public UI. Reference pixels are separately decoded from the same original fixture solely for comparison.",
+  "source": {
+    "source": "https://raw.githubusercontent.com/google-ai-edge/mediapipe-samples/7f3cf17410db91f8e084a46f7517df15bce3479a/examples/gesture_recognizer/android/app/src/androidTest/assets/test_video.mp4",
+    "sourcePage": "https://github.com/google-ai-edge/mediapipe-samples/blob/7f3cf17410db91f8e084a46f7517df15bce3479a/examples/gesture_recognizer/android/app/src/androidTest/assets/test_video.mp4",
+    "repositoryCommit": "7f3cf17410db91f8e084a46f7517df15bce3479a",
+    "license": "Apache-2.0",
+    "sha256": "d7aca9a2477f2360adc8daa7990ef42eac7ea488db041fad722c46a86bfd7088",
+    "bytes": 2576749
+  },
+  "checks": [
+    {
+      "scene": "ribbon",
+      "ok": true,
+      "phase": "export final composite film",
+      "drawingMode": "follow",
+      "inferenceWarmup": {
+        "previewReplays": 1,
+        "observedDiagnostics": [
+          "Render 3 fps\nVision 0.0 fps · 0 ms\nGPU · High",
+          "Render 44 fps\nVision 0.0 fps · 0 ms\nGPU · High",
+          "Render 60 fps\nVision 0.0 fps · 0 ms\nGPU · High",
+          "Render 53 fps\nVision 0.0 fps · 0 ms\nGPU · High",
+          "Render 15 fps\nVision 0.0 fps · 0 ms\nGPU · High",
+          "Render 10 fps\nVision 0.0 fps · 0 ms\nGPU · High",
+          "Render 4 fps\nVision 0.0 fps · 0 ms\nGPU · High",
+          "Render 6 fps\nVision 0.0 fps · 0 ms\nGPU · High",
+          "Render 9 fps\nVision 0.0 fps · 0 ms\nGPU · High",
+          "Render 9 fps\nVision 0.1 fps · 9950 ms\nGPU · High",
+          "Render 58 fps\nVision 0.1 fps · 9950 ms\nGPU · High",
+          "Render 54 fps\nVision 0.6 fps · 161 ms\nGPU · High"
+        ]
+      },
+      "inferenceDiagnostics": "Render 54 fps\nVision 0.6 fps · 161 ms\nGPU · High",
+      "recordedInput": {
+        "sampleCount": 72,
+        "handSamples": 62,
+        "pinchTimes": []
+      },
+      "gestureScope": "Follow hand mode draws from actual tracked movement. Original pinch observations remain unchanged; this does not demonstrate pinch interaction.",
+      "pixelChecks": {
+        "frameTime": 4.200084,
+        "paletteChange": {
+          "meanAbsoluteRgbDifference": 0.7353240740740737,
+          "changedPixelFraction": 0.03868055555555556,
+          "closePixelFraction": 0.9659722222222222
+        },
+        "sourceComparison": {
+          "meanAbsoluteRgbDifference": 1.90488425925926,
+          "changedPixelFraction": 0.03993055555555555,
+          "closePixelFraction": 0.9608333333333333
+        },
+        "compositionChange": {
+          "meanAbsoluteRgbDifference": 23.464999999999975,
+          "changedPixelFraction": 0.7531944444444445,
+          "closePixelFraction": 0.7604166666666666
+        },
+        "restoredComposition": {
+          "meanAbsoluteRgbDifference": 0,
+          "changedPixelFraction": 0,
+          "closePixelFraction": 1
+        }
+      },
+      "sourceFrame": {
+        "path": "docs/images/composite-ribbon-source.png",
+        "sourceTime": 4.200084,
+        "note": "Separately decoded and mirrored original source frame, not an application-generated stand-in."
+      },
+      "png": {
+        "path": "docs/images/composite-ribbon.png",
+        "width": 1280,
+        "height": 720,
+        "bytes": 863361,
+        "sha256": "bdee25ecc689047b97541728de6e801061c4b2e4c1d3ebc46bebaa75ea3354d9"
+      },
+      "studioScreenshot": "docs/images/composite-ribbon-studio.png",
+      "film": {
+        "path": "public/showcase/real-ribbon.webm",
+        "bytes": 4994047,
+        "exportWallSeconds": 9.106,
+        "trimStart": 0.3,
+        "trimEnd": 7.483333333333333,
+        "width": 1280,
+        "height": 720,
+        "duration": 7.141,
+        "sampledTime": 0.407702,
+        "rgbSum": 1244729
+      },
+      "project": {
+        "path": "public/examples/real-ribbon.prismstage",
+        "bytes": 2426172,
+        "sha256": "5ddb6cbd58ec2a1c9317220204ba6d5d7adcb719688f613cc93e0a9a3ffe4bb8",
+        "manifest": {
+          "format": "prism-stage",
+          "version": 2,
+          "engineVersion": "1.0.0",
+          "id": "4fbbda16-aa0c-4488-882e-1611d9f8136f",
+          "name": "Real motion — ribbon",
+          "scene": "ribbon",
+          "createdAt": "2026-09-10T21:19:55.323Z",
+          "seed": 20260910,
+          "fixedDt": 0.016666666666666666,
+          "duration": 7.683333333333334,
+          "params": {
+            "palette": "glacier",
+            "intensity": 0.85,
+            "width": 0.6,
+            "trail": 0.72,
+            "speed": 0.65,
+            "feather": 0.5,
+            "material": "silk",
+            "quality": "high",
+            "drawingMode": "follow"
+          },
+          "trim": {
+            "start": 0,
+            "end": 7.683333333333334
+          },
+          "aspect": "landscape",
+          "source": "video",
+          "composition": "video",
+          "video": {
+            "mimeType": "video/mp4",
+            "width": 1280,
+            "height": 720,
+            "duration": 7.806667,
+            "offset": 0
+          }
+        },
+        "sampleCount": 72,
+        "handSamples": 62,
+        "pinchSamples": 0,
+        "pinchTimes": [],
+        "releaseTimeAfterLastPinch": null,
+        "pinchGestureObserved": false,
+        "maskFrames": 0,
+        "distinctMasks": 0,
+        "retainedVideoPath": "source.mp4",
+        "retainedVideoSha256": "d7aca9a2477f2360adc8daa7990ef42eac7ea488db041fad722c46a86bfd7088",
+        "rawUiDownloadSha256": "a38c1332ba3f09b958fdc8ce962b379b864f4fdfafd71b2ff48301e6cc120616",
+        "packaging": "Added portable Apache-2.0 attribution/source-notice.txt; recorded input, manifest, thumbnail, and retained original video bytes are unchanged."
+      },
+      "roundtrip": {
+        "meanAbsoluteRgbDifference": 0.000046296296296296294,
+        "changedPixelFraction": 0,
+        "closePixelFraction": 1
+      },
+      "replayTime": 1.016687
+    }
+  ],
+  "pageErrors": [],
+  "consoleErrors": [],
+  "requests": [
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/index-M-enqBYh.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/index-CXMhvoEf.css"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/favicon.svg"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/sw.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/inter-latin-wght-normal-Dx4kXJAl.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/favicon.svg"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/offline-manifest.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/offline-manifest.json"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/bd1dc4af-201a-4b4d-a271-d123023f3901"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/vision.worker-BM1Lm-Nh.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/vision.worker-BM1Lm-Nh.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/wasm/vision_wasm_module_internal.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/wasm/vision_wasm_module_internal.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/wasm/vision_wasm_module_internal.wasm"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/wasm/vision_wasm_module_internal.wasm"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/hand_landmarker.task"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/hand_landmarker.task"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/bd1dc4af-201a-4b4d-a271-d123023f3901"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/2f812b5f-a383-4949-8ee9-dd96dc68985a"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/e7cf48b2-ab18-4f33-942e-38bfc50cdc3d"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/22d1acbb-5dfc-4a0b-8ba5-9cb15688963d"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/b1c5374b-4dfe-4de4-b471-bf61453ec64a"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/b1c5374b-4dfe-4de4-b471-bf61453ec64a"
+    }
+  ],
+  "limitations": [
+    "These retained-source examples contain a real person against a dark curtain, not a furnished-room scene.",
+    "This run exercises local-file input. Physical camera permission and webcam capture are not simulated or claimed here.",
+    "Pixel checks cover selected paused frames. They do not constitute a general tracking-accuracy or occlusion benchmark."
+  ],
+  "browser": {
+    "version": "152.0.7977.83",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+    "renderer": "ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x000046A6) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+  },
+  "offlineVersion": "96c454adf1b11e0f",
+  "network": {
+    "uploadRequests": [],
+    "allRequestsSameOrigin": true
+  },
+  "ok": true,
+  "finishedAt": "2026-09-10T21:20:10.250Z"
+}

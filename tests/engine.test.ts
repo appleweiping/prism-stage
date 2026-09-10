@@ -99,6 +99,40 @@ describe("stage input and deterministic replay", () => {
     ribbon.dispose();
   });
 
+  it("follows ordinary tracked hands without changing pinch observations and releases on loss", () => {
+    const ribbon = new RibbonScene(new THREE.Scene(), 42, DEFAULT_PARAMS);
+    const samples = Array.from({ length: 30 }, (_, frame) => ({
+      ...input(frame, false, 0.3 + frame * 0.005),
+      source: "video" as const,
+    }));
+    const observations = structuredClone(samples);
+    for (const sample of samples) ribbon.update(1 / 60, sample.t, sample);
+    expect(ribbonGeometry(ribbon)).toHaveLength(0);
+    ribbon.setParams({ ...DEFAULT_PARAMS, drawingMode: "follow" });
+    ribbon.reset(42);
+    for (const sample of samples) ribbon.update(1 / 60, sample.t, sample);
+    expect(ribbonGeometry(ribbon)).toHaveLength(1);
+    const firstPositions = Array.from(ribbonGeometry(ribbon)[0].getAttribute("position").array);
+    expect(ribbonGeometry(ribbon)[0].drawRange.count).toBeGreaterThan(0);
+    ribbon.update(1 / 60, 1, { t: 1, source: "video", hands: [] });
+    ribbon.update(1 / 60, 1.1, input(66, false, 0.46));
+    ribbon.update(1 / 60, 1.2, input(72, false, 0.48));
+    expect(ribbonGeometry(ribbon)).toHaveLength(2);
+    const undo: InputSample = { t: 1.3, source: "video", hands: [], undoCount: 1 };
+    ribbon.update(1 / 60, 1.3, undo);
+    ribbon.update(1 / 60, 1.4, undo);
+    expect(ribbonGeometry(ribbon)).toHaveLength(1);
+    ribbon.reset(42);
+    for (const sample of samples) ribbon.update(1 / 60, sample.t, sample);
+    expect(Array.from(ribbonGeometry(ribbon)[0].getAttribute("position").array)).toEqual(firstPositions);
+    expect(samples).toEqual(observations);
+    ribbon.setParams({ ...DEFAULT_PARAMS, drawingMode: "pinch" });
+    ribbon.reset(42);
+    for (const sample of samples) ribbon.update(1 / 60, sample.t, sample);
+    expect(ribbonGeometry(ribbon)).toHaveLength(0);
+    ribbon.dispose();
+  });
+
   it("has identical Rapier state after reset and after appearance changes during replay", async () => {
     const scene = new THREE.Scene();
     const gravity = await GravityScene.create(scene, 1234, DEFAULT_PARAMS);

@@ -70,6 +70,9 @@ const initial: RuntimeState = {
   trimEnd: 0,
   delegate: "",
   quality: "auto",
+  composition: "abstract",
+  hasVideo: false,
+  mediaBusy: false,
 };
 const formatTime = (t: number) =>
   `${Math.floor(t / 60)
@@ -114,6 +117,7 @@ export default function App() {
     extension: string;
   } | null>(null);
   const stateRef = useRef(state);
+  const linkedExampleOpened = useRef(false);
   stateRef.current = state;
   const t = useCallback(
     (en: string, zh: string) => (lang === "zh" ? zh : en),
@@ -207,7 +211,7 @@ export default function App() {
         event.preventDefault();
         void run("", async () => {
           if (stateRef.current.mode === "recording")
-            runtimeRef.current?.stopTake();
+            await runtimeRef.current?.stopTake();
           else await runtimeRef.current?.startTake();
         });
       }
@@ -232,10 +236,10 @@ export default function App() {
   const scene = SCENES.find((s) => s.id === state.scene)!;
   const isTake = state.duration > 0.1,
     locked =
-      !state.ready || state.mode === "recording" || state.mode === "exporting";
+      !state.ready || state.mediaBusy || state.mode === "recording" || state.mode === "exporting";
   const sourceLabel =
     state.mode === "replay" || state.mode === "exporting"
-      ? t("Recorded motion", "已录制动作")
+      ? state.hasVideo && state.composition === "video" ? t("Original video + effects", "真人原片 + 特效") : t("Recorded motion", "已录制动作")
       : state.source === "demo"
         ? t("Demo motion · synthetic", "演示动作 · 模拟输入")
         : state.source === "camera"
@@ -252,6 +256,20 @@ export default function App() {
       ),
     );
   }
+  async function openRealExample(sceneId: SceneId = state.scene) {
+    const response = await fetch(`${import.meta.env.BASE_URL}examples/real-${sceneId}.prismstage`);
+    if (!response.ok) throw new Error(t("The example could not load. Please retry when online.", "真人示范加载失败，请联网后重试。"));
+    await openProject(await decodeProject(await response.blob()));
+    if (!reduced) runtimeRef.current?.replay();
+    report(t("Real footage + recorded model input. Try changing the look.", "真实视频 + 实际识别记录。试试换一种颜色和材质。"));
+  }
+  useEffect(() => {
+    if (!state.ready || linkedExampleOpened.current) return;
+    linkedExampleOpened.current = true;
+    const example = new URLSearchParams(window.location.search).get("example");
+    const sceneId = example?.match(/^real-(ribbon|gravity|portal)$/)?.[1] as SceneId | undefined;
+    if (sceneId) void run("example", () => openRealExample(sceneId));
+  }, [state.ready, run]);
   async function saveCurrent() {
     const project = runtimeRef.current!.snapshot(projectName);
     await saveProject(project);
@@ -471,6 +489,12 @@ export default function App() {
                 {state.fps} <small>FPS</small>
               </span>
             </div>
+            {state.mediaBusy ? (
+              <div className="model-loading" role="status">
+                <LoaderCircle className="spin" size={16} />
+                {t("Preparing video…", "正在准备视频…")}
+              </div>
+            ) : null}
             {!state.ready ? (
               <div className="stage-loading">
                 <LoaderCircle size={26} className="spin" />
@@ -485,7 +509,7 @@ export default function App() {
               <span className="stage-watermark">PRISM / {scene.number}</span>
             </div>
             <div
-              className={`camera-preview ${(state.source === "camera" || state.source === "video") && state.mode !== "replay" && state.mode !== "exporting" ? "visible" : ""}`}
+              className={`camera-preview ${(state.source === "camera" || state.source === "video") && state.composition === "abstract" && state.mode !== "replay" && state.mode !== "exporting" ? "visible" : ""}`}
             >
               <video
                 ref={videoRef}
@@ -507,11 +531,11 @@ export default function App() {
             <div className="transport-main">
               <button
                 className={`record-button ${state.mode === "recording" ? "active" : ""}`}
-                disabled={!state.ready || state.mode === "exporting"}
+                disabled={!state.ready || state.mediaBusy || state.mode === "exporting"}
                 onClick={() =>
                   void run("", async () => {
                     if (state.mode === "recording")
-                      runtimeRef.current?.stopTake();
+                      await runtimeRef.current?.stopTake();
                     else await runtimeRef.current?.startTake();
                   })
                 }
@@ -528,7 +552,7 @@ export default function App() {
               </button>
               <button
                 className="icon-button playback"
-                disabled={!state.ready || state.mode === "exporting"}
+                disabled={!state.ready || state.mediaBusy || state.mode === "exporting"}
                 aria-label={state.playing ? "Pause" : "Play"}
                 onClick={() => runtimeRef.current?.togglePlay()}
               >
@@ -602,12 +626,17 @@ export default function App() {
               </span>
               <p>
                 {t(
-                  "A demo to explore. Your camera to create.",
-                  "用演示探索，用镜头创作。",
+                  "Keep your world. Add something extraordinary.",
+                  "保留你和房间，把想象带入画面。",
                 )}
               </p>
             </div>
             <div className="input-actions">
+              <button className="input-button real-example" data-testid="real-example" disabled={locked || !!busy}
+                onClick={() => void run("example", openRealExample)}>
+                {busy === "example" ? <LoaderCircle className="spin" size={15} /> : <Film size={15} />}
+                {t("Real footage demo", "真人特效示范")}
+              </button>
               <button
                 className={`input-button ${state.source === "demo" ? "active" : ""}`}
                 disabled={locked}
@@ -728,7 +757,45 @@ export default function App() {
               </>
             ) : null}
           </div>
+          <div className="inspector-section composition-controls">
+            <span className="section-label">{t("THE FRAME", "画面合成")}</span>
+            <div className="segmented">
+              <button data-testid="composition-video" aria-label="Original video and effects" aria-pressed={state.composition === "video"}
+                disabled={!state.hasVideo || state.mediaBusy || state.mode === "exporting"}
+                className={state.composition === "video" ? "active" : ""}
+                onClick={() => runtimeRef.current?.setComposition("video")}>
+                {t("You + effects", "真人 + 特效")}
+              </button>
+              <button data-testid="composition-abstract" aria-label="Abstract artwork only" aria-pressed={state.composition === "abstract"}
+                disabled={state.mediaBusy || state.mode === "exporting"}
+                className={state.composition === "abstract" ? "active" : ""}
+                onClick={() => runtimeRef.current?.setComposition("abstract")}>
+                {t("Artwork only", "纯特效")}
+              </button>
+            </div>
+            <p className="composition-hint">{state.hasVideo
+              ? t("Your room. Your movement. A little impossible light.", "保留你和房间，让光从手中生长。")
+              : t("Use a camera or local video to put yourself in the artwork.", "开启摄像头或导入视频，让真人进入作品。")}</p>
+          </div>
           <div className="inspector-section sliders">
+            {state.scene === "ribbon" ? <div className="drawing-controls">
+              <label className="field-label">{t("Ribbon gesture", "光带控制")}</label>
+              <div className="segmented">
+                <button data-testid="drawing-pinch" aria-pressed={state.params.drawingMode !== "follow"}
+                  disabled={locked} className={state.params.drawingMode !== "follow" ? "active" : ""}
+                  onClick={() => runtimeRef.current?.setParams({ drawingMode: "pinch" })}>
+                  {t("Pinch to draw", "捏合绘制")}
+                </button>
+                <button data-testid="drawing-follow" aria-pressed={state.params.drawingMode === "follow"}
+                  disabled={locked} className={state.params.drawingMode === "follow" ? "active" : ""}
+                  onClick={() => runtimeRef.current?.setParams({ drawingMode: "follow" })}>
+                  {t("Follow hands", "跟随手部")}
+                </button>
+              </div>
+              <p className="composition-hint">{state.params.drawingMode === "follow"
+                ? t("Ribbons grow along every tracked hand movement. No pinch needed.", "沿识别到的手部运动生长光带，无需捏合。")
+                : t("Pinch to start a stroke. Release to finish.", "捏合开始一笔，松开结束。")}</p>
+            </div> : null}
             <Slider
               label={t("Luminosity", "发光强度")}
               value={state.params.intensity}
@@ -783,7 +850,9 @@ export default function App() {
             <Hand size={19} strokeWidth={1.3} />
             <span>
               {state.scene === "ribbon"
-                ? t("Pinch to draw. Release to finish.", "捏合绘制，松手收笔。")
+                ? state.params.drawingMode === "follow"
+                  ? t("Move your hands. Let the ribbons follow.", "移动双手，让光带跟随。")
+                  : t("Pinch to draw. Release to finish.", "捏合绘制，松手收笔。")
                 : state.scene === "gravity"
                   ? t(
                       "Pinch to catch. Move, then release.",
@@ -827,7 +896,7 @@ export default function App() {
           </label>
           <button
             className="primary-button export-open"
-            disabled={!state.ready || state.mode === "recording"}
+            disabled={!state.ready || state.mediaBusy || state.mode === "recording"}
             onClick={() => setModal("export")}
           >
             <ArrowDownToLine size={16} />
@@ -862,7 +931,7 @@ export default function App() {
               : t("Make available offline", "准备离线使用")}
         </button>
         <span className="footer-version">
-          PRISM STAGE <span>1.0</span>
+          PRISM STAGE <span>1.1</span>
         </span>
       </footer>
       <input
@@ -870,7 +939,7 @@ export default function App() {
         aria-label="Import local video"
         className="hidden-input"
         type="file"
-        accept="video/*"
+        accept="video/mp4,video/webm,.mp4,.webm"
         onChange={(e) => {
           const file = e.target.files?.[0];
           if (file)
@@ -945,7 +1014,10 @@ export default function App() {
           {modal === "save" ? (
             <>
               <p>
-                {t(
+                {state.hasVideo ? t(
+                  "This editable project includes your original video, which may contain its original audio. It stays in this browser or the file you download. Exported films are silent.",
+                  "此工程会包含原视频（可能带原有音轨），仅保存在此浏览器或你下载的文件中。导出的特效短片不含音频。",
+                ) : t(
                   "Save the movement and its look. Come back to make something new.",
                   "保存动作与外观，随时回来继续创作。",
                 )}
@@ -1231,8 +1303,8 @@ export default function App() {
               </div>
               <small className="fine-print">
                 {t(
-                  "Video exports run in real time, up to 60 seconds. Camera pixels and audio are not included.",
-                  "视频以实时速度导出，最长 60 秒。不包含摄像头原图与音频。",
+                  "Video exports run in real time, up to 60 seconds. Video composition includes your original footage; films export without audio.",
+                  "视频以实时速度导出，最长 60 秒。真人合成模式会导出原视频与特效，成片不含音频。",
                 )}
               </small>
             </>
@@ -1281,8 +1353,8 @@ export default function App() {
                 </p>
                 <p>
                   {t(
-                    "Demo inputs are synthetic. Recorded projects keep motion or silhouettes, never original camera pixels. Local videos are decoded on your device.",
-                    "演示输入为模拟动作。工程保留动作或轮廓，不保存摄像头原图。本地视频仅在你的设备上解码。",
+                    "Demo motion is synthetic; Real footage demo uses a licensed video with actual model observations. Your video projects retain original footage locally, including any audio in imported files. Sharing a project shares that footage. Exported films are silent.",
+                    "演示动作为模拟输入，真人特效示范使用有明确许可的视频与实际识别记录。你的视频工程会在本地保留原片，包括导入文件中已有的音频。分享工程会同时分享原片，导出成片不含音频。",
                   )}
                 </p>
                 <div className="shortcut-row">

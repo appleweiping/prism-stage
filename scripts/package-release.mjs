@@ -25,8 +25,9 @@ async function archive(directory, kind) {
   await walk(directory);
   if (kind === 'examples') {
     entries['LICENSE'] = new Uint8Array(await readFile(join(root, 'LICENSE')));
+    entries['VIDEO_EXAMPLE_NOTICE.txt'] = new Uint8Array(await readFile(join(root, 'docs/VIDEO_EXAMPLE_NOTICE.txt')));
     entries['README.txt'] = new TextEncoder().encode(
-      'Prism Stage — editable examples\n\nOpen https://appleweiping.github.io/prism-stage/ and use My collection → Import project to import a .prismstage file.\nEach example contains synthetic demonstration motion, not camera recordings. Replay, restyle, trim and export your own variation.\n\n打开上述在线工作室，使用“我的作品 → 导入工程”导入 .prismstage 文件。示例包含明确标注的合成演示动作，可回放、换色、截取并导出。\n\nOriginal examples: MIT, see LICENSE.\n',
+      'Prism Stage — editable examples\n\nOpen https://appleweiping.github.io/prism-stage/ and use My collection → Import project to import a .prismstage file.\nThe three real-* projects retain licensed original video and actual model observations. Their portable source-notice.txt includes provenance and Apache-2.0 terms. The other three projects use clearly labeled synthetic demonstration motion. Replay, restyle, trim and export your own variation.\n\n打开上述在线工作室，使用“我的作品 → 导入工程”导入 .prismstage 文件。real-* 三个工程包含许可明确的真人原片和实际模型识别记录，来源与 Apache-2.0 许可随工程附带。其余三个工程包含明确标注的合成演示动作。所有工程均可回放、换色、截取并导出。\n\nOriginal project code: MIT, see LICENSE. Source video: Apache-2.0, see VIDEO_EXAMPLE_NOTICE.txt.\n',
     );
   }
   const name = `prism-stage-v${version}-${kind}.zip`;

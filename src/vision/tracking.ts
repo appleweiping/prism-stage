@@ -42,7 +42,12 @@ export class HandTracker {
     this.tracks.clear();
   }
 
-  update(raw: RawHand[], timestampMs: number, aspect = 16 / 9): TrackedHand[] {
+  update(raw: RawHand[], timestampMs: number, aspect = 16 / 9, inferenceMs = 0): TrackedHand[] {
+    // Two measured inference intervals plus delivery slack can explain a slow
+    // observation. Keep the old timeout without a measurement and never bridge
+    // more than 1.5 seconds, even if model initialization took much longer.
+    const measuredMs = Number.isFinite(inferenceMs) ? Math.max(0, inferenceMs) : 0;
+    const associationGraceMs = Math.max(600, Math.min(1500, measuredMs * 2 + 100));
     const hands = raw
       .filter(
         (h) =>
@@ -58,7 +63,7 @@ export class HandTracker {
     for (const [id, track] of this.tracks) {
       // Frame skipping under load is not evidence of a missing hand. Explicit empty
       // detections release immediately below; retain association across slow inference.
-      if (timestampMs < track.seen || timestampMs - track.seen > 600)
+      if (timestampMs < track.seen || timestampMs - track.seen > associationGraceMs)
         this.tracks.delete(id);
     }
     const cost = (hand: RawHand, id: HandId): number => {

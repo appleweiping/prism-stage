@@ -24,7 +24,7 @@ export function supportedVideoType(): VideoType | null {
   );
 }
 
-/** Records only the final artwork canvas. Captured tracks never include microphone audio. */
+/** Records the supplied canvas. Captured tracks never include microphone audio. */
 export class CanvasRecorder {
   private recorder: MediaRecorder | null = null;
   private probe: MediaRecorder | null = null;
@@ -81,7 +81,8 @@ export class CanvasRecorder {
     this.errorCallback = onError;
     try {
       // Capture a stable 2D composition instead of a renderer-owned WebGL
-      // backing store. Only the final artwork is copied; no UI or input video.
+      // backing store. The caller supplies either the final composition or the
+      // original-camera capture canvas; application controls are never copied.
       const composition = document.createElement("canvas");
       composition.width = this.canvas.width;
       composition.height = this.canvas.height;

@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-10T21:29:28.706Z",
+  "status": "passed",
+  "provenance": {
+    "type": "Actual application UI screen recording",
+    "source": "Licensed Google MediaPipe gesture video through actual local MediaPipe inference. The recorded original and Follow hands effects are composited by the application. Initial studio frames show the separately labelled synthetic demo before importing the real source.",
+    "browser": "Chrome 152.0.7977.83",
+    "productionEvidence": "docs/composite-workflow-validation.json",
+    "workflow": [
+      "Record motion",
+      "Finish take",
+      "Recolor recorded motion",
+      "Replay",
+      "Save editable project locally",
+      "Export a silent canvas film",
+      "Play completed export",
+      "Download completed film"
+    ],
+    "footage": "The full Playwright page recording from start through close is preserved. No synthetic UI, replacement scenes, cuts, added captions, sound, or retiming.",
+    "originalDistributed": false
+  },
+  "transcode": {
+    "encoder": "libx264",
+    "crf": 21,
+    "preset": "medium",
+    "threads": 2,
+    "pixelFormat": "yuv420p",
+    "fastStart": true,
+    "command": "ffmpeg -threads 2 -i INPUT -map 0:v:0 -an -sn -dn -c:v libx264 -threads 2 -preset medium -crf 21 -pix_fmt yuv420p -fps_mode vfr -movflags +faststart public/showcase/composite-workflow.mp4"
+  },
+  "source": {
+    "path": ".local/browser-recordings/page@551a6f6d46361b878ec3a524c2dadc05.webm",
+    "bytes": 3832267,
+    "sha256": "cf68a008ec5152d34469ae919fdd26c83bd3f1e79d03e8b121b3e36dc6e4bc6f",
+    "codec": "vp8",
+    "pixelFormatYuv420p": true,
+    "width": 1440,
+    "height": 960,
+    "fullDecodeExitCode": 0,
+    "hasAudioStream": false,
+    "durationSeconds": 46.32,
+    "decodedFrames": 1158,
+    "uniqueFrameHashes": 941,
+    "firstDecodedPtsSeconds": 0,
+    "lastDecodedPtsSeconds": 46.28
+  },
+  "output": {
+    "path": "public/showcase/composite-workflow.mp4",
+    "bytes": 2593851,
+    "sha256": "d6831cbe9ca83ce95abc7116390617331592834bd7c7d7fcbaaa0098039273dc",
+    "codec": "h264",
+    "pixelFormatYuv420p": true,
+    "width": 1440,
+    "height": 960,
+    "fullDecodeExitCode": 0,
+    "hasAudioStream": false,
+    "durationSeconds": 46.32,
+    "decodedFrames": 1158,
+    "uniqueFrameHashes": 1155,
+    "firstDecodedPtsSeconds": 0,
+    "lastDecodedPtsSeconds": 46.28
+  },
+  "checks": {
+    "fullSourceAndOutputDecode": true,
+    "dimensionsPreserved": true,
+    "entireRecordingPreserved": true,
+    "h264Yuv420p": true,
+    "noAudio": true,
+    "fastStart": true,
+    "completedActualUiWorkflow": true
+  },
+  "validationMethod": "Full FFmpeg -xerror framemd5 decode of original and output, with timestamp passthrough. Identical frame counts, dimensions and decoded durations verify preservation of the entire source; lossy H.264 frame hashes are not expected to equal VP8 hashes.",
+  "workflowMarkerReference": "Approximate action markers in docs/composite-workflow-validation.json use harness elapsed time and are not exact recording timestamps."
+}

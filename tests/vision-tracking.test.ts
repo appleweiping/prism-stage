@@ -47,6 +47,42 @@ describe("stable hand interaction", () => {
     expect(tracker.update([], 320)).toEqual([]);
     expect(tracker.update([hand(0.5)], 350)[0].pinch).toBe(false);
   });
+  it("confirms and holds a pinch across measured 650 ms inference intervals", () => {
+    const tracker = new HandTracker();
+    expect(tracker.update([hand(0.5)], 0, 16 / 9, 650)[0].pinch).toBe(false);
+    expect(tracker.update([hand(0.5)], 650, 16 / 9, 650)[0].pinch).toBe(true);
+    // A stable held pinch still uses its original opening threshold.
+    expect(tracker.update([hand(0.5, 0.43)], 1300, 16 / 9, 650)[0].pinch).toBe(true);
+  });
+  it("releases on an explicit empty result even with a slow measured inference", () => {
+    const tracker = new HandTracker();
+    tracker.update([hand(0.5)], 0, 16 / 9, 650);
+    expect(tracker.update([hand(0.5)], 650, 16 / 9, 650)[0].pinch).toBe(true);
+    expect(tracker.update([], 1300, 16 / 9, 650)).toEqual([]);
+    expect(tracker.update([hand(0.5)], 1950, 16 / 9, 650)[0].pinch).toBe(false);
+    expect(tracker.update([hand(0.5)], 2600, 16 / 9, 650)[0].pinch).toBe(true);
+  });
+  it("resets an unexplained long observation gap when measured inference is fast", () => {
+    const tracker = new HandTracker();
+    tracker.update([hand(0.5)], 0, 16 / 9, 12);
+    expect(tracker.update([hand(0.5)], 50, 16 / 9, 12)[0].pinch).toBe(true);
+    expect(tracker.update([hand(0.5)], 700, 16 / 9, 12)[0].pinch).toBe(false);
+  });
+  it("caps slow-inference association at 1500 ms", () => {
+    const tracker = new HandTracker();
+    tracker.update([hand(0.5)], 0, 16 / 9, 4000);
+    expect(tracker.update([hand(0.5)], 1500, 16 / 9, 4000)[0].pinch).toBe(true);
+    expect(tracker.update([hand(0.5)], 3001, 16 / 9, 4000)[0].pinch).toBe(false);
+  });
+  it.each([undefined, -1, Number.NaN, Number.POSITIVE_INFINITY])(
+    "keeps the original 600 ms bound with absent or invalid measurement %s",
+    inferenceMs => {
+      const tracker = new HandTracker();
+      tracker.update([hand(0.5)], 0, 16 / 9, inferenceMs);
+      expect(tracker.update([hand(0.5)], 50, 16 / 9, inferenceMs)[0].pinch).toBe(true);
+      expect(tracker.update([hand(0.5)], 651, 16 / 9, inferenceMs)[0].pinch).toBe(false);
+    },
+  );
   it("mirrors x exactly once and limits depth to an artistic range", () => {
     const tracked = new HandTracker().update([hand(0.2)], 0)[0];
     expect(tracked.x).toBeCloseTo(0.8);

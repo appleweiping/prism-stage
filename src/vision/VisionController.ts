@@ -12,7 +12,7 @@ const aborted = () => new DOMException("Input was stopped.", "AbortError");
 const reason = (error: unknown) =>
   error instanceof Error ? error.message : String(error);
 
-/** Owns capture/decoding only. Renderers receive disposable observations, never video pixels. */
+/** Owns live capture and model inference. The studio compositor also reads the local source video. */
 export class VisionController {
   private worker?: Worker;
   private stream?: MediaStream;
@@ -38,11 +38,18 @@ export class VisionController {
   private measuredAt = 0;
   private measuredFrames = 0;
   private reportedAt = 0;
+  private gpuFrames = 0;
+  private slowGpuFrames = 0;
 
   constructor(
     private onSample: (sample: InputSample) => void,
     private onStatus: (status: VisionStatus) => void,
   ) {}
+
+  /** performance.now() clock origin used by camera InputSample.t, in seconds. */
+  get clockOriginSeconds(): number {
+    return this.startedAt / 1000;
+  }
 
   async startCamera(scene: SceneId, video: HTMLVideoElement): Promise<void> {
     const session = this.prepare(scene, video, "camera");
@@ -233,13 +240,17 @@ export class VisionController {
     this.clearWorker();
     this.ready = false;
     this.delegate = delegate;
+    this.gpuFrames = 0;
+    this.slowGpuFrames = 0;
     this.onStatus({
       state: "loading",
       delegate,
+      inferenceMs: 0,
+      fps: 0,
       message:
         delegate === "GPU"
           ? "Loading local vision model…"
-          : "GPU unavailable. Loading CPU vision…",
+          : "Loading local CPU compatibility mode…",
     });
     try {
       await new Promise<void>((resolve, reject) => {
@@ -297,6 +308,19 @@ export class VisionController {
             if (response.epoch !== this.epoch) return;
             this.sample = response.sample;
             this.onSample(response.sample);
+            if (delegate === "GPU") {
+              // Exclude cold first-frame shader compilation. Sustained
+              // sub-2.5-fps inference cannot resolve short pinch confirmations;
+              // a local CPU fallback is preferable to an apparently live but
+              // unresponsive interaction. Never oscillate back to the GPU.
+              this.gpuFrames++;
+              this.slowGpuFrames = this.gpuFrames > 1 && response.inferenceMs > 400
+                ? this.slowGpuFrames + 1 : 0;
+              if (this.slowGpuFrames >= 2) {
+                void this.recover(new Error("GPU inference remained too slow. Switching to local CPU vision."), session);
+                return;
+              }
+            }
             this.measuredFrames++;
             const now = performance.now();
             if (now - this.reportedAt >= 500) {
@@ -344,6 +368,11 @@ export class VisionController {
     if (this.delegate === "GPU") {
       try {
         await this.startWorker(session, "CPU");
+        // A finite imported clip may have ended during a slow GPU frame.
+        // Calibrate the replacement model on its decoded frame even when no
+        // further video-frame callback will arrive until the user presses Play.
+        this.lastSourceTime = -1;
+        if (this.video) await this.processFrame(session, this.video.currentTime);
       } catch (failure) {
         if (session === this.session) this.fail(failure, session);
       }
@@ -380,7 +409,6 @@ export class VisionController {
 
   private beginFrames(session: number): void {
     if (session !== this.session || !this.video) return;
-    this.startedAt = performance.now();
     this.measuredAt = performance.now();
     const video = this.video;
     const schedule = () => {

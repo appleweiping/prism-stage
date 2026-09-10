@@ -16,6 +16,10 @@ export const PROJECT_LIMITS = Object.freeze({
   samples: 7201,
   maskSide: 512,
   thumbnailBytes: MiB,
+  videoBytes: 96 * MiB,
+  videoSide: 8192,
+  videoDuration: 24 * 60 * 60,
+  videoNoticeBytes: 64 * 1024,
 });
 const scenes = ["ribbon", "gravity", "portal"];
 const sources = ["demo", "camera", "video", "replay", "pointer"];
@@ -41,6 +45,11 @@ function keys(value: Record<string, unknown>, allowed: readonly string[]) {
 
 function validateManifest(value: unknown): asserts value is ProjectManifest {
   if (!object(value)) fail("manifest is missing.");
+  if (
+    value.format !== "prism-stage" ||
+    ![1, 2].includes(value.version as number)
+  )
+    fail("unsupported format version. Please use a version 1 or 2 project.");
   keys(value, [
     "format",
     "version",
@@ -56,9 +65,8 @@ function validateManifest(value: unknown): asserts value is ProjectManifest {
     "trim",
     "aspect",
     "source",
+    ...(value.version === 2 ? ["composition", "video"] : []),
   ]);
-  if (value.format !== "prism-stage" || value.version !== 1)
-    fail("unsupported format version. Please use a version 1 project.");
   if (value.engineVersion !== ENGINE_VERSION)
     fail(
       `engine version must be ${ENGINE_VERSION}; other versions may replay differently.`,
@@ -96,6 +104,37 @@ function validateManifest(value: unknown): asserts value is ProjectManifest {
   keys(value.trim, ["start", "end"]);
   if (!member(value.aspect, ["landscape", "portrait"]))
     fail("aspect ratio is unknown.");
+  if (value.version === 2) {
+    if (!member(value.composition, ["video", "abstract"]))
+      fail("version 2 composition must be video or abstract.");
+    if (value.video === undefined) {
+      if (value.composition !== "abstract")
+        fail("video composition requires retained source video metadata.");
+    } else {
+      const video = value.video;
+      if (!object(video)) fail("source video metadata is invalid.");
+      keys(video, ["mimeType", "width", "height", "duration", "offset"]);
+      if (!member(video.mimeType, ["video/mp4", "video/webm"]))
+        fail("source video must use the MP4 or WebM container.");
+      if (
+        !integer(video.width, 1, PROJECT_LIMITS.videoSide) ||
+        !integer(video.height, 1, PROJECT_LIMITS.videoSide)
+      )
+        fail("source video dimensions must be integers from 1 to 8192.");
+      if (
+        !bounded(
+          video.duration,
+          Number.MIN_VALUE,
+          PROJECT_LIMITS.videoDuration,
+        ) ||
+        !bounded(video.offset, 0, video.duration) ||
+        video.offset + value.duration > video.duration + 1e-6
+      )
+        fail(
+          "source video timing must contain the complete take and be at most 24 hours.",
+        );
+    }
+  }
   const p = value.params;
   if (
     !object(p) ||
@@ -113,7 +152,10 @@ function validateManifest(value: unknown): asserts value is ProjectManifest {
     "feather",
     "material",
     "quality",
+    ...(value.version === 2 ? ["drawingMode"] : []),
   ]);
+  if (p.drawingMode !== undefined && !member(p.drawingMode, ["pinch", "follow"]))
+    fail("drawing mode must be pinch or follow.");
   for (const key of ["intensity", "width", "speed"])
     if (!bounded(p[key], 0, 4))
       fail(`${key} must be a finite number from 0 to 4.`);
@@ -124,8 +166,29 @@ function validateManifest(value: unknown): asserts value is ProjectManifest {
 
 function validateProject(value: unknown): asserts value is PrismProject {
   if (!object(value)) fail("project is missing.");
-  keys(value, ["manifest", "samples", "thumbnail"]);
+  keys(value, ["manifest", "samples", "thumbnail", "video", "videoNotice"]);
   validateManifest(value.manifest);
+  const metadata = value.manifest.video;
+  if (metadata !== undefined) {
+    if (
+      !(value.video instanceof Blob) ||
+      !value.video.size ||
+      value.video.size > PROJECT_LIMITS.videoBytes
+    )
+      fail(
+        "retained source video must be a nonempty Blob no larger than 96 MiB.",
+      );
+    const mimeType = value.video.type.split(";")[0].trim().toLowerCase();
+    if (mimeType && mimeType !== metadata.mimeType)
+      fail("source video MIME type does not match its metadata.");
+  } else if (value.video !== undefined) {
+    fail("retained source video requires version 2 video metadata.");
+  }
+  if (value.videoNotice !== undefined) {
+    if (!metadata || !(value.video instanceof Blob))
+      fail("a source video notice requires retained source video.");
+    videoNoticeBytes(value.videoNotice);
+  }
   if (
     !Array.isArray(value.samples) ||
     !value.samples.length ||
@@ -188,11 +251,105 @@ function validateProject(value: unknown): asserts value is PrismProject {
         fail("mask dimensions must stay constant throughout a recording.");
       maskSize = size;
       maskBytes += mask.data.byteLength;
-      if (maskBytes > PROJECT_LIMITS.expandedBytes - 8 * MiB)
-        fail("recorded mask data is too large.");
+      if (
+        maskBytes + (value.video instanceof Blob ? value.video.size : 0) >
+        PROJECT_LIMITS.expandedBytes - 8 * MiB
+      )
+        fail("recorded mask and source video data is too large.");
     }
   }
   if (value.thumbnail !== undefined) thumbnailBytes(value.thumbnail);
+}
+
+function videoPath(metadata: NonNullable<ProjectManifest["video"]>): string {
+  return metadata.mimeType === "video/mp4" ? "source.mp4" : "source.webm";
+}
+
+function videoNoticeBytes(value: unknown): Uint8Array {
+  if (
+    typeof value !== "string" ||
+    !value.trim() ||
+    value.length > PROJECT_LIMITS.videoNoticeBytes ||
+    /[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/.test(value)
+  )
+    fail(
+      "source video notice must be nonempty UTF-8 text no larger than 64 KiB.",
+    );
+  for (const character of value) {
+    const point = character.codePointAt(0)!;
+    if (point >= 0xd800 && point <= 0xdfff)
+      fail("source video notice contains invalid Unicode.");
+  }
+  const bytes = strToU8(value);
+  if (bytes.byteLength > PROJECT_LIMITS.videoNoticeBytes)
+    fail("source video notice exceeds 64 KiB of UTF-8 text.");
+  return bytes;
+}
+
+/** Container-header checks only. Browser decoding separately verifies codec support. */
+function validateVideoHeader(bytes: Uint8Array, mimeType: string) {
+  if (mimeType === "video/mp4") {
+    if (bytes.length < 16) fail("source video has a truncated MP4 header.");
+    const view = new DataView(bytes.buffer, bytes.byteOffset, bytes.byteLength);
+    const size = view.getUint32(0);
+    if (
+      view.getUint32(4) !== 0x66747970 ||
+      size < 16 ||
+      size > bytes.length ||
+      size % 4 !== 0
+    )
+      fail("source video does not have a valid MP4 ftyp header.");
+    return;
+  }
+  if (
+    bytes.length < 12 ||
+    ![0x1a, 0x45, 0xdf, 0xa3].every((value, index) => bytes[index] === value)
+  )
+    fail("source video does not have a WebM EBML header.");
+  const vint = (at: number, identifier = false) => {
+    if (at >= bytes.length || bytes[at] === 0)
+      fail("source video EBML header is truncated.");
+    let length = 1,
+      marker = 0x80;
+    while (!(bytes[at] & marker)) {
+      marker >>= 1;
+      length++;
+    }
+    if (length > (identifier ? 4 : 8) || at + length > bytes.length)
+      fail("source video EBML field is invalid.");
+    let value = identifier ? bytes[at] : bytes[at] & (marker - 1);
+    for (let index = 1; index < length; index++)
+      value = value * 256 + bytes[at + index];
+    if (!Number.isSafeInteger(value))
+      fail("source video EBML field is too large.");
+    return { value, length };
+  };
+  const header = vint(4);
+  let cursor = 4 + header.length;
+  const end = cursor + header.value;
+  if (end + 4 > bytes.length) fail("source video EBML header is truncated.");
+  let webm = false;
+  while (cursor < end) {
+    const id = vint(cursor, true);
+    cursor += id.length;
+    const size = vint(cursor);
+    cursor += size.length;
+    if (cursor + size.value > end)
+      fail("source video EBML element exceeds its header.");
+    if (id.value === 0x4282) {
+      if (strFromU8(bytes.subarray(cursor, cursor + size.value)) !== "webm")
+        fail("source video EBML document type must be WebM.");
+      webm = true;
+    }
+    cursor += size.value;
+  }
+  if (
+    !webm ||
+    ![0x18, 0x53, 0x80, 0x67].every(
+      (value, index) => bytes[end + index] === value,
+    )
+  )
+    fail("source video WebM document type or segment is missing.");
 }
 
 function thumbnailBytes(value: unknown): Uint8Array {
@@ -239,7 +396,8 @@ function pngDataUrl(bytes: Uint8Array) {
 export async function encodeProject(project: PrismProject): Promise<Blob> {
   validateProject(project);
   const entries: Zippable = Object.create(null);
-  // Keep binary masks separate: no raw camera image, video, or audio enters the archive.
+  // Version 1 keeps observations only. Version 2 can explicitly retain the
+  // original source video locally, including any tracks in the source file.
   const samples = project.samples.map((sample, index) => {
     if (!sample.mask) return { ...sample };
     const path = `masks/frame-${index}.bin`;
@@ -253,6 +411,28 @@ export async function encodeProject(project: PrismProject): Promise<Blob> {
   entries["samples.json"] = strToU8(JSON.stringify(samples));
   if (project.thumbnail)
     entries["thumbnail.png"] = thumbnailBytes(project.thumbnail);
+  if (project.manifest.video && project.video) {
+    validateVideoHeader(
+      new Uint8Array(await project.video.slice(0, 4096).arrayBuffer()),
+      project.manifest.video.mimeType,
+    );
+    entries[videoPath(project.manifest.video)] = [
+      new Uint8Array(await project.video.arrayBuffer()),
+      { level: 0 },
+    ];
+    if (project.videoNotice !== undefined)
+      entries["source-notice.txt"] = videoNoticeBytes(project.videoNotice);
+  }
+  const expanded = Object.values(entries).reduce(
+    (total, entry) =>
+      total +
+      (Array.isArray(entry)
+        ? (entry[0] as Uint8Array).byteLength
+        : (entry as Uint8Array).byteLength),
+    0,
+  );
+  if (expanded > PROJECT_LIMITS.expandedBytes)
+    fail("expanded archive exceeds safe size limits.");
   const bytes = await new Promise<Uint8Array<ArrayBuffer>>((resolve, reject) =>
     zip(entries, { level: 3 }, (error, result) =>
       error ? reject(error) : resolve(result as Uint8Array<ArrayBuffer>),
@@ -295,7 +475,7 @@ function inspectArchive(bytes: Uint8Array): Map<string, Entry> {
     fail("multipart and ZIP64 archives are unsupported.");
   if (
     count < 2 ||
-    count > PROJECT_LIMITS.samples + 3 ||
+    count > PROJECT_LIMITS.samples + 5 ||
     offset + directorySize !== end
   )
     fail("ZIP directory is invalid.");
@@ -324,7 +504,7 @@ function inspectArchive(bytes: Uint8Array): Map<string, Entry> {
       fail("encrypted or malformed ZIP entry.");
     const name = strFromU8(bytes.subarray(cursor + 46, cursor + 46 + nameSize));
     if (
-      !/^(manifest\.json|samples\.json|thumbnail\.png|masks\/frame-\d{1,4}\.bin)$/.test(
+      !/^(manifest\.json|samples\.json|thumbnail\.png|source-notice\.txt|source\.(mp4|webm)|masks\/frame-\d{1,4}\.bin)$/.test(
         name,
       ) ||
       entries.has(name)
@@ -337,7 +517,11 @@ function inspectArchive(bytes: Uint8Array): Map<string, Entry> {
           ? 4 * MiB
           : name === "thumbnail.png"
             ? MiB
-            : PROJECT_LIMITS.maskSide ** 2;
+            : name === "source.mp4" || name === "source.webm"
+              ? PROJECT_LIMITS.videoBytes
+              : name === "source-notice.txt"
+                ? PROJECT_LIMITS.videoNoticeBytes
+                : PROJECT_LIMITS.maskSide ** 2;
     total += size;
     if (size > cap || total > PROJECT_LIMITS.expandedBytes)
       fail("expanded archive exceeds safe size limits.");
@@ -452,12 +636,38 @@ export async function decodeProject(file: Blob): Promise<PrismProject> {
     thumbnail = pngDataUrl(files["thumbnail.png"]);
     used.add("thumbnail.png");
   }
+  let video: Blob | undefined;
+  let videoNotice: string | undefined;
+  if (manifest.video) {
+    const path = videoPath(manifest.video);
+    const bytes = files[path];
+    if (!bytes?.length) fail("a required source video resource is missing.");
+    validateVideoHeader(bytes.subarray(0, 4096), manifest.video.mimeType);
+    video = new Blob([bytes as Uint8Array<ArrayBuffer>], {
+      type: manifest.video.mimeType,
+    });
+    used.add(path);
+  }
+  if (files["source-notice.txt"]) {
+    if (!video) fail("a source video notice requires retained source video.");
+    try {
+      videoNotice = new TextDecoder("utf-8", { fatal: true }).decode(
+        files["source-notice.txt"],
+      );
+    } catch {
+      fail("source video notice contains invalid UTF-8.");
+    }
+    videoNoticeBytes(videoNotice);
+    used.add("source-notice.txt");
+  }
   if (used.size !== entries.size)
     fail("archive contains unreferenced resources.");
   const project: unknown = {
     manifest,
     samples: restored,
     ...(thumbnail ? { thumbnail } : {}),
+    ...(video ? { video } : {}),
+    ...(videoNotice !== undefined ? { videoNotice } : {}),
   };
   validateProject(project);
   return project;

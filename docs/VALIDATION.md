@@ -1,5 +1,53 @@
 # Validation
 
+This page preserves **v1.0.0 abstract-output validation** after the current camera
+check below. The historical checks and benchmark values do not establish v1.1
+original-video composition or its performance. New composite examples and their
+browser/decoder evidence are recorded separately.
+
+## v1.1 camera recording and retained-video replay
+
+[camera-composite-validation.json](camera-composite-validation.json) records a
+complete native camera path on build `2506f2efd6969ea7`, using a fresh Chrome
+152 context. Chrome's native fake-camera device plays the checksum-verified,
+Apache-2.0 Google gesture video; no physical camera, microphone, model output
+replacement, or additional screen encoder is involved.
+
+- A 6.837-second recording produced 47 actual camera observations, 39 containing
+  hands. All observation times fell inside the take; this capture contained no
+  confirmed pinch and does not establish ribbon drawing or sphere grabbing.
+- The v2 project retained the silent original WebM. Seeking to 1 and 4 seconds
+  changed the image; after saving and reopening, the 4-second frame matched
+  exactly at the 160 × 90 comparison resolution. Saving again preserved the
+  original video bytes unchanged.
+- FFmpeg fully decoded the retained original at 1280 × 720, 6.838 seconds,
+  182 frames (180 unique), and the final composite at 1280 × 720, 6.747 seconds,
+  203 frames (203 unique). Both had no audio stream. The browser's exported-film
+  preview also advanced normally.
+- All 17 observed HTTP requests were same-origin GETs. No console error or
+  uncaught browser exception was observed. The 10,089 ms first GPU inference
+  was a cold startup reading, not a steady-state performance benchmark.
+
+The fixture shows a person against a curtain. This verifies local camera API,
+inference, media capture, project replay and export behavior; it does not measure
+physical-camera lighting variation, exact per-frame hand alignment, room
+reconstruction, or real-world occlusion.
+
+To repeat, install Chrome and FFmpeg, run `npm run test:fixtures`, build and start
+the production preview on port 4173, then run:
+
+```sh
+node tests/camera-composite-browser.mjs
+```
+
+Set `PRISM_FFMPEG` when FFmpeg is outside `PATH`; `CHROME_PATH` and
+`PRISM_TEST_URL` are optional overrides. `--prepare-only` converts the licensed
+source to an ignored local Y4M without launching a browser. The test closes its
+browser before decoding the recorded media and writes its evidence to the JSON
+report above.
+
+## Historical v1.0 scope
+
 Prism Stage keeps three kinds of evidence separate: synthetic visual examples, real model inference, and application/format tests. The screenshots in `docs/images` are exported by the real stage renderer; the three bundled example inputs are explicitly synthetic.
 
 ## Environment
@@ -31,7 +79,7 @@ vulnerabilities at validation time.
 
 ## Actual model inference
 
-Provenance and SHA-256 of the official Google sample videos are in [validation-assets.json](validation-assets.json). Test fixtures are downloaded into the ignored `.local/fixtures` directory and are not quietly included in the public application.
+Provenance and SHA-256 of the official Google sample videos are in [validation-assets.json](validation-assets.json). The v1.0 tests downloaded originals into the ignored `.local/fixtures` directory. In v1.1, the licensed gesture video's original bytes are explicitly included in the separately attributed `real-*.prismstage` composite examples; this changes sample distribution, not what the historical tests measured.
 
 The real-video harness uses the production `VisionController` and actual MediaPipe models, then downloads observations and importable project files. Results include:
 
@@ -60,7 +108,7 @@ During interactive review, all three stages rendered without shader errors and20
 
 The production workflow includes project import/replay, appearance editing, saving, and final canvas export. The completed video is a foreground real-time capture, not a promise of a constant encoded frame count on every device.
 
-The final production suite passes **19 browser checks** against offline build
+The v1.0 production suite passed **19 browser checks** against offline build
 `7068c13e94d07cf8`. Ordinary studio rendering was sampled with the diagnostics
 dialog closed; it was opened briefly every third sample for inference readings.
 No extra screen-recording encoder ran during these checks. On Windows / Chrome 152 / Intel Iris Xe / WebGL2,

@@ -1,0 +1,245 @@
+{
+  "startedAt": "2026-09-10T21:13:42.518Z",
+  "base": "http://127.0.0.1:4173/",
+  "ok": true,
+  "method": "Fresh isolated Chrome with native fake-camera flags and a checksum-verified licensed Y4M source. Actual getUserMedia and MediaPipe execute normally. All recording, replay, save/import and export operations use public UI; no application or model outputs are replaced.",
+  "source": {
+    "license": "Apache-2.0",
+    "source": "https://raw.githubusercontent.com/google-ai-edge/mediapipe-samples/7f3cf17410db91f8e084a46f7517df15bce3479a/examples/gesture_recognizer/android/app/src/androidTest/assets/test_video.mp4",
+    "sourceSha256": "d7aca9a2477f2360adc8daa7990ef42eac7ea488db041fad722c46a86bfd7088",
+    "conversion": {
+      "sourceSha256": "d7aca9a2477f2360adc8daa7990ef42eac7ea488db041fad722c46a86bfd7088",
+      "arguments": [
+        "-hide_banner",
+        "-nostdin",
+        "-y",
+        "-i",
+        ".local/fixtures/gestures.mp4",
+        "-an",
+        "-vf",
+        "fps=30",
+        "-pix_fmt",
+        "yuv420p",
+        "-f",
+        "yuv4mpegpipe",
+        ".local/camera-composite/licensed-gestures.y4m"
+      ],
+      "bytes": 323483085,
+      "sha256": "07af47c08f0ec532bbe4f626dc97d60479789bebe607212f8cd719cfa91f31f9"
+    }
+  },
+  "physicalCameraUsed": false,
+  "microphoneUsed": false,
+  "scene": "ribbon",
+  "checks": [
+    {
+      "name": "actual camera API and MediaPipe are ready",
+      "ok": true,
+      "diagnostics": "Render 3 fps\nVision 0.1 fps · 10089 ms\nGPU · High · auto",
+      "sourceTracks": {
+        "videoTracks": 1,
+        "audioTracks": 0,
+        "width": 1280,
+        "height": 720,
+        "frameRate": 30,
+        "readyState": "live"
+      }
+    },
+    {
+      "name": "recorded camera project retains original video and real observations",
+      "ok": true,
+      "encoderPreparationSeconds": 0.228,
+      "manifest": {
+        "format": "prism-stage",
+        "version": 2,
+        "engineVersion": "1.0.0",
+        "id": "ebc8b342-9e16-4278-a163-248a6c7f3650",
+        "name": "camera-ribbon",
+        "scene": "ribbon",
+        "createdAt": "2026-09-10T21:14:07.233Z",
+        "seed": 20260910,
+        "fixedDt": 0.016666666666666666,
+        "duration": 6.837,
+        "params": {
+          "palette": "aurora",
+          "intensity": 0.85,
+          "width": 0.6,
+          "trail": 0.72,
+          "speed": 0.65,
+          "feather": 0.5,
+          "material": "silk",
+          "quality": "auto"
+        },
+        "trim": {
+          "start": 0,
+          "end": 6.837
+        },
+        "aspect": "landscape",
+        "source": "camera",
+        "composition": "video",
+        "video": {
+          "mimeType": "video/webm",
+          "width": 1280,
+          "height": 720,
+          "duration": 6.837,
+          "offset": 0
+        }
+      },
+      "project": ".local/camera-composite/camera-ribbon.prismstage",
+      "raw": ".local/camera-composite/camera-original.webm",
+      "sampleCount": 47,
+      "handSamples": 39,
+      "pinchSamples": 0,
+      "firstHandTime": 0.16420000000297996,
+      "lastHandTime": 6.724
+    },
+    {
+      "name": "camera seek, replay and project reopen preserve the take",
+      "ok": true,
+      "seekSeconds": [
+        1,
+        4
+      ],
+      "frameHashes": [
+        "67db4aa82d444ab99a1c946cdf31f0cd87a71f99edc1a0dc430ec864f405910f",
+        "706a5cc886e97c5f39a026b3f4328b13891c3327f57a1f45fdf91bdb0ca58b58"
+      ],
+      "reopenMeanAbsoluteDifference": 0,
+      "roundtrip": ".local/camera-composite/camera-ribbon-roundtrip.prismstage",
+      "retainedBytesUnchanged": true
+    },
+    {
+      "name": "camera composite exported and browser preview advances",
+      "ok": true,
+      "film": ".local/camera-composite/camera-composite.webm",
+      "expectedSeconds": 6.837
+    },
+    {
+      "name": "original and composite fully decode with matching duration and no audio",
+      "ok": true
+    }
+  ],
+  "pageErrors": [],
+  "consoleErrors": [],
+  "requests": [
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/index-D3RwEKEg.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/index-BhIaHVZ3.css"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/favicon.svg"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/sw.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/inter-latin-wght-normal-Dx4kXJAl.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/favicon.svg"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/offline-manifest.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/offline-manifest.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/vision.worker-BM1Lm-Nh.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/vision.worker-BM1Lm-Nh.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/wasm/vision_wasm_module_internal.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/wasm/vision_wasm_module_internal.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/wasm/vision_wasm_module_internal.wasm"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/wasm/vision_wasm_module_internal.wasm"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/hand_landmarker.task"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/hand_landmarker.task"
+    }
+  ],
+  "limitations": [
+    "The native fake camera exercises the camera API and actual recognition, not physical camera hardware or lighting variation.",
+    "The licensed fixture shows a person against a curtain. This does not validate scene reconstruction, room occlusion, or gesture accuracy.",
+    "Decoder frame changes and timestamp bounds establish media integrity, not exact joint-to-pixel alignment on every frame."
+  ],
+  "phase": "close isolated browser before full media decoding",
+  "browser": {
+    "version": "152.0.7977.83",
+    "nativeFakeCamera": true,
+    "screenRecording": false
+  },
+  "build": "2506f2efd6969ea7",
+  "expectedDuration": 6.837,
+  "reopenComparison": {
+    "reopenMeanAbsoluteDifference": 0,
+    "before": ".local/camera-composite/camera-before-reopen.png",
+    "after": ".local/camera-composite/camera-after-reopen.png",
+    "beforeSha256": "706a5cc886e97c5f39a026b3f4328b13891c3327f57a1f45fdf91bdb0ca58b58",
+    "afterSha256": "706a5cc886e97c5f39a026b3f4328b13891c3327f57a1f45fdf91bdb0ca58b58"
+  },
+  "browserWorkflowPassed": true,
+  "browserChecksFinishedAt": "2026-09-10T21:14:24.807Z",
+  "decoded": [
+    {
+      "kind": "original",
+      "path": ".local/camera-composite/camera-original.webm",
+      "sha256": "e13792efac9831acfd83c5709563e3d0582dabe23e6991984a69d273789fb9c8",
+      "bytes": 4866952,
+      "width": 1280,
+      "height": 720,
+      "duration": 6.838,
+      "frames": 182,
+      "uniqueFrames": 180,
+      "audioStreams": false,
+      "fullDecodeExitCode": 0
+    },
+    {
+      "kind": "composite",
+      "path": ".local/camera-composite/camera-composite.webm",
+      "sha256": "d9dc60b07829cc9a998f479377c5aa13c423af4769185eb8e87818968566f6dc",
+      "bytes": 5037213,
+      "width": 1280,
+      "height": 720,
+      "duration": 6.747,
+      "frames": 203,
+      "uniqueFrames": 203,
+      "audioStreams": false,
+      "fullDecodeExitCode": 0
+    }
+  ],
+  "finishedAt": "2026-09-10T21:14:28.156Z"
+}

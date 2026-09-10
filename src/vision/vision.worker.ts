@@ -94,7 +94,9 @@ scope.onmessage = (event) => {
       source: message.source,
     };
     if (hands) {
+      const detectionStarted = performance.now();
       const result = hands.detectForVideo(message.bitmap, message.timestampMs);
+      const detectionMs = performance.now() - detectionStarted;
       sample.hands = tracker.update(
         result.landmarks.map((landmarks, index) => ({
           landmarks,
@@ -103,6 +105,7 @@ scope.onmessage = (event) => {
         })),
         message.timestampMs,
         message.bitmap.width / message.bitmap.height,
+        detectionMs,
       );
     } else if (segmenter) {
       segmenter.segmentForVideo(

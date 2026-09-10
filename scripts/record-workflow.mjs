@@ -1,7 +1,8 @@
 /**
  * Record a real studio workflow against npm run preview, in a fresh Chrome profile.
  * Optional: PRISM_TEST_URL, CHROME_PATH, PRISM_TAKE_SECONDS (default 7),
- * PRISM_NO_SCREEN=1 (diagnostic only), PRISM_TRACE_CAPTURE=1 (passive event logging).
+ * PRISM_REAL_FOOTAGE=1 (licensed actual video), PRISM_NO_SCREEN=1 (diagnostic only),
+ * PRISM_TRACE_CAPTURE=1 (passive event logging).
  * No codec, capture, rendering, or application behavior is overridden by this script.
  */
 import { chromium } from 'playwright';
@@ -12,6 +13,7 @@ import { fileURLToPath } from 'node:url';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const base = process.env.PRISM_TEST_URL || 'http://127.0.0.1:4173/';
 const noScreen = process.env.PRISM_NO_SCREEN === '1';
+const realFootage = process.env.PRISM_REAL_FOOTAGE === '1';
 const takeSeconds = Number(process.env.PRISM_TAKE_SECONDS || 7);
 if (!Number.isFinite(takeSeconds) || takeSeconds < 1 || takeSeconds > 60) throw new Error('PRISM_TAKE_SECONDS must be between 1 and 60.');
 const dir = path.join(root, '.local/browser-recordings');
@@ -68,15 +70,23 @@ const mark = action => {
 };
 let complete = false, failure = null, film = null, expectedSeconds = null;
 try {
-  await page.goto(base, { waitUntil: 'networkidle' });
+  await page.goto(base, { waitUntil: 'domcontentloaded' });
   await page.waitForFunction(() => document.querySelector('[data-testid="record-button"]') && !document.querySelector('[data-testid="record-button"]').disabled);
   const pause = page.getByRole('button', { name: 'Pause', exact: true });
   if (await pause.count()) await pause.click();
   mark('Studio ready; authored demo is explicitly labelled');
+  if (realFootage) {
+    await page.getByLabel('Import local video', { exact: true }).setInputFiles(path.join(root, '.local/fixtures/gestures.mp4'));
+    await page.getByRole('button', { name: 'A quick guide', exact: true }).click();
+    await page.waitForFunction(() => Number(document.querySelector('.diagnostics')?.textContent?.match(/Vision\s+[\d.]+\s+fps\s*·\s*([\d.]+)\s+ms/)?.[1]) > 0, null, { timeout: 90000 });
+    await page.getByRole('button', { name: 'Close dialog', exact: true }).click();
+    mark('Import licensed real footage; actual MediaPipe inference ready');
+  }
   await page.waitForTimeout(1000);
   await page.getByTestId('record-button').click(); mark('Record motion');
   await page.waitForTimeout(takeSeconds * 1000);
   await page.getByTestId('record-button').click(); mark('Finish take');
+  await page.waitForFunction(() => document.querySelector('[data-testid="record-button"]')?.disabled === false);
   await page.waitForTimeout(500);
   await page.getByRole('button', { name: 'Palette glacier', exact: true }).click(); mark('Recolor the recorded motion');
   await page.waitForTimeout(600);
@@ -118,10 +128,10 @@ try {
   const pendingDownload = page.waitForEvent('download');
   await page.getByRole('link', { name: /Download film/ }).click();
   const download = await pendingDownload;
-  const filmPath = path.join(root, '.local/exports/fresh-workflow' + path.extname(download.suggestedFilename()));
+  const filmPath = path.join(root, `.local/exports/${realFootage ? 'composite' : 'fresh'}-workflow` + path.extname(download.suggestedFilename()));
   await download.saveAs(filmPath);
   film = { path: path.relative(root, filmPath), bytes: (await stat(filmPath)).size, expectedSeconds, ...metadata }; mark('Download the completed film');
-  await page.screenshot({ path: path.join(root, 'docs/images/workflow-export.png') });
+  await page.screenshot({ path: path.join(root, `docs/images/${realFootage ? 'composite-' : ''}workflow-export.png`) });
   mark('End'); complete = true;
 } catch (error) {
   failure = { error: String(error), visibleState: await page.locator('body').innerText() };
@@ -132,12 +142,12 @@ try {
   if (captureDiagnostics) console.log(JSON.stringify({ captureDiagnostics }));
   await page.close(); await context.close(); await browser.close();
   const recording = video ? path.relative(root, await video.path()) : null;
-  const reportPath = path.join(root, 'docs/production-validation.json');
+  const reportPath = path.join(root, realFootage ? 'docs/composite-workflow-validation.json' : 'docs/production-validation.json');
   let report = {}; try { report = JSON.parse(await readFile(reportPath, 'utf8')); } catch { /* A clean checkout need not have a previous run. */ }
   report[noScreen ? 'workflowDiagnostic' : 'workflowDemonstration'] = {
     complete, failure, recording, film, captureDiagnostics, screenRecording: !noScreen,
     viewport: { width: 1440, height: 960 }, recordingSize: noScreen ? null : { width: 1440, height: 960 },
-    source: 'Built-in authored demo, visibly labelled; actual model inference evidence is separate.', markers,
+    source: realFootage ? 'Licensed Google MediaPipe gesture video, passed through actual local MediaPipe inference and composited with generated effects.' : 'Built-in authored demo, visibly labelled; actual model inference evidence is separate.', markers,
   };
   await writeFile(reportPath, JSON.stringify(report, null, 2) + '\n');
   console.log(JSON.stringify({ complete, recording, film, markers }));

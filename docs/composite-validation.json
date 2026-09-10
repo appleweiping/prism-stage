@@ -1,0 +1,820 @@
+{
+  "startedAt": "2026-09-10T20:46:13.634Z",
+  "base": "http://127.0.0.1:4173/",
+  "requestedScenes": [
+    "ribbon",
+    "gravity",
+    "portal"
+  ],
+  "method": "Fresh isolated Chrome context against the production application. Imported licensed original video drives actual MediaPipe inference. Record, seek, restyle, PNG, project save/reopen, and film export use the public UI. Reference pixels are separately decoded from the same original fixture solely for comparison.",
+  "source": {
+    "source": "https://raw.githubusercontent.com/google-ai-edge/mediapipe-samples/7f3cf17410db91f8e084a46f7517df15bce3479a/examples/gesture_recognizer/android/app/src/androidTest/assets/test_video.mp4",
+    "sourcePage": "https://github.com/google-ai-edge/mediapipe-samples/blob/7f3cf17410db91f8e084a46f7517df15bce3479a/examples/gesture_recognizer/android/app/src/androidTest/assets/test_video.mp4",
+    "repositoryCommit": "7f3cf17410db91f8e084a46f7517df15bce3479a",
+    "license": "Apache-2.0",
+    "sha256": "d7aca9a2477f2360adc8daa7990ef42eac7ea488db041fad722c46a86bfd7088",
+    "bytes": 2576749
+  },
+  "checks": [
+    {
+      "scene": "ribbon",
+      "ok": true,
+      "phase": "export final composite film",
+      "drawingMode": "follow",
+      "inferenceWarmup": {
+        "previewReplays": 1,
+        "observedDiagnostics": [
+          "Render 3 fps\nVision 0.0 fps · 0 ms\nGPU · High",
+          "Render 44 fps\nVision 0.0 fps · 0 ms\nGPU · High",
+          "Render 60 fps\nVision 0.0 fps · 0 ms\nGPU · High",
+          "Render 53 fps\nVision 0.0 fps · 0 ms\nGPU · High",
+          "Render 15 fps\nVision 0.0 fps · 0 ms\nGPU · High",
+          "Render 10 fps\nVision 0.0 fps · 0 ms\nGPU · High",
+          "Render 4 fps\nVision 0.0 fps · 0 ms\nGPU · High",
+          "Render 6 fps\nVision 0.0 fps · 0 ms\nGPU · High",
+          "Render 9 fps\nVision 0.0 fps · 0 ms\nGPU · High",
+          "Render 9 fps\nVision 0.1 fps · 9950 ms\nGPU · High",
+          "Render 58 fps\nVision 0.1 fps · 9950 ms\nGPU · High",
+          "Render 54 fps\nVision 0.6 fps · 161 ms\nGPU · High"
+        ]
+      },
+      "inferenceDiagnostics": "Render 54 fps\nVision 0.6 fps · 161 ms\nGPU · High",
+      "recordedInput": {
+        "sampleCount": 72,
+        "handSamples": 62,
+        "pinchTimes": []
+      },
+      "gestureScope": "Follow hand mode draws from actual tracked movement. Original pinch observations remain unchanged; this does not demonstrate pinch interaction.",
+      "pixelChecks": {
+        "frameTime": 4.200084,
+        "paletteChange": {
+          "meanAbsoluteRgbDifference": 0.7353240740740737,
+          "changedPixelFraction": 0.03868055555555556,
+          "closePixelFraction": 0.9659722222222222
+        },
+        "sourceComparison": {
+          "meanAbsoluteRgbDifference": 1.90488425925926,
+          "changedPixelFraction": 0.03993055555555555,
+          "closePixelFraction": 0.9608333333333333
+        },
+        "compositionChange": {
+          "meanAbsoluteRgbDifference": 23.464999999999975,
+          "changedPixelFraction": 0.7531944444444445,
+          "closePixelFraction": 0.7604166666666666
+        },
+        "restoredComposition": {
+          "meanAbsoluteRgbDifference": 0,
+          "changedPixelFraction": 0,
+          "closePixelFraction": 1
+        }
+      },
+      "sourceFrame": {
+        "path": "docs/images/composite-ribbon-source.png",
+        "sourceTime": 4.200084,
+        "note": "Separately decoded and mirrored original source frame, not an application-generated stand-in."
+      },
+      "png": {
+        "path": "docs/images/composite-ribbon.png",
+        "width": 1280,
+        "height": 720,
+        "bytes": 863361,
+        "sha256": "bdee25ecc689047b97541728de6e801061c4b2e4c1d3ebc46bebaa75ea3354d9"
+      },
+      "studioScreenshot": "docs/images/composite-ribbon-studio.png",
+      "film": {
+        "path": "public/showcase/real-ribbon.webm",
+        "bytes": 4994047,
+        "exportWallSeconds": 9.106,
+        "trimStart": 0.3,
+        "trimEnd": 7.483333333333333,
+        "width": 1280,
+        "height": 720,
+        "duration": 7.141,
+        "sampledTime": 0.407702,
+        "rgbSum": 1244729
+      },
+      "project": {
+        "path": "public/examples/real-ribbon.prismstage",
+        "bytes": 2426172,
+        "sha256": "5ddb6cbd58ec2a1c9317220204ba6d5d7adcb719688f613cc93e0a9a3ffe4bb8",
+        "manifest": {
+          "format": "prism-stage",
+          "version": 2,
+          "engineVersion": "1.0.0",
+          "id": "4fbbda16-aa0c-4488-882e-1611d9f8136f",
+          "name": "Real motion — ribbon",
+          "scene": "ribbon",
+          "createdAt": "2026-09-10T21:19:55.323Z",
+          "seed": 20260910,
+          "fixedDt": 0.016666666666666666,
+          "duration": 7.683333333333334,
+          "params": {
+            "palette": "glacier",
+            "intensity": 0.85,
+            "width": 0.6,
+            "trail": 0.72,
+            "speed": 0.65,
+            "feather": 0.5,
+            "material": "silk",
+            "quality": "high",
+            "drawingMode": "follow"
+          },
+          "trim": {
+            "start": 0,
+            "end": 7.683333333333334
+          },
+          "aspect": "landscape",
+          "source": "video",
+          "composition": "video",
+          "video": {
+            "mimeType": "video/mp4",
+            "width": 1280,
+            "height": 720,
+            "duration": 7.806667,
+            "offset": 0
+          }
+        },
+        "sampleCount": 72,
+        "handSamples": 62,
+        "pinchSamples": 0,
+        "pinchTimes": [],
+        "releaseTimeAfterLastPinch": null,
+        "pinchGestureObserved": false,
+        "maskFrames": 0,
+        "distinctMasks": 0,
+        "retainedVideoPath": "source.mp4",
+        "retainedVideoSha256": "d7aca9a2477f2360adc8daa7990ef42eac7ea488db041fad722c46a86bfd7088",
+        "rawUiDownloadSha256": "a38c1332ba3f09b958fdc8ce962b379b864f4fdfafd71b2ff48301e6cc120616",
+        "packaging": "Added portable Apache-2.0 attribution/source-notice.txt; recorded input, manifest, thumbnail, and retained original video bytes are unchanged."
+      },
+      "roundtrip": {
+        "meanAbsoluteRgbDifference": 0.000046296296296296294,
+        "changedPixelFraction": 0,
+        "closePixelFraction": 1
+      },
+      "replayTime": 1.016687,
+      "validationBuild": "96c454adf1b11e0f",
+      "validationStartedAt": "2026-09-10T21:19:22.570Z",
+      "validationFinishedAt": "2026-09-10T21:20:10.250Z"
+    },
+    {
+      "scene": "gravity",
+      "ok": true,
+      "phase": "export final composite film",
+      "inferenceDiagnostics": "Render 51 fps\nVision 0.5 fps · 1905 ms\nGPU · High",
+      "pixelChecks": {
+        "frameTime": 4.200084,
+        "paletteChange": {
+          "meanAbsoluteRgbDifference": 0.49689814814814615,
+          "changedPixelFraction": 0.03256944444444444,
+          "closePixelFraction": 0.97875
+        },
+        "sourceComparison": {
+          "meanAbsoluteRgbDifference": 2.83414351851852,
+          "changedPixelFraction": 0.076875,
+          "closePixelFraction": 0.9539583333333334
+        },
+        "compositionChange": {
+          "meanAbsoluteRgbDifference": 24.396481481481302,
+          "changedPixelFraction": 0.7479861111111111,
+          "closePixelFraction": 0.7520138888888889
+        },
+        "restoredComposition": {
+          "meanAbsoluteRgbDifference": 0,
+          "changedPixelFraction": 0,
+          "closePixelFraction": 1
+        }
+      },
+      "sourceFrame": {
+        "path": "docs/images/composite-gravity-source.png",
+        "sourceTime": 4.200084,
+        "note": "Separately decoded and mirrored original source frame, not an application-generated stand-in."
+      },
+      "png": {
+        "path": "docs/images/composite-gravity.png",
+        "width": 1280,
+        "height": 720,
+        "bytes": 955307,
+        "sha256": "c9328afbf63fc47ebc2da4c23f04936071ed6e6d1bd2129ad902ff66fd0f54b9"
+      },
+      "studioScreenshot": "docs/images/composite-gravity-studio.png",
+      "film": {
+        "path": "public/showcase/real-gravity.webm",
+        "bytes": 4376394,
+        "exportWallSeconds": 7.869,
+        "trimStart": 0.3,
+        "trimEnd": 6.083333333333333,
+        "width": 1280,
+        "height": 720,
+        "duration": 5.72,
+        "sampledTime": 0.402727,
+        "rgbSum": 1378813
+      },
+      "project": {
+        "path": "public/examples/real-gravity.prismstage",
+        "bytes": 2431756,
+        "sha256": "ece73abd662150d52c7c2a96048f46e39a7b294e45ae024ca967453edd9d6335",
+        "manifest": {
+          "format": "prism-stage",
+          "version": 2,
+          "engineVersion": "1.0.0",
+          "id": "f425632a-632e-4a77-a003-5c30bcba4635",
+          "name": "Real motion — gravity",
+          "scene": "gravity",
+          "createdAt": "2026-09-10T20:46:53.882Z",
+          "seed": 20260910,
+          "fixedDt": 0.016666666666666666,
+          "duration": 6.283333333333333,
+          "params": {
+            "palette": "glacier",
+            "intensity": 0.8,
+            "width": 0.6,
+            "trail": 0.7,
+            "speed": 0.65,
+            "feather": 0.5,
+            "material": "glass",
+            "quality": "high"
+          },
+          "trim": {
+            "start": 0,
+            "end": 6.283333333333333
+          },
+          "aspect": "landscape",
+          "source": "video",
+          "composition": "video",
+          "video": {
+            "mimeType": "video/mp4",
+            "width": 1280,
+            "height": 720,
+            "duration": 7.806667,
+            "offset": 0
+          }
+        },
+        "sampleCount": 45,
+        "handSamples": 36,
+        "pinchSamples": 0,
+        "pinchGestureObserved": false,
+        "maskFrames": 0,
+        "distinctMasks": 0,
+        "retainedVideoPath": "source.mp4",
+        "retainedVideoSha256": "d7aca9a2477f2360adc8daa7990ef42eac7ea488db041fad722c46a86bfd7088",
+        "rawUiDownloadSha256": "99bde1f768ddd909f164eb9ed647337ea8f19e82f2d905325ee27dcf0a16931d",
+        "packaging": "Added portable Apache-2.0 attribution/source-notice.txt; recorded input, manifest, thumbnail, and retained original video bytes are unchanged."
+      },
+      "roundtrip": {
+        "meanAbsoluteRgbDifference": 0.006689814814814814,
+        "changedPixelFraction": 0,
+        "closePixelFraction": 1
+      },
+      "replayTime": 1.00002,
+      "validationBuild": "46f4f93309aa028d",
+      "validationStartedAt": "2026-09-10T20:46:13.634Z",
+      "validationFinishedAt": "2026-09-10T20:47:38.130Z"
+    },
+    {
+      "scene": "portal",
+      "ok": true,
+      "phase": "export final composite film",
+      "inferenceDiagnostics": "Render 7 fps\nVision 0.2 fps · 4592 ms\nGPU · High",
+      "pixelChecks": {
+        "frameTime": 4.200084,
+        "paletteChange": {
+          "meanAbsoluteRgbDifference": 3.8807175925926005,
+          "changedPixelFraction": 0.333125,
+          "closePixelFraction": 0.8596527777777778
+        },
+        "sourceComparison": {
+          "meanAbsoluteRgbDifference": 25.602430555555593,
+          "changedPixelFraction": 0.38,
+          "closePixelFraction": 0.6304861111111111
+        },
+        "compositionChange": {
+          "meanAbsoluteRgbDifference": 3.394745370370386,
+          "changedPixelFraction": 0.43645833333333334,
+          "closePixelFraction": 0.9972222222222222
+        },
+        "restoredComposition": {
+          "meanAbsoluteRgbDifference": 0,
+          "changedPixelFraction": 0,
+          "closePixelFraction": 1
+        }
+      },
+      "sourceFrame": {
+        "path": "docs/images/composite-portal-source.png",
+        "sourceTime": 4.200084,
+        "note": "Separately decoded and mirrored original source frame, not an application-generated stand-in."
+      },
+      "png": {
+        "path": "docs/images/composite-portal.png",
+        "width": 1280,
+        "height": 720,
+        "bytes": 1035464,
+        "sha256": "a1f7e1a7dbd83419119ef19382dc29e98340d6cd70a4f0a52f4e3032b498ec49"
+      },
+      "studioScreenshot": "docs/images/composite-portal-studio.png",
+      "film": {
+        "path": "public/showcase/real-portal.webm",
+        "bytes": 4408662,
+        "exportWallSeconds": 7.985,
+        "trimStart": 0.3,
+        "trimEnd": 6,
+        "width": 1280,
+        "height": 720,
+        "duration": 5.712,
+        "sampledTime": 0.408239,
+        "rgbSum": 1973265
+      },
+      "project": {
+        "path": "public/examples/real-portal.prismstage",
+        "bytes": 2963132,
+        "sha256": "158d8ef6f97e338fb5c13ed3e143e0bacd799f6b20a0f06d788ee0640e5d1cc0",
+        "manifest": {
+          "format": "prism-stage",
+          "version": 2,
+          "engineVersion": "1.0.0",
+          "id": "a81d99aa-2c0c-4318-9249-7fb04c787b7c",
+          "name": "Real motion — portal",
+          "scene": "portal",
+          "createdAt": "2026-09-10T20:47:24.211Z",
+          "seed": 20260910,
+          "fixedDt": 0.016666666666666666,
+          "duration": 6.2,
+          "params": {
+            "palette": "glacier",
+            "intensity": 0.85,
+            "width": 0.6,
+            "trail": 0.72,
+            "speed": 0.65,
+            "feather": 0.5,
+            "material": "silk",
+            "quality": "high"
+          },
+          "trim": {
+            "start": 0,
+            "end": 6.2
+          },
+          "aspect": "landscape",
+          "source": "video",
+          "composition": "video",
+          "video": {
+            "mimeType": "video/mp4",
+            "width": 1280,
+            "height": 720,
+            "duration": 7.806667,
+            "offset": 0
+          }
+        },
+        "sampleCount": 151,
+        "handSamples": 0,
+        "pinchSamples": 0,
+        "pinchGestureObserved": false,
+        "maskFrames": 150,
+        "distinctMasks": 150,
+        "retainedVideoPath": "source.mp4",
+        "retainedVideoSha256": "d7aca9a2477f2360adc8daa7990ef42eac7ea488db041fad722c46a86bfd7088",
+        "rawUiDownloadSha256": "8c2e168f66d50e283a4efadd033ef23122b3e73f2c142f5aae2a9dadc2cefaaf",
+        "packaging": "Added portable Apache-2.0 attribution/source-notice.txt; recorded input, manifest, thumbnail, and retained original video bytes are unchanged."
+      },
+      "roundtrip": {
+        "meanAbsoluteRgbDifference": 0,
+        "changedPixelFraction": 0,
+        "closePixelFraction": 1
+      },
+      "replayTime": 1.00002,
+      "validationBuild": "46f4f93309aa028d",
+      "validationStartedAt": "2026-09-10T20:46:13.634Z",
+      "validationFinishedAt": "2026-09-10T20:47:38.130Z"
+    }
+  ],
+  "pageErrors": [],
+  "consoleErrors": [],
+  "requests": [
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/index-DMWtURrq.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/index-BhIaHVZ3.css"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/favicon.svg"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/sw.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/inter-latin-wght-normal-Dx4kXJAl.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/favicon.svg"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/offline-manifest.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/offline-manifest.json"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/4a8fcd54-7430-4163-b522-fa77912e56dc"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/vision.worker-C3N6kDzZ.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/vision.worker-C3N6kDzZ.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/wasm/vision_wasm_module_internal.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/wasm/vision_wasm_module_internal.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/wasm/vision_wasm_module_internal.wasm"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/wasm/vision_wasm_module_internal.wasm"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/hand_landmarker.task"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/hand_landmarker.task"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/4a8fcd54-7430-4163-b522-fa77912e56dc"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/d32ea2d2-1fac-4125-a347-7ba381da475f"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/index-DMWtURrq.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/index-BhIaHVZ3.css"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/index-DMWtURrq.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/index-BhIaHVZ3.css"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/favicon.svg"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/favicon.svg"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/inter-latin-wght-normal-Dx4kXJAl.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/inter-latin-wght-normal-Dx4kXJAl.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/favicon.svg"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/favicon.svg"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/offline-manifest.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/GravityScene-Dou_p9Ju.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/GravityScene-Dou_p9Ju.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/rapier-DBjBuyhF.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/rapier-DBjBuyhF.js"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/69a8ef48-cd2c-4042-bef0-1442ce93a091"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/vision.worker-C3N6kDzZ.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/vision.worker-C3N6kDzZ.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/wasm/vision_wasm_module_internal.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/wasm/vision_wasm_module_internal.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/wasm/vision_wasm_module_internal.wasm"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/wasm/vision_wasm_module_internal.wasm"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/hand_landmarker.task"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/hand_landmarker.task"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/69a8ef48-cd2c-4042-bef0-1442ce93a091"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/0b792edc-095a-4072-9d8d-054459b556a7"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/946bda36-711d-4c6c-8cde-a0346503faef"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/ff162154-e240-4bb1-a55c-b6a2db1c097e"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/4c7aaea9-a9b4-4054-b124-f24cc78d5eb0"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/3a59ecfb-9846-4e27-9a68-c160742841ec"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/vision.worker-C3N6kDzZ.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/vision.worker-C3N6kDzZ.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/wasm/vision_wasm_module_internal.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/wasm/vision_wasm_module_internal.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/wasm/vision_wasm_module_internal.wasm"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/wasm/vision_wasm_module_internal.wasm"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/selfie_segmenter_landscape.tflite"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/selfie_segmenter_landscape.tflite"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/3a59ecfb-9846-4e27-9a68-c160742841ec"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/f85d8e64-e923-4407-9984-3f30328ee974"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/f763f82d-40ab-471e-a43f-2221bf9a138b"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/4c7aaea9-a9b4-4054-b124-f24cc78d5eb0"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/e73b41cd-2e3f-43a0-b87e-d5233b769e0e"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/4c7aaea9-a9b4-4054-b124-f24cc78d5eb0"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/38eebf85-e483-4c41-8fc2-7ae723677119"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/38eebf85-e483-4c41-8fc2-7ae723677119"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/index-M-enqBYh.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/index-CXMhvoEf.css"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/favicon.svg"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/sw.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/inter-latin-wght-normal-Dx4kXJAl.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/favicon.svg"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/offline-manifest.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/offline-manifest.json"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/bd1dc4af-201a-4b4d-a271-d123023f3901"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/vision.worker-BM1Lm-Nh.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/vision.worker-BM1Lm-Nh.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/wasm/vision_wasm_module_internal.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/wasm/vision_wasm_module_internal.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/wasm/vision_wasm_module_internal.wasm"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/wasm/vision_wasm_module_internal.wasm"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/hand_landmarker.task"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/hand_landmarker.task"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/bd1dc4af-201a-4b4d-a271-d123023f3901"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/2f812b5f-a383-4949-8ee9-dd96dc68985a"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/e7cf48b2-ab18-4f33-942e-38bfc50cdc3d"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/22d1acbb-5dfc-4a0b-8ba5-9cb15688963d"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/b1c5374b-4dfe-4de4-b471-bf61453ec64a"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/b1c5374b-4dfe-4de4-b471-bf61453ec64a"
+    }
+  ],
+  "limitations": [
+    "These retained-source examples contain a real person against a dark curtain, not a furnished-room scene.",
+    "This run exercises local-file input. Physical camera permission and webcam capture are not simulated or claimed here.",
+    "Pixel checks cover selected paused frames. They do not constitute a general tracking-accuracy or occlusion benchmark."
+  ],
+  "browser": {
+    "version": "152.0.7977.83",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+    "renderer": "ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x000046A6) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+  },
+  "offlineVersion": "96c454adf1b11e0f",
+  "network": {
+    "uploadRequests": [],
+    "allRequestsSameOrigin": true
+  },
+  "ok": true,
+  "finishedAt": "2026-09-10T21:20:10.250Z",
+  "allChecksOnLatestBuild": false,
+  "buildProvenance": [
+    {
+      "offlineVersion": "46f4f93309aa028d",
+      "startedAt": "2026-09-10T20:46:13.634Z",
+      "finishedAt": "2026-09-10T20:47:38.130Z",
+      "browser": {
+        "version": "152.0.7977.83",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36"
+      },
+      "requestedScenes": [
+        "ribbon",
+        "gravity",
+        "portal"
+      ],
+      "network": {
+        "uploadRequests": [],
+        "allRequestsSameOrigin": true
+      }
+    },
+    {
+      "offlineVersion": "96c454adf1b11e0f",
+      "startedAt": "2026-09-10T21:19:22.570Z",
+      "finishedAt": "2026-09-10T21:20:10.250Z",
+      "browser": {
+        "version": "152.0.7977.83",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+        "renderer": "ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x000046A6) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+      },
+      "requestedScenes": [
+        "ribbon"
+      ],
+      "network": {
+        "uploadRequests": [],
+        "allRequestsSameOrigin": true
+      }
+    }
+  ],
+  "scopeNotes": [
+    "Gravity and Portal were validated on build 46f4f93309aa028d; Ribbon Follow hand mode was validated on build 96c454adf1b11e0f. Each check includes exact build provenance. Final release smoke testing is recorded separately.",
+    "The Ribbon example uses explicit Follow hand drawing with actual model observations and 0 recorded pinches. This does not claim pinch-gesture validation."
+  ]
+}

@@ -12,6 +12,7 @@ import {
   WORLD_HEIGHT,
   WORLD_WIDTH,
 } from "./common";
+import type { VideoCover } from "./VideoBackground";
 
 export class PortalScene implements ScenePlugin {
   readonly id = "portal" as const;
@@ -28,6 +29,7 @@ export class PortalScene implements ScenePlugin {
       uniforms: {
         uMask: { value: this.texture },
         uTexel: { value: new THREE.Vector2(1, 1) },
+        uSourceCrop: { value: new THREE.Vector2(1, 1) },
         uTime: { value: 0 },
         uSeed: { value: (seed % 10000) / 1000 },
         uColors: { value: paletteColors(params) },
@@ -40,7 +42,7 @@ export class PortalScene implements ScenePlugin {
       },
       vertexShader: `varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}`,
       fragmentShader: `
-        varying vec2 vUv;uniform sampler2D uMask;uniform vec2 uTexel;uniform vec3 uColors[4];
+        varying vec2 vUv;uniform sampler2D uMask;uniform vec2 uTexel,uSourceCrop;uniform vec3 uColors[4];
         uniform float uTime,uSeed,uIntensity,uFeather,uSpeed,uWidth,uTrail,uMaterial;
         float hash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
         float noise(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(hash(i),hash(i+vec2(1,0)),f.x),mix(hash(i+vec2(0,1)),hash(i+vec2(1,1)),f.x),f.y);}
@@ -48,7 +50,7 @@ export class PortalScene implements ScenePlugin {
         float mask(vec2 uv){return texture2D(uMask,clamp(uv,vec2(.001),vec2(.999))).r;}
         void main(){
           // Mask storage is top-to-bottom in mirrored image coordinates.
-          vec2 maskUv=vec2(vUv.x,1.-vUv.y);
+          vec2 maskUv=(vec2(vUv.x,1.-vUv.y)-.5)*uSourceCrop+.5;
           vec2 texel=uTexel*(.35+uFeather*1.15);
           float center=mask(maskUv);
           float a=mask(maskUv+vec2(texel.x,0.));float b=mask(maskUv-vec2(texel.x,0.));
@@ -160,6 +162,10 @@ export class PortalScene implements ScenePlugin {
     this.material.uniforms.uTrail.value = params.trail;
     this.material.uniforms.uMaterial.value =
       params.material === "silk" ? 0 : params.material === "glass" ? 1 : 2;
+  }
+
+  setSourceCrop(cover: VideoCover): void {
+    this.material.uniforms.uSourceCrop.value.set(cover.uSpan, cover.vSpan);
   }
 
   reset(seed: number): void {

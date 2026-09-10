@@ -1,0 +1,210 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-10T21:22:07.358Z",
+  "method": "Decode the entire first video stream using FFmpeg -xerror with timestamp passthrough and framemd5. No mock encoder, re-encoding, resizing, or frame interpolation is used.",
+  "commandTemplate": "ffmpeg -hide_banner -nostdin -nostats -v info -xerror -i INPUT -map 0:v:0 -an -sn -dn -fps_mode passthrough -f framemd5 pipe:1",
+  "invocation": "node scripts/validate-media.mjs --composite --require-all (set PRISM_FFMPEG when FFmpeg is not on PATH)",
+  "ffmpeg": {
+    "executableName": "ffmpeg-win-x86_64-v7.1.exe",
+    "version": "ffmpeg version 7.1-essentials_build-www.gyan.dev Copyright (c) 2000-2024 the FFmpeg developers",
+    "available": true
+  },
+  "requirements": {
+    "width": 1280,
+    "height": 720,
+    "minimumDurationSeconds": 5,
+    "minimumUniqueFrames": 2,
+    "fullDecodeExitCode": 0,
+    "noAudioStream": true
+  },
+  "notes": [
+    "Real-model-input clips come from saved observations produced by the production vision worker on licensed real-person test footage; no physical camera was used for these checks.",
+    "Authored-demo clips use procedural example takes. Their visual quality and successful encoding are separate from real-model inference validation.",
+    "Decoded frame hashes establish changing pixel content, not tracking correctness. Effective frame cadence is measured rather than assumed to be 30 fps.",
+    "The attributed real-* examples retain the licensed original video; their composite exports are distributed in public/showcase. These finite-source v1.1 studies are separate from the ten-second v1.0 abstract-output checks.",
+    "Missing files are pending; --require-all exits nonzero for pending results. Existing invalid files always make this script exit nonzero."
+  ],
+  "results": [
+    {
+      "scene": "ribbon",
+      "kind": "real-model-input",
+      "path": "public/showcase/real-ribbon.webm",
+      "status": "passed",
+      "bytes": 4994047,
+      "sha256": "c3a321c1d6e830bb322166b65bc165b3fd66dc8018f56a67836decebe62f2dd6",
+      "provenance": {
+        "status": "verified-manifest",
+        "projectPath": "public/examples/real-ribbon.prismstage",
+        "projectSha256": "5ddb6cbd58ec2a1c9317220204ba6d5d7adcb719688f613cc93e0a9a3ffe4bb8",
+        "projectId": "4fbbda16-aa0c-4488-882e-1611d9f8136f",
+        "scene": "ribbon",
+        "source": "video",
+        "sampleSources": [
+          "video"
+        ],
+        "durationSeconds": 7.683333333333334,
+        "engineVersion": "1.0.0",
+        "samples": 72,
+        "handSamples": 62,
+        "pinchingSamples": 0,
+        "maskSamples": 0,
+        "inputEvidence": "docs/composite-validation.json",
+        "assetLicenseEvidence": "docs/validation-assets.json",
+        "association": "Capture workflow associates this filename with the editable take above. Decoding verifies media integrity and motion, not model accuracy or a cryptographic linkage between input and output."
+      },
+      "fullDecode": {
+        "exitCode": 0,
+        "signal": null,
+        "ok": true
+      },
+      "decoded": {
+        "width": 1280,
+        "height": 720,
+        "durationSeconds": 7.142,
+        "durationMethod": "Last decoded frame PTS plus its duration minus first decoded PTS; not the optional WebM container duration field.",
+        "timeBase": "1/1000",
+        "decodedFrames": 210,
+        "uniqueDecodedFrameHashes": 210,
+        "consecutiveFrameChanges": 209,
+        "changingFrameFraction": 1,
+        "decodedFramesPerSecond": 29.404,
+        "timestampsNondecreasing": true,
+        "firstFrameMd5": "2b1b7ff8cd956bd29da173d7910d62a3",
+        "lastFrameMd5": "cc00b1142f5dc9828c498b036f8dbd2c",
+        "hasAudioStream": false
+      },
+      "checks": {
+        "dimensions": true,
+        "duration": true,
+        "changingFrames": true,
+        "fullDecode": true,
+        "timestamps": true,
+        "noAudio": true,
+        "sceneAndProvenance": true
+      }
+    },
+    {
+      "scene": "gravity",
+      "kind": "real-model-input",
+      "path": "public/showcase/real-gravity.webm",
+      "status": "passed",
+      "bytes": 4376394,
+      "sha256": "8760a17f7d00959a98ea96e69703c0806db09767dcae105d5718eae2489ccb8d",
+      "provenance": {
+        "status": "verified-manifest",
+        "projectPath": "public/examples/real-gravity.prismstage",
+        "projectSha256": "ece73abd662150d52c7c2a96048f46e39a7b294e45ae024ca967453edd9d6335",
+        "projectId": "f425632a-632e-4a77-a003-5c30bcba4635",
+        "scene": "gravity",
+        "source": "video",
+        "sampleSources": [
+          "video"
+        ],
+        "durationSeconds": 6.283333333333333,
+        "engineVersion": "1.0.0",
+        "samples": 45,
+        "handSamples": 36,
+        "pinchingSamples": 0,
+        "maskSamples": 0,
+        "inputEvidence": "docs/composite-validation.json",
+        "assetLicenseEvidence": "docs/validation-assets.json",
+        "association": "Capture workflow associates this filename with the editable take above. Decoding verifies media integrity and motion, not model accuracy or a cryptographic linkage between input and output."
+      },
+      "fullDecode": {
+        "exitCode": 0,
+        "signal": null,
+        "ok": true
+      },
+      "decoded": {
+        "width": 1280,
+        "height": 720,
+        "durationSeconds": 5.721,
+        "durationMethod": "Last decoded frame PTS plus its duration minus first decoded PTS; not the optional WebM container duration field.",
+        "timeBase": "1/1000",
+        "decodedFrames": 171,
+        "uniqueDecodedFrameHashes": 171,
+        "consecutiveFrameChanges": 170,
+        "changingFrameFraction": 1,
+        "decodedFramesPerSecond": 29.89,
+        "timestampsNondecreasing": true,
+        "firstFrameMd5": "49d44669ec143a3d499d027fdf2196a3",
+        "lastFrameMd5": "390d06df05de85808789dcb3677cf3ec",
+        "hasAudioStream": false
+      },
+      "checks": {
+        "dimensions": true,
+        "duration": true,
+        "changingFrames": true,
+        "fullDecode": true,
+        "timestamps": true,
+        "noAudio": true,
+        "sceneAndProvenance": true
+      }
+    },
+    {
+      "scene": "portal",
+      "kind": "real-model-input",
+      "path": "public/showcase/real-portal.webm",
+      "status": "passed",
+      "bytes": 4408662,
+      "sha256": "e702e003f79d3e94f3cd3ab32853c3048e9f9e134646681a7fd05ccd66c46d03",
+      "provenance": {
+        "status": "verified-manifest",
+        "projectPath": "public/examples/real-portal.prismstage",
+        "projectSha256": "158d8ef6f97e338fb5c13ed3e143e0bacd799f6b20a0f06d788ee0640e5d1cc0",
+        "projectId": "a81d99aa-2c0c-4318-9249-7fb04c787b7c",
+        "scene": "portal",
+        "source": "video",
+        "sampleSources": [
+          "video"
+        ],
+        "durationSeconds": 6.2,
+        "engineVersion": "1.0.0",
+        "samples": 151,
+        "handSamples": 0,
+        "pinchingSamples": 0,
+        "maskSamples": 150,
+        "inputEvidence": "docs/composite-validation.json",
+        "assetLicenseEvidence": "docs/validation-assets.json",
+        "association": "Capture workflow associates this filename with the editable take above. Decoding verifies media integrity and motion, not model accuracy or a cryptographic linkage between input and output."
+      },
+      "fullDecode": {
+        "exitCode": 0,
+        "signal": null,
+        "ok": true
+      },
+      "decoded": {
+        "width": 1280,
+        "height": 720,
+        "durationSeconds": 5.713,
+        "durationMethod": "Last decoded frame PTS plus its duration minus first decoded PTS; not the optional WebM container duration field.",
+        "timeBase": "1/1000",
+        "decodedFrames": 173,
+        "uniqueDecodedFrameHashes": 173,
+        "consecutiveFrameChanges": 172,
+        "changingFrameFraction": 1,
+        "decodedFramesPerSecond": 30.282,
+        "timestampsNondecreasing": true,
+        "firstFrameMd5": "e7dc733a33a10757f44c5481f8990c5b",
+        "lastFrameMd5": "40567c9e8c15b0ecf96e45e5fad547d3",
+        "hasAudioStream": false
+      },
+      "checks": {
+        "dimensions": true,
+        "duration": true,
+        "changingFrames": true,
+        "fullDecode": true,
+        "timestamps": true,
+        "noAudio": true,
+        "sceneAndProvenance": true
+      }
+    }
+  ],
+  "summary": {
+    "total": 3,
+    "passed": 3,
+    "pending": 0,
+    "failed": 0
+  },
+  "status": "passed"
+}

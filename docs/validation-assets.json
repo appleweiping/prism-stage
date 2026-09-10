@@ -12,7 +12,8 @@
       "licenseSource": "https://raw.githubusercontent.com/google-ai-edge/mediapipe-samples/7f3cf17410db91f8e084a46f7517df15bce3479a/LICENSE",
       "bytes": 363475,
       "sha256": "4543368c47f9be43ca46107a1c3ddf82e82f4888cff0002d13e4ef1c9f48756c",
-      "purpose": "Real-model input validation only. Original test videos are not bundled in the public app."
+      "purpose": "Optional real-model input validation. This source video is not embedded in the three v1.1 original-video examples.",
+      "copyright": "Google LLC and MediaPipe contributors"
     },
     {
       "name": "gestures",
@@ -24,7 +25,35 @@
       "licenseSource": "https://raw.githubusercontent.com/google-ai-edge/mediapipe-samples/7f3cf17410db91f8e084a46f7517df15bce3479a/LICENSE",
       "bytes": 2576749,
       "sha256": "d7aca9a2477f2360adc8daa7990ef42eac7ea488db041fad722c46a86bfd7088",
-      "purpose": "Real-model input validation only. Original test videos are not bundled in the public app."
+      "purpose": "Real-model input validation and licensed original RGB video for the v1.1 composite example projects. The embedded MP4 source is retained byte-for-byte under Apache-2.0.",
+      "copyright": "Google LLC and MediaPipe contributors",
+      "distribution": {
+        "projectFormatVersion": 2,
+        "embeddedResource": "source.mp4",
+        "projects": [
+          "public/examples/real-ribbon.prismstage",
+          "public/examples/real-gravity.prismstage",
+          "public/examples/real-portal.prismstage"
+        ],
+        "screenshots": [
+          "docs/images/composite-ribbon.png",
+          "docs/images/composite-gravity.png",
+          "docs/images/composite-portal.png"
+        ],
+        "films": [
+          "public/showcase/real-ribbon.webm",
+          "public/showcase/real-gravity.webm",
+          "public/showcase/real-portal.webm",
+          "public/showcase/composite-workflow.mp4"
+        ],
+        "status": "All three v1.1 composite projects and films generated and verified. Artifact hashes, source preservation, actual model input, and full decoding are recorded in docs/composite-validation.json and docs/composite-export-validation.json.",
+        "modifications": "Original embedded source bytes unchanged. Application adds model observations and configurable generated layers; exported composite screenshots and films contain those visual additions.",
+        "visualContent": "A person making hand gestures against a dark curtain. This fixture demonstrates visible original person and setting, not a reconstructed room.",
+        "licenseNotice": "THIRD_PARTY_NOTICES.md",
+        "fullLicense": "public/models/LICENSE-APACHE-2.0.txt",
+        "embeddedNotice": "source-notice.txt",
+        "noticeSource": "docs/VIDEO_EXAMPLE_NOTICE.txt"
+      }
     }
   ]
 }

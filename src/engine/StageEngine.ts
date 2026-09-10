@@ -10,6 +10,7 @@ import type {
 import { Atmosphere, WORLD_HEIGHT, WORLD_WIDTH } from "./common";
 import { RibbonScene } from "./RibbonScene";
 import { PortalScene } from "./PortalScene";
+import { coverInput, videoCover, VideoBackground } from "./VideoBackground";
 
 /** A single renderer survives scene switches; everything scene-owned is disposed. */
 export async function createStage(
@@ -57,6 +58,20 @@ export async function createStage(
   let frameCount = 0;
   let frameDuration = 0;
   let autoScale = 1;
+  let videoBackground: VideoBackground | undefined;
+  let sourceCover = videoCover(0, 0);
+
+  function updateVideoBackground(): void {
+    videoBackground?.update();
+    if (videoBackground && videoBackground.video.videoWidth > 0 && videoBackground.video.videoHeight > 0)
+      sourceCover = videoBackground.cover;
+    if (!current) return;
+    current.atmosphere.group.visible = !videoBackground;
+    if (videoBackground && videoBackground.mesh.parent !== current.scene)
+      current.scene.add(videoBackground.mesh);
+    if (current.plugin instanceof PortalScene)
+      current.plugin.setSourceCrop(sourceCover);
+  }
 
   function resize(): void {
     const aspect = Math.max(1, width) / Math.max(1, height);
@@ -117,15 +132,18 @@ export async function createStage(
       };
       quality = params.quality;
       resize();
+      updateVideoBackground();
       renderer.render(scene, camera);
     },
     step(dt: number, t: number, input: InputSample): void {
       if (disposed || !current) return;
-      current.plugin.update(dt, t, input);
+      updateVideoBackground();
+      current.plugin.update(dt, t, coverInput(input, sourceCover));
       current.atmosphere.update(t);
     },
     render(): void {
       if (disposed || !current) return;
+      updateVideoBackground();
       const now = performance.now();
       if (lastRenderAt && quality === "auto") {
         const elapsed = now - lastRenderAt;
@@ -167,6 +185,19 @@ export async function createStage(
         resize();
       }
     },
+    setVideoBackground(video: HTMLVideoElement | null): void {
+      if (disposed) return;
+      if (videoBackground?.video !== video) {
+        videoBackground?.dispose();
+        videoBackground = video ? new VideoBackground(video) : undefined;
+      }
+      updateVideoBackground();
+    },
+    setInputSourceSize(sourceWidth: number, sourceHeight: number): void {
+      sourceCover = videoCover(sourceWidth, sourceHeight);
+      if (current?.plugin instanceof PortalScene)
+        current.plugin.setSourceCrop(sourceCover);
+    },
     getStats(): StageStats {
       return {
         objects:
@@ -186,6 +217,8 @@ export async function createStage(
       version++;
       current?.plugin.dispose();
       current?.atmosphere.dispose();
+      videoBackground?.dispose();
+      videoBackground = undefined;
       current = undefined;
       // Do not force context loss: React StrictMode can create the next renderer
       // on this same canvas before a cancelled async initialization disposes.

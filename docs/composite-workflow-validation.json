@@ -1,0 +1,75 @@
+{
+  "workflowDemonstration": {
+    "complete": true,
+    "failure": null,
+    "recording": ".local\\browser-recordings\\page@551a6f6d46361b878ec3a524c2dadc05.webm",
+    "film": {
+      "path": ".local\\exports\\composite-workflow.webm",
+      "bytes": 3251704,
+      "expectedSeconds": 6.28,
+      "width": 1280,
+      "height": 720,
+      "currentTime": 3.182064,
+      "duration": 5.899
+    },
+    "captureDiagnostics": null,
+    "screenRecording": true,
+    "viewport": {
+      "width": 1440,
+      "height": 960
+    },
+    "recordingSize": {
+      "width": 1440,
+      "height": 960
+    },
+    "source": "Licensed Google MediaPipe gesture video, passed through actual local MediaPipe inference and composited with generated effects.",
+    "markers": [
+      {
+        "action": "Studio ready; authored demo is explicitly labelled",
+        "seconds": 1.208
+      },
+      {
+        "action": "Import licensed real footage; actual MediaPipe inference ready",
+        "seconds": 17.689
+      },
+      {
+        "action": "Record motion",
+        "seconds": 18.879
+      },
+      {
+        "action": "Finish take",
+        "seconds": 26.076
+      },
+      {
+        "action": "Recolor the recorded motion",
+        "seconds": 28.482
+      },
+      {
+        "action": "Replay restyled motion",
+        "seconds": 29.181
+      },
+      {
+        "action": "Save editable project in local collection",
+        "seconds": 32.329
+      },
+      {
+        "action": "Export silent canvas film",
+        "seconds": 34.29
+      },
+      {
+        "action": "Play the completed export",
+        "seconds": 41.923
+      },
+      {
+        "action": "Download the completed film",
+        "seconds": 46.719
+      },
+      {
+        "action": "End",
+        "seconds": 47.051
+      }
+    ],
+    "buildVersion": "f3fd1305674aa67c",
+    "buildEvidence": "The completed dist/offline-manifest.json was checked before this capture; the preview directory was not rebuilt during recording."
+  }
+}
