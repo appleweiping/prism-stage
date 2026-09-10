@@ -24,6 +24,10 @@ smoke harness also supports Edge; its results are recorded separately.
   source/notice preservation, IndexedDB, portrait film, 20 stage switches, narrow
   layout, complete caching, and offline save/reopen/export. This replays previously
   recorded real observations; it is separate from fresh model inference.
+- [Edge Pages release smoke](composite-smoke-msedge-pages.json): **18 of 18
+  checks passed** against the deployed build `a315cad3761f78e5`, including native
+  rejection of mismatched video metadata while preserving the previous take,
+  and fresh offline loading, saving, reopening, and film export.
 - [Complete UI workflow](composite-workflow-validation.json): an actual licensed
   source video passes through local inference, recording, restyling, replay,
   project saving, and film export. The report records the completed screen-capture
@@ -71,6 +75,14 @@ working composition and replay. They do not measure pose accuracy, fine hair
 matting, real-world depth, furniture occlusion, or general gesture accuracy.
 The fixture shows a person against a dark curtain; broader room and lighting
 conditions remain dependent on the supplied video and upstream model.
+
+## Clean checkout
+
+[Independent checkout verification](composite-fresh-checkout-validation.json)
+ran `npm ci`, `npm run check`, and `npm run build` from a new clone at
+`042614b5fb79d28c2dc9600d5964d530167ed2bf`. All 171 tests passed, all 42
+production files matched the reference byte-for-byte (84,923,886 bytes), and the
+32-file offline manifest matched version `a315cad3761f78e5`.
 
 ## Reproduce
 

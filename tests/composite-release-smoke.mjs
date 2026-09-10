@@ -358,8 +358,12 @@ try {
     report.buildVersion = cache.version;
     return cache;
   });
-  await page.close(); await context.setOffline(true);
+  // Edge can exit when its last page closes. Keep a fresh blank page alive
+  // before closing the old app, then navigate only after networking is disabled.
+  await context.setOffline(true);
+  const oldPage = page;
   page = await context.newPage(); attach(page);
+  await oldPage.close();
   await check('fresh offline page reopens all three real examples', async () => {
     await page.goto(base, { waitUntil: 'domcontentloaded' }); await ready();
     const probe = await page.evaluate(async () => {

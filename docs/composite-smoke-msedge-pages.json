@@ -1,0 +1,859 @@
+{
+  "startedAt": "2026-09-10T21:38:47.824Z",
+  "base": "https://appleweiping.github.io/prism-stage/",
+  "channel": "msedge",
+  "location": "pages",
+  "retryContext": {
+    "priorAttemptStartedAt": "2026-09-10T21:36:56.429Z",
+    "priorAttemptFinishedAt": "2026-09-10T21:37:50.406Z",
+    "priorBuildVersion": "a315cad3761f78e5",
+    "priorPassedChecks": 15,
+    "priorFailure": "browserContext.setOffline: Target page, context or browser has been closed",
+    "observation": "The first attempt closed its final page immediately before setting the context offline. Edge was then unavailable; that attempt recorded no application page errors or console errors.",
+    "harnessAdjustment": "Disable context networking, create a fresh blank page, then close the previous page before navigating the new page. The fresh offline navigation and rejected uncached network probe remain part of this complete rerun.",
+    "applicationOrBuildChanged": false,
+    "preservedPriorReport": ".local/composite-smoke/msedge-pages/initial-last-page-shutdown.json"
+  },
+  "method": "An isolated native browser uses the public studio controls to open packaged real-model examples, replay, switch composition, export PNG and portrait film, download editable projects, save/reopen IndexedDB, and reopen all three examples with networking disabled after complete caching.",
+  "checks": [
+    {
+      "name": "real-gravity deep link opens its original video and recorded effects",
+      "ok": true,
+      "elapsedMs": 1683,
+      "url": "https://appleweiping.github.io/prism-stage/?example=real-gravity",
+      "scene": "gravity",
+      "originalVideoAndEffects": true,
+      "oneClickExampleReady": true,
+      "duration": 6.283333333333333
+    },
+    {
+      "name": "one-click ribbon example, replay and composition",
+      "ok": true,
+      "elapsedMs": 4587,
+      "scene": "ribbon",
+      "duration": 7.683333333333334,
+      "motion": {
+        "meanAbsoluteRgbDifference": 8.175555555555537,
+        "changedPixelFraction": 0.24736111111111111
+      },
+      "composition": {
+        "meanAbsoluteRgbDifference": 28.854351851851725,
+        "changedPixelFraction": 0.7159027777777778
+      },
+      "toggleRetainsTime": true
+    },
+    {
+      "name": "ribbon full-resolution PNG",
+      "ok": true,
+      "elapsedMs": 1214,
+      "path": ".local/composite-smoke/msedge-pages/ribbon.png",
+      "bytes": 1065360,
+      "sha256": "74856466ee564f5e01ee302c0b244beb7836ad35481b3b0498ae062d38c8afbe",
+      "width": 1280,
+      "height": 720
+    },
+    {
+      "name": "ribbon portable original, notice and IndexedDB reopen",
+      "ok": true,
+      "elapsedMs": 2770,
+      "original": {
+        "path": ".local/composite-smoke/msedge-pages/portable-ribbon.prismstage",
+        "bytes": 2682862,
+        "sha256": "3d1870c217f50ab92a4761805f2a86b20023f8f85b87654a1958487bf263e1be",
+        "scene": "ribbon",
+        "duration": 7.683333333333334,
+        "sourceSha256": "d7aca9a2477f2360adc8daa7990ef42eac7ea488db041fad722c46a86bfd7088",
+        "samplesSha256": "99c026d3e7522d461b0dc14e08904e1af62d05ba41ec8ad16080a90435bf5317",
+        "noticeSha256": "cee7f9e131afe55beff5c3d75fa5d98851bcd40ac3ac2e8a163241e8917d4de1",
+        "sourceBytes": 2576749
+      },
+      "reopened": {
+        "path": ".local/composite-smoke/msedge-pages/reopened-ribbon.prismstage",
+        "bytes": 2681776,
+        "sha256": "9569b0fa23670f949bd90f2894fa56bd791171076bffc7caf2014f75d5f3b082",
+        "scene": "ribbon",
+        "duration": 7.683333333333334,
+        "sourceSha256": "d7aca9a2477f2360adc8daa7990ef42eac7ea488db041fad722c46a86bfd7088",
+        "samplesSha256": "99c026d3e7522d461b0dc14e08904e1af62d05ba41ec8ad16080a90435bf5317",
+        "noticeSha256": "cee7f9e131afe55beff5c3d75fa5d98851bcd40ac3ac2e8a163241e8917d4de1",
+        "sourceBytes": 2576749
+      },
+      "retainedSourceObservationsAndNotice": true
+    },
+    {
+      "name": "one-click gravity example, replay and composition",
+      "ok": true,
+      "elapsedMs": 4368,
+      "scene": "gravity",
+      "duration": 6.283333333333333,
+      "motion": {
+        "meanAbsoluteRgbDifference": 11.1739814814815,
+        "changedPixelFraction": 0.28444444444444444
+      },
+      "composition": {
+        "meanAbsoluteRgbDifference": 27.587407407407376,
+        "changedPixelFraction": 0.6866666666666666
+      },
+      "toggleRetainsTime": true
+    },
+    {
+      "name": "gravity full-resolution PNG",
+      "ok": true,
+      "elapsedMs": 798,
+      "path": ".local/composite-smoke/msedge-pages/gravity.png",
+      "bytes": 1120368,
+      "sha256": "aae2ce01f68cf61f4f2958ade1248fa98d808cce1ef8704a8d181d9af466114a",
+      "width": 1280,
+      "height": 720
+    },
+    {
+      "name": "gravity portable original, notice and IndexedDB reopen",
+      "ok": true,
+      "elapsedMs": 3338,
+      "original": {
+        "path": ".local/composite-smoke/msedge-pages/portable-gravity.prismstage",
+        "bytes": 2687148,
+        "sha256": "b2f2918b8a908e1c482c42422980921a8be2c4f586932e52dafe0ea2fbec5c58",
+        "scene": "gravity",
+        "duration": 6.283333333333333,
+        "sourceSha256": "d7aca9a2477f2360adc8daa7990ef42eac7ea488db041fad722c46a86bfd7088",
+        "samplesSha256": "1c9bf0dbd1db5d14e5e06f0887c4e19ffce2cc85c95d1b2dfca4108f0d44afe7",
+        "noticeSha256": "cee7f9e131afe55beff5c3d75fa5d98851bcd40ac3ac2e8a163241e8917d4de1",
+        "sourceBytes": 2576749
+      },
+      "reopened": {
+        "path": ".local/composite-smoke/msedge-pages/reopened-gravity.prismstage",
+        "bytes": 2687512,
+        "sha256": "df62da7462b3421ebb0f0f736bc85b54676089a3b9dcf9cdcb5344bcccbcf42d",
+        "scene": "gravity",
+        "duration": 6.283333333333333,
+        "sourceSha256": "d7aca9a2477f2360adc8daa7990ef42eac7ea488db041fad722c46a86bfd7088",
+        "samplesSha256": "1c9bf0dbd1db5d14e5e06f0887c4e19ffce2cc85c95d1b2dfca4108f0d44afe7",
+        "noticeSha256": "cee7f9e131afe55beff5c3d75fa5d98851bcd40ac3ac2e8a163241e8917d4de1",
+        "sourceBytes": 2576749
+      },
+      "retainedSourceObservationsAndNotice": true
+    },
+    {
+      "name": "one-click portal example, replay and composition",
+      "ok": true,
+      "elapsedMs": 5578,
+      "scene": "portal",
+      "duration": 6.2,
+      "motion": {
+        "meanAbsoluteRgbDifference": 9.504236111111075,
+        "changedPixelFraction": 0.3067361111111111
+      },
+      "composition": {
+        "meanAbsoluteRgbDifference": 3.286273148148165,
+        "changedPixelFraction": 0.37916666666666665
+      },
+      "toggleRetainsTime": true
+    },
+    {
+      "name": "portal full-resolution PNG",
+      "ok": true,
+      "elapsedMs": 858,
+      "path": ".local/composite-smoke/msedge-pages/portal.png",
+      "bytes": 1073508,
+      "sha256": "44f17ca4ae00bbcddf758dc73eb3da1dae4eaae884d42665c63cd5a37137703f",
+      "width": 1280,
+      "height": 720
+    },
+    {
+      "name": "portal portable original, notice and IndexedDB reopen",
+      "ok": true,
+      "elapsedMs": 4196,
+      "original": {
+        "path": ".local/composite-smoke/msedge-pages/portable-portal.prismstage",
+        "bytes": 3212503,
+        "sha256": "01f0526415b5f981148d3a4db674cc9e04c146b6969ee6978f7d77ed529096cd",
+        "scene": "portal",
+        "duration": 6.2,
+        "sourceSha256": "d7aca9a2477f2360adc8daa7990ef42eac7ea488db041fad722c46a86bfd7088",
+        "samplesSha256": "ff413eee22d3f71113d0f114cf0c343269afc67b7122b31241dea3de23b15454",
+        "noticeSha256": "cee7f9e131afe55beff5c3d75fa5d98851bcd40ac3ac2e8a163241e8917d4de1",
+        "sourceBytes": 2576749
+      },
+      "reopened": {
+        "path": ".local/composite-smoke/msedge-pages/reopened-portal.prismstage",
+        "bytes": 3213784,
+        "sha256": "477831b4dfc88a5c0922b0cf6d524bc777249f6d0d6efceb42e2a4d9b3db26bf",
+        "scene": "portal",
+        "duration": 6.2,
+        "sourceSha256": "d7aca9a2477f2360adc8daa7990ef42eac7ea488db041fad722c46a86bfd7088",
+        "samplesSha256": "ff413eee22d3f71113d0f114cf0c343269afc67b7122b31241dea3de23b15454",
+        "noticeSha256": "cee7f9e131afe55beff5c3d75fa5d98851bcd40ac3ac2e8a163241e8917d4de1",
+        "sourceBytes": 2576749
+      },
+      "retainedSourceObservationsAndNotice": true
+    },
+    {
+      "name": "native video metadata rejection preserves the current editable take",
+      "ok": true,
+      "elapsedMs": 5280,
+      "original": {
+        "path": ".local/composite-smoke/msedge-pages/before-invalid-metadata.prismstage",
+        "bytes": 3214259,
+        "sha256": "f1e7a4ea174595613fb349e98a0793369983751cd77f37739d8af1e092bf7e2e",
+        "scene": "portal",
+        "duration": 6.2,
+        "sourceSha256": "d7aca9a2477f2360adc8daa7990ef42eac7ea488db041fad722c46a86bfd7088",
+        "samplesSha256": "ff413eee22d3f71113d0f114cf0c343269afc67b7122b31241dea3de23b15454",
+        "noticeSha256": "cee7f9e131afe55beff5c3d75fa5d98851bcd40ac3ac2e8a163241e8917d4de1",
+        "sourceBytes": 2576749
+      },
+      "retained": {
+        "path": ".local/composite-smoke/msedge-pages/after-invalid-metadata.prismstage",
+        "bytes": 3214258,
+        "sha256": "3a0cee198071b9efbc141fb728e35893ffe4d910f80d7d40e88ed0cb92a4baea",
+        "scene": "portal",
+        "duration": 6.2,
+        "sourceSha256": "d7aca9a2477f2360adc8daa7990ef42eac7ea488db041fad722c46a86bfd7088",
+        "samplesSha256": "ff413eee22d3f71113d0f114cf0c343269afc67b7122b31241dea3de23b15454",
+        "noticeSha256": "cee7f9e131afe55beff5c3d75fa5d98851bcd40ac3ac2e8a163241e8917d4de1",
+        "sourceBytes": 2576749
+      },
+      "rejection": "The saved source video does not match its dimensions or recording duration.\nRetry",
+      "invalidArchive": ".local/composite-smoke/msedge-pages/invalid-video-width.prismstage",
+      "invalidArchiveSha256": "d445cf0c9b2f7aff10fbc00c342773f5d6434db384dbc9767fde3aff57094bcb",
+      "mutation": {
+        "field": "manifest.video.width",
+        "original": 1280,
+        "rejected": 1281
+      },
+      "otherArchiveEntriesUnchanged": true,
+      "beforeTime": 1.750035,
+      "afterTime": 1.750035,
+      "pausedPixels": {
+        "meanAbsoluteRgbDifference": 0,
+        "changedPixelFraction": 0
+      },
+      "comparedManifestFields": [
+        "id",
+        "scene",
+        "duration",
+        "source",
+        "composition",
+        "video",
+        "params",
+        "seed",
+        "fixedDt",
+        "trim",
+        "aspect"
+      ],
+      "snapshotFieldsExcluded": [
+        "name",
+        "createdAt"
+      ],
+      "controlsReadyAfterDismissal": true,
+      "retainedSourceObservationsNoticeAndProjectState": true
+    },
+    {
+      "name": "portrait real-video film and native playback",
+      "ok": true,
+      "elapsedMs": 8484,
+      "width": 720,
+      "height": 1280,
+      "duration": 2.815,
+      "decodedFrames": 146,
+      "sampledFrames": 18,
+      "distinctFrameFingerprints": 18,
+      "mediaError": null,
+      "requestedSeconds": 3,
+      "path": ".local/composite-smoke/msedge-pages/portrait.webm",
+      "bytes": 1905445,
+      "sha256": "9749fcc35aef2eb8b76faf4709c0ee0828c4d6f172b947932b4edc6be3997f47"
+    },
+    {
+      "name": "twenty stage switches with no visible or WebGL errors",
+      "ok": true,
+      "elapsedMs": 8696,
+      "switches": [
+        {
+          "scene": "ribbon",
+          "glError": 0
+        },
+        {
+          "scene": "gravity",
+          "glError": 0
+        },
+        {
+          "scene": "portal",
+          "glError": 0
+        },
+        {
+          "scene": "ribbon",
+          "glError": 0
+        },
+        {
+          "scene": "gravity",
+          "glError": 0
+        },
+        {
+          "scene": "portal",
+          "glError": 0
+        },
+        {
+          "scene": "ribbon",
+          "glError": 0
+        },
+        {
+          "scene": "gravity",
+          "glError": 0
+        },
+        {
+          "scene": "portal",
+          "glError": 0
+        },
+        {
+          "scene": "ribbon",
+          "glError": 0
+        },
+        {
+          "scene": "gravity",
+          "glError": 0
+        },
+        {
+          "scene": "portal",
+          "glError": 0
+        },
+        {
+          "scene": "ribbon",
+          "glError": 0
+        },
+        {
+          "scene": "gravity",
+          "glError": 0
+        },
+        {
+          "scene": "portal",
+          "glError": 0
+        },
+        {
+          "scene": "ribbon",
+          "glError": 0
+        },
+        {
+          "scene": "gravity",
+          "glError": 0
+        },
+        {
+          "scene": "portal",
+          "glError": 0
+        },
+        {
+          "scene": "ribbon",
+          "glError": 0
+        },
+        {
+          "scene": "gravity",
+          "glError": 0
+        }
+      ]
+    },
+    {
+      "name": "narrow layout retains accessible example and composition controls",
+      "ok": true,
+      "elapsedMs": 1316,
+      "scrollWidth": 390,
+      "viewport": 390,
+      "screenshot": ".local/composite-smoke/msedge-pages/narrow.png"
+    },
+    {
+      "name": "complete offline cache includes all three retained-video examples",
+      "ok": true,
+      "elapsedMs": 3042,
+      "version": "a315cad3761f78e5",
+      "totalBytes": 55173103,
+      "files": 32,
+      "missing": [],
+      "realExamples": [
+        "examples/real-gravity.prismstage",
+        "examples/real-portal.prismstage",
+        "examples/real-ribbon.prismstage"
+      ]
+    },
+    {
+      "name": "fresh offline page reopens all three real examples",
+      "ok": true,
+      "elapsedMs": 6510,
+      "navigatorOnline": true,
+      "uncachedNetworkRejected": true,
+      "examples": [
+        {
+          "scene": "ribbon",
+          "duration": 7.683333333333334,
+          "pixelSha256": "6fca767d663a5658a935922d4d6fd26ff5be5f7d6c93cf1a4301dc9fdcbf4532"
+        },
+        {
+          "scene": "gravity",
+          "duration": 6.283333333333333,
+          "pixelSha256": "357a16ed907c8919396af9a296f939c49fdc46eceda968fb086ac01856591879"
+        },
+        {
+          "scene": "portal",
+          "duration": 6.2,
+          "pixelSha256": "78e6731643cc535c03cb849f8dff8278c75223860146a8c3f8f8e6ee6ce12b8d"
+        }
+      ]
+    },
+    {
+      "name": "offline local save/reopen and portrait film",
+      "ok": true,
+      "elapsedMs": 11240,
+      "project": {
+        "path": ".local/composite-smoke/msedge-pages/offline-project.prismstage",
+        "bytes": 3213789,
+        "sha256": "0552e2145c66ccf4f0a65f01442c95c896d8dd7a858f22be41332362caccec05",
+        "scene": "portal",
+        "duration": 6.2,
+        "sourceSha256": "d7aca9a2477f2360adc8daa7990ef42eac7ea488db041fad722c46a86bfd7088",
+        "samplesSha256": "ff413eee22d3f71113d0f114cf0c343269afc67b7122b31241dea3de23b15454",
+        "noticeSha256": "cee7f9e131afe55beff5c3d75fa5d98851bcd40ac3ac2e8a163241e8917d4de1",
+        "sourceBytes": 2576749
+      },
+      "film": {
+        "width": 720,
+        "height": 1280,
+        "duration": 2.908,
+        "decodedFrames": 143,
+        "sampledFrames": 19,
+        "distinctFrameFingerprints": 19,
+        "mediaError": null,
+        "requestedSeconds": 3,
+        "path": ".local/composite-smoke/msedge-pages/offline-portrait.webm",
+        "bytes": 1908761,
+        "sha256": "b534a33c4f38cf9ae014b43bfb9e1b92c817266a1453ef744fb5b281962aef40"
+      }
+    },
+    {
+      "name": "no external HTTP requests, uploads or uncaught render errors",
+      "ok": true,
+      "elapsedMs": 2,
+      "observedHttpRequests": 85,
+      "external": [],
+      "writes": [],
+      "renderErrors": []
+    }
+  ],
+  "consoleErrors": [
+    "Failed to load resource: net::ERR_FAILED"
+  ],
+  "pageErrors": [],
+  "requests": [
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/assets/index-D63QkoUM.js"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/assets/index-CXMhvoEf.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/favicon.svg"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/assets/inter-latin-wght-normal-Dx4kXJAl.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/sw.js"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/favicon.svg"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/offline-manifest.json"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/favicon.svg"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/?example=real-gravity"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/?example=real-gravity"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/assets/index-D63QkoUM.js"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/assets/index-CXMhvoEf.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/assets/index-D63QkoUM.js"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/assets/index-CXMhvoEf.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/favicon.svg"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/favicon.svg"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/assets/inter-latin-wght-normal-Dx4kXJAl.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/assets/inter-latin-wght-normal-Dx4kXJAl.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/favicon.svg"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/favicon.svg"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/offline-manifest.json"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/examples/real-gravity.prismstage"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/examples/real-gravity.prismstage"
+    },
+    {
+      "method": "GET",
+      "url": "blob:https://appleweiping.github.io/9a5a5408-18f0-4b1d-b497-b4a15e1f5f5f"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/assets/GravityScene-Bw6YxUGs.js"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/assets/GravityScene-Bw6YxUGs.js"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/assets/rapier-DBjBuyhF.js"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/assets/rapier-DBjBuyhF.js"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/examples/real-ribbon.prismstage"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/examples/real-ribbon.prismstage"
+    },
+    {
+      "method": "GET",
+      "url": "blob:https://appleweiping.github.io/944e7bf2-7741-46ad-86e8-02d17ec82018"
+    },
+    {
+      "method": "GET",
+      "url": "blob:https://appleweiping.github.io/f908a91e-c428-4da2-b050-e6ac05ea6e73"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/examples/real-gravity.prismstage"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/examples/real-gravity.prismstage"
+    },
+    {
+      "method": "GET",
+      "url": "blob:https://appleweiping.github.io/a89e8a67-50c3-4c4d-8cca-f683bb015c3d"
+    },
+    {
+      "method": "GET",
+      "url": "blob:https://appleweiping.github.io/a049d911-8be2-432f-9434-9c8190bdd6d5"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/examples/real-portal.prismstage"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/examples/real-portal.prismstage"
+    },
+    {
+      "method": "GET",
+      "url": "blob:https://appleweiping.github.io/770bee1a-1a90-4453-a8d6-8a4eae8bde8e"
+    },
+    {
+      "method": "GET",
+      "url": "blob:https://appleweiping.github.io/d1a9d341-ea75-4b7f-83e3-cdee8bcf2286"
+    },
+    {
+      "method": "GET",
+      "url": "blob:https://appleweiping.github.io/78f625b3-98be-4264-b5c9-6b0d31bc0bdf"
+    },
+    {
+      "method": "GET",
+      "url": "blob:https://appleweiping.github.io/b2431393-de81-4de4-927e-cba8f6e64a35"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/examples/real-ribbon.prismstage"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/examples/real-ribbon.prismstage"
+    },
+    {
+      "method": "GET",
+      "url": "blob:https://appleweiping.github.io/a285108f-e27b-47cc-b41e-b5146c78e6a4"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/offline-manifest.json"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/LICENSE"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/assets/GravityScene-Bw6YxUGs.js"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/assets/index-CXMhvoEf.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/assets/index-D63QkoUM.js"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/assets/inter-cyrillic-ext-wght-normal-BOeWTOD4.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/assets/inter-cyrillic-wght-normal-DqGufNeO.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/assets/inter-greek-ext-wght-normal-DlzME5K_.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/assets/inter-greek-wght-normal-CkhJZR-_.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/assets/inter-latin-ext-wght-normal-DO1Apj_S.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/assets/inter-latin-wght-normal-Dx4kXJAl.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/assets/inter-vietnamese-wght-normal-CBcvBZtf.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/assets/rapier-DBjBuyhF.js"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/assets/vision.worker-BM1Lm-Nh.js"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/examples/gravity.prismstage"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/examples/portal.prismstage"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/examples/real-gravity.prismstage"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/examples/real-portal.prismstage"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/examples/real-ribbon.prismstage"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/examples/ribbon.prismstage"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/favicon.svg"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/index.html"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/models/LICENSE-APACHE-2.0.txt"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/models/hand_landmarker.task"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/models/manifest.json"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/models/selfie_segmenter_landscape.tflite"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/wasm/vision_wasm_internal.js"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/wasm/vision_wasm_internal.wasm"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/wasm/vision_wasm_module_internal.js"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/wasm/vision_wasm_module_internal.wasm"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/wasm/vision_wasm_nosimd_internal.js"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/wasm/vision_wasm_nosimd_internal.wasm"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/offline-manifest.json"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/assets/index-D63QkoUM.js"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/assets/index-CXMhvoEf.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/favicon.svg"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/assets/inter-latin-wght-normal-Dx4kXJAl.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/favicon.svg"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/offline-manifest.json"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/uncached-smoke-1789076386839"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/uncached-smoke-1789076386839"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/examples/real-ribbon.prismstage"
+    },
+    {
+      "method": "GET",
+      "url": "blob:https://appleweiping.github.io/e1b385b8-dbaa-4778-a75e-96a70b6cdddd"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/assets/GravityScene-Bw6YxUGs.js"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/assets/rapier-DBjBuyhF.js"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/examples/real-gravity.prismstage"
+    },
+    {
+      "method": "GET",
+      "url": "blob:https://appleweiping.github.io/d7271971-c21a-4298-a01b-3e2281083d9e"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/examples/real-portal.prismstage"
+    },
+    {
+      "method": "GET",
+      "url": "blob:https://appleweiping.github.io/51ea130a-5114-4dc0-8d24-08068a28c87a"
+    },
+    {
+      "method": "GET",
+      "url": "blob:https://appleweiping.github.io/beb4a1fc-b305-42cd-a5c4-3d651f441afa"
+    },
+    {
+      "method": "GET",
+      "url": "blob:https://appleweiping.github.io/d48a3afb-db2c-4e4e-ba40-20071e84a17e"
+    }
+  ],
+  "browserInternalRequestCount": 110,
+  "limitations": [
+    "Packaged examples replay observations from genuine prior MediaPipe inference; this smoke test does not run a fresh model or open a physical camera.",
+    "Native film playback verifies decoding, dimensions and changing frames. Independent FFmpeg reports provide full-stream media inspection.",
+    "Twenty stage changes check visible failures and WebGL errors, not exact GPU allocation accounting.",
+    "Offline networking is disabled in the browser context after the UI reports complete caching."
+  ],
+  "browserVersion": "152.0.4191.66",
+  "title": "Prism Stage — Motion becomes art.",
+  "buildVersion": "a315cad3761f78e5",
+  "ok": true,
+  "finishedAt": "2026-09-10T21:40:05.653Z",
+  "consoleErrorContext": "A failed uncached fetch is expected during the offline proof. Browser-owned download resources are counted separately; outbound HTTP writes and external origins are explicitly rejected."
+}

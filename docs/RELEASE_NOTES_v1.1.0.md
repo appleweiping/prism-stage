@@ -34,7 +34,8 @@ The release contains `prism-stage-v1.1.0-source.zip`,
 
 Validation includes 171 automated regression tests, three actual-model local-video
 creation/export workflows, a native fake-camera capture/save/reopen/export
-workflow, and **17 passed Chrome local release checks**. All three composite
+workflow, **17 passed Chrome local release checks**, and **18 passed Edge
+Pages checks**, including native invalid-import recovery and offline workflows. All three composite
 films fully decode as silent 1280 × 720 video. Exact builds, trim durations, and
 limitations are recorded in the
 [composition validation](https://github.com/appleweiping/prism-stage/blob/main/docs/COMPOSITE_VALIDATION.md).
