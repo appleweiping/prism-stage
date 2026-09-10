@@ -1,0 +1,372 @@
+{
+  "date": "2026-09-10T17:42:06.048Z",
+  "method": "Production VisionController,12seconds per scene,official MediaPipe real-person videos. Loops where source is shorter; warm timings from500ms status samples exclude first2 readings.",
+  "results": [
+    {
+      "scene": "ribbon",
+      "fixture": "hands",
+      "samples": 72,
+      "detectedHandFrames": 71,
+      "maxHands": 1,
+      "pinchFrames": 0,
+      "positionChanges": 68,
+      "maskFrames": 0,
+      "maskChanges": 0,
+      "foregroundFractionMin": 1,
+      "foregroundFractionMax": 0,
+      "statuses": [
+        {
+          "delegate": "GPU",
+          "inferenceMs": 1129.800000000745,
+          "fps": 0.8833141948608554
+        },
+        {
+          "delegate": "GPU",
+          "inferenceMs": 81.19999999925494,
+          "fps": 3.0538080987046365
+        },
+        {
+          "delegate": "GPU",
+          "inferenceMs": 77.90000000223517,
+          "fps": 4.662656781835909
+        },
+        {
+          "delegate": "GPU",
+          "inferenceMs": 63.899999998509884,
+          "fps": 5.867683731853266
+        },
+        {
+          "delegate": "GPU",
+          "inferenceMs": 60.5,
+          "fps": 6.6361003861018775
+        },
+        {
+          "delegate": "GPU",
+          "inferenceMs": 98.80000000074506,
+          "fps": 7.950389569107723
+        },
+        {
+          "delegate": "GPU",
+          "inferenceMs": 101.89999999850988,
+          "fps": 7.643961270605903
+        },
+        {
+          "delegate": "GPU",
+          "inferenceMs": 179.09999999776483,
+          "fps": 6.9144338807260155
+        },
+        {
+          "delegate": "GPU",
+          "inferenceMs": 281.69999999925494,
+          "fps": 5.983008256556728
+        },
+        {
+          "delegate": "GPU",
+          "inferenceMs": 206.5,
+          "fps": 5.402141790335902
+        },
+        {
+          "delegate": "GPU",
+          "inferenceMs": 195.80000000074506,
+          "fps": 3.8424591738712777
+        },
+        {
+          "delegate": "GPU",
+          "inferenceMs": 178.5,
+          "fps": 4.2137198718976245
+        },
+        {
+          "delegate": "GPU",
+          "inferenceMs": 113.20000000298023,
+          "fps": 4.672078490916615
+        },
+        {
+          "delegate": "GPU",
+          "inferenceMs": 298.5,
+          "fps": 4.2648883374702145
+        },
+        {
+          "delegate": "GPU",
+          "inferenceMs": 160.30000000074506,
+          "fps": 4.365042247372166
+        },
+        {
+          "delegate": "GPU",
+          "inferenceMs": 138.80000000074506,
+          "fps": 4.90356325596003
+        },
+        {
+          "delegate": "GPU",
+          "inferenceMs": 163.5,
+          "fps": 4.9079754601226995
+        },
+        {
+          "delegate": "GPU",
+          "inferenceMs": 133.70000000298023,
+          "fps": 5.075569591700757
+        },
+        {
+          "delegate": "GPU",
+          "inferenceMs": 142.60000000149012,
+          "fps": 4.9658597144630665
+        },
+        {
+          "delegate": "GPU",
+          "inferenceMs": 114.5,
+          "fps": 5.08181725785269
+        }
+      ],
+      "loops": 1,
+      "video": {
+        "width": 640,
+        "height": 360,
+        "duration": 8.085
+      },
+      "observationSeconds": 11.900300000000746,
+      "warmInferenceMedianMs": 142.60000000149012,
+      "ok": true
+    },
+    {
+      "scene": "gravity",
+      "fixture": "hands",
+      "samples": 41,
+      "detectedHandFrames": 40,
+      "maxHands": 1,
+      "pinchFrames": 0,
+      "positionChanges": 38,
+      "maskFrames": 0,
+      "maskChanges": 0,
+      "foregroundFractionMin": 1,
+      "foregroundFractionMax": 0,
+      "statuses": [
+        {
+          "delegate": "GPU",
+          "inferenceMs": 2135.300000000745,
+          "fps": 0.46748632602463813
+        },
+        {
+          "delegate": "GPU",
+          "inferenceMs": 386.3999999985099,
+          "fps": 1.3572204125953486
+        },
+        {
+          "delegate": "GPU",
+          "inferenceMs": 192.60000000149012,
+          "fps": 1.7197397460506625
+        },
+        {
+          "delegate": "GPU",
+          "inferenceMs": 169,
+          "fps": 1.2994325811066696
+        },
+        {
+          "delegate": "GPU",
+          "inferenceMs": 189.19999999925494,
+          "fps": 1.7558029286797445
+        },
+        {
+          "delegate": "GPU",
+          "inferenceMs": 193.19999999925494,
+          "fps": 2.2964089904416887
+        },
+        {
+          "delegate": "GPU",
+          "inferenceMs": 193.30000000074506,
+          "fps": 3.9840637450199203
+        },
+        {
+          "delegate": "GPU",
+          "inferenceMs": 182.10000000149012,
+          "fps": 3.8983315141187536
+        },
+        {
+          "delegate": "GPU",
+          "inferenceMs": 188.39999999850988,
+          "fps": 4.1845381316020935
+        },
+        {
+          "delegate": "GPU",
+          "inferenceMs": 187.60000000149012,
+          "fps": 4.102564102564102
+        },
+        {
+          "delegate": "GPU",
+          "inferenceMs": 223.79999999701977,
+          "fps": 3.443708609271523
+        },
+        {
+          "delegate": "GPU",
+          "inferenceMs": 302.19999999925494,
+          "fps": 1.4506419090455362
+        },
+        {
+          "delegate": "GPU",
+          "inferenceMs": 139.90000000223517,
+          "fps": 2.4568817257164226
+        },
+        {
+          "delegate": "GPU",
+          "inferenceMs": 133.30000000074506,
+          "fps": 3.298757468019478
+        },
+        {
+          "delegate": "GPU",
+          "inferenceMs": 153.89999999850988,
+          "fps": 3.620346346469587
+        }
+      ],
+      "loops": 1,
+      "video": {
+        "width": 640,
+        "height": 360,
+        "duration": 8.085
+      },
+      "observationSeconds": 11.924199999999255,
+      "warmInferenceMedianMs": 188.39999999850988,
+      "ok": true
+    },
+    {
+      "scene": "portal",
+      "fixture": "gestures",
+      "samples": 212,
+      "detectedHandFrames": 0,
+      "maxHands": 0,
+      "pinchFrames": 0,
+      "positionChanges": 0,
+      "maskFrames": 211,
+      "maskChanges": 209,
+      "foregroundFractionMin": 0.3325466579861111,
+      "foregroundFractionMax": 0.3965657552083333,
+      "statuses": [
+        {
+          "delegate": "GPU",
+          "inferenceMs": 588.8999999985099,
+          "fps": 1.6775708773653752
+        },
+        {
+          "delegate": "GPU",
+          "inferenceMs": 42.100000001490116,
+          "fps": 7.077140835088625
+        },
+        {
+          "delegate": "GPU",
+          "inferenceMs": 31.100000001490116,
+          "fps": 7.869725770314432
+        },
+        {
+          "delegate": "GPU",
+          "inferenceMs": 53.400000002235174,
+          "fps": 8.616389279391937
+        },
+        {
+          "delegate": "GPU",
+          "inferenceMs": 23.5,
+          "fps": 9.978564565005753
+        },
+        {
+          "delegate": "GPU",
+          "inferenceMs": 19.300000000745058,
+          "fps": 11.429983627315488
+        },
+        {
+          "delegate": "GPU",
+          "inferenceMs": 20.100000001490116,
+          "fps": 18.843037497671073
+        },
+        {
+          "delegate": "GPU",
+          "inferenceMs": 20.300000000745058,
+          "fps": 19.733132869775137
+        },
+        {
+          "delegate": "GPU",
+          "inferenceMs": 19.399999998509884,
+          "fps": 19.801980198019802
+        },
+        {
+          "delegate": "GPU",
+          "inferenceMs": 18.700000002980232,
+          "fps": 19.718309859154928
+        },
+        {
+          "delegate": "GPU",
+          "inferenceMs": 23.5,
+          "fps": 19.73734153191019
+        },
+        {
+          "delegate": "GPU",
+          "inferenceMs": 19,
+          "fps": 19.602883520926202
+        },
+        {
+          "delegate": "GPU",
+          "inferenceMs": 21.600000001490116,
+          "fps": 17.821782178217823
+        },
+        {
+          "delegate": "GPU",
+          "inferenceMs": 24.199999999254942,
+          "fps": 18.871672626128266
+        },
+        {
+          "delegate": "GPU",
+          "inferenceMs": 33.69999999925494,
+          "fps": 17.732825430211243
+        },
+        {
+          "delegate": "GPU",
+          "inferenceMs": 17.800000000745058,
+          "fps": 17.713048612490844
+        },
+        {
+          "delegate": "GPU",
+          "inferenceMs": 21.300000000745058,
+          "fps": 17.891870867366784
+        },
+        {
+          "delegate": "GPU",
+          "inferenceMs": 24,
+          "fps": 18.22976008334489
+        },
+        {
+          "delegate": "GPU",
+          "inferenceMs": 24.5,
+          "fps": 19.96406468348049
+        },
+        {
+          "delegate": "GPU",
+          "inferenceMs": 17.699999999254942,
+          "fps": 17.92960271776291
+        },
+        {
+          "delegate": "GPU",
+          "inferenceMs": 34.19999999925494,
+          "fps": 18.38118780504132
+        },
+        {
+          "delegate": "GPU",
+          "inferenceMs": 49.100000001490116,
+          "fps": 17.821967920463972
+        },
+        {
+          "delegate": "GPU",
+          "inferenceMs": 20.899999998509884,
+          "fps": 17.641980406131044
+        }
+      ],
+      "loops": 1,
+      "video": {
+        "width": 1280,
+        "height": 720,
+        "duration": 7.806667
+      },
+      "maskDimensions": [
+        256,
+        144
+      ],
+      "observationSeconds": 11.94089999999851,
+      "warmInferenceMedianMs": 21.600000001490116,
+      "ok": true
+    }
+  ]
+}

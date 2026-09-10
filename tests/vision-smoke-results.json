@@ -1,0 +1,20 @@
+{
+  "date": "2026-09-10",
+  "environment": "Codex in-app Chromium browser, local Vite development server, Windows host",
+  "fixture": "640x360 solid-gray OffscreenCanvas; no person; real MediaPipe model inference in module Worker",
+  "runtime": "@mediapipe/tasks-vision@1.0.1",
+  "method": "Eight sequential transferred ImageBitmaps per model/delegate; warm median excludes first frame. This is a protocol/compatibility smoke check, not a real-person video benchmark.",
+  "results": [
+    { "scene": "ribbon", "delegate": "GPU", "ok": true, "frames": 8, "hands": 0, "coldMs": 350.4, "warmMedianMs": 18.9 },
+    { "scene": "ribbon", "delegate": "CPU", "ok": true, "frames": 8, "hands": 0, "coldMs": 194.5, "warmMedianMs": 36.6 },
+    { "scene": "portal", "delegate": "GPU", "ok": true, "frames": 8, "coldMs": 152.3, "warmMedianMs": 13.1, "maskWidth": 256, "maskHeight": 144, "maskBytes": 36864, "maskMinimum": 0, "maskMaximum": 0 },
+    { "scene": "portal", "delegate": "CPU", "ok": true, "frames": 8, "coldMs": 60.2, "warmMedianMs": 13.1, "maskWidth": 256, "maskHeight": 144, "maskBytes": 36864, "maskMinimum": 0, "maskMaximum": 0 }
+  ],
+  "firstColdRunNote": "The first run before browser shader caches warmed took 4576.9 ms for hand/GPU and 2038.6 ms for portal/GPU first inference. Startup latency differs substantially from steady inference.",
+  "afterLocalFetchGate": {
+    "allFourChecksPassed": true,
+    "framesPerCheck": 8,
+    "warmMedianMs": { "handGPU":31.6, "handCPU":70.2, "portalGPU":19.2, "portalCPU":28.2 },
+    "conditions": "Other implementation/rendering tasks were active; these are compatibility observations, not isolated performance benchmarks."
+  }
+}

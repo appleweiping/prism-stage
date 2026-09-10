@@ -1,0 +1,1681 @@
+{
+  "startedAt": "2026-09-10T19:11:11.053Z",
+  "base": "http://127.0.0.1:4173/",
+  "browser": {
+    "version": "152.0.7977.83",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+    "viewport": {
+      "width": 1440,
+      "height": 960
+    },
+    "physicalCameraUsed": false,
+    "webgl": {
+      "vendor": "Google Inc. (Intel)",
+      "renderer": "ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x000046A6) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)"
+    },
+    "workload": "One active test page at a time; root and other agents paused GPU tests during this run. Shared Windows desktop remains active. Playwright screen recording is disabled to avoid an extra encoder competing with rendering and canvas export."
+  },
+  "method": "Conventional Playwright integration test against the unchanged production build using a fresh headless Chrome context. UI controls and downloaded public project files only. No private browser profile or physical camera.",
+  "checks": [
+    {
+      "name": "production loads with local CSP",
+      "ok": true,
+      "seconds": 0.116,
+      "title": "Prism Stage — Motion becomes art.",
+      "contentSecurityPolicy": "default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self' blob:; connect-src 'self' blob:; worker-src 'self' blob:; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'"
+    },
+    {
+      "name": "desktop and mobile presentation",
+      "ok": true,
+      "seconds": 0.528,
+      "mobileOverflow": {
+        "scroll": 390,
+        "viewport": 390
+      }
+    },
+    {
+      "name": "complete creation workflow",
+      "ok": true,
+      "seconds": 9.253,
+      "sequence": [
+        "record demo",
+        "finish take",
+        "change palette",
+        "replay",
+        "save locally",
+        "verify collection"
+      ],
+      "savedName": "Production study"
+    },
+    {
+      "name": "fresh creation workflow exports a playable film",
+      "ok": true,
+      "seconds": 12.151,
+      "sequence": [
+        "record demo",
+        "change palette",
+        "replay",
+        "save locally",
+        "export film",
+        "decode preview",
+        "download film"
+      ],
+      "mediaInitialization": "First export in a fresh browser context, before any source video or camera initialization.",
+      "film": {
+        "scene": "fresh-acceptance",
+        "kind": "workflow",
+        "path": ".local\\exports\\fresh-acceptance-workflow.webm",
+        "expectedSeconds": 6.58,
+        "exportWallSeconds": 11.989,
+        "bytes": 848811,
+        "extension": ".webm",
+        "width": 1280,
+        "height": 720,
+        "duration": 6.499,
+        "durationInitiallyFinite": false,
+        "readyState": 4,
+        "decoded": {
+          "currentTime": 0.27773,
+          "nonDarkFraction": 0.008680555555555556,
+          "rgbSum": 463021
+        }
+      }
+    },
+    {
+      "name": "camera denial is recoverable",
+      "ok": true,
+      "seconds": 1.547,
+      "message": "Permission denied\nRetry",
+      "recovery": "Returned to functional Demo using its UI control",
+      "cameraSource": "Chromium fake device; permission not granted"
+    },
+    {
+      "name": "model load failure offers recovery",
+      "ok": true,
+      "seconds": 11.943,
+      "injectedFault": "Aborted same-origin model request in dedicated test context",
+      "message": "Failed to fetch\nRetry",
+      "recoveredDiagnostics": "Render 9 fps\nVision 0.1 fps · 8397 ms\nGPU · High · auto"
+    },
+    {
+      "name": "export actual ribbon take",
+      "ok": true,
+      "seconds": 15.265,
+      "scene": "ribbon",
+      "kind": "real",
+      "path": ".local\\exports\\ribbon-real.webm",
+      "expectedSeconds": 11.95,
+      "exportWallSeconds": 14.846,
+      "bytes": 961677,
+      "extension": ".webm",
+      "width": 1280,
+      "height": 720,
+      "duration": 11.83,
+      "durationInitiallyFinite": false,
+      "readyState": 4,
+      "decoded": {
+        "currentTime": 0.39334,
+        "nonDarkFraction": 0.0007638888888888889,
+        "rgbSum": 349580
+      }
+    },
+    {
+      "name": "export actual gravity take",
+      "ok": true,
+      "seconds": 15.883,
+      "scene": "gravity",
+      "kind": "real",
+      "path": ".local\\exports\\gravity-real.webm",
+      "expectedSeconds": 11.98,
+      "exportWallSeconds": 15.16,
+      "bytes": 4413607,
+      "extension": ".webm",
+      "width": 1280,
+      "height": 720,
+      "duration": 11.916,
+      "durationInitiallyFinite": false,
+      "readyState": 4,
+      "decoded": {
+        "currentTime": 0.374873,
+        "nonDarkFraction": 0.08979166666666667,
+        "rgbSum": 571195
+      }
+    },
+    {
+      "name": "export actual portal take",
+      "ok": true,
+      "seconds": 16.835,
+      "scene": "portal",
+      "kind": "real",
+      "path": ".local\\exports\\portal-real.webm",
+      "expectedSeconds": 11.97,
+      "exportWallSeconds": 16.224,
+      "bytes": 7018854,
+      "extension": ".webm",
+      "width": 1280,
+      "height": 720,
+      "duration": 11.845,
+      "durationInitiallyFinite": false,
+      "readyState": 4,
+      "decoded": {
+        "currentTime": 0.400976,
+        "nonDarkFraction": 0.36243055555555553,
+        "rgbSum": 1975045
+      }
+    },
+    {
+      "name": "export ribbon showcase",
+      "ok": true,
+      "seconds": 15.235,
+      "scene": "ribbon",
+      "kind": "showcase",
+      "path": "public\\showcase\\ribbon.webm",
+      "expectedSeconds": 12,
+      "exportWallSeconds": 14.734,
+      "bytes": 1456187,
+      "extension": ".webm",
+      "width": 1280,
+      "height": 720,
+      "duration": 11.832,
+      "durationInitiallyFinite": false,
+      "readyState": 4,
+      "decoded": {
+        "currentTime": 0.364788,
+        "nonDarkFraction": 0.009722222222222222,
+        "rgbSum": 393345
+      }
+    },
+    {
+      "name": "export gravity showcase",
+      "ok": true,
+      "seconds": 15.692,
+      "scene": "gravity",
+      "kind": "showcase",
+      "path": "public\\showcase\\gravity.webm",
+      "expectedSeconds": 12,
+      "exportWallSeconds": 15.182,
+      "bytes": 5476823,
+      "extension": ".webm",
+      "width": 1280,
+      "height": 720,
+      "duration": 11.846,
+      "durationInitiallyFinite": false,
+      "readyState": 4,
+      "decoded": {
+        "currentTime": 0.395823,
+        "nonDarkFraction": 0.08444444444444445,
+        "rgbSum": 526481
+      }
+    },
+    {
+      "name": "export portal showcase",
+      "ok": true,
+      "seconds": 16.51,
+      "scene": "portal",
+      "kind": "showcase",
+      "path": "public\\showcase\\portal.webm",
+      "expectedSeconds": 12,
+      "exportWallSeconds": 16.043,
+      "bytes": 5110811,
+      "extension": ".webm",
+      "width": 1280,
+      "height": 720,
+      "duration": 12.905,
+      "durationInitiallyFinite": false,
+      "readyState": 4,
+      "decoded": {
+        "currentTime": 0.351359,
+        "nonDarkFraction": 0.2063888888888889,
+        "rgbSum": 1290412
+      }
+    },
+    {
+      "name": "prepare complete offline bundle",
+      "ok": true,
+      "seconds": 0.912,
+      "cache": "prism-stage-7068c13e94d07cf8",
+      "cachedEntries": 30,
+      "manifestFiles": 29,
+      "totalBytes": 47321229,
+      "missing": []
+    },
+    {
+      "name": "reopen and use all stages offline",
+      "ok": true,
+      "seconds": 1.941,
+      "navigatorOnline": true,
+      "uncachedNetworkProbe": {
+        "rejected": true,
+        "error": "TypeError: Failed to fetch"
+      },
+      "stages": [
+        {
+          "scene": "ribbon",
+          "pngBytes": 1551098,
+          "sha256": "b345ddb60d8f3fb6a0ae35ee936160dcfb21cc1313ac35f93d01b368d6fb3a4d"
+        },
+        {
+          "scene": "gravity",
+          "pngBytes": 1657346,
+          "sha256": "aeb354e3a7b62ad94ab3a4eb5f4d2a07b9a5535bac6ea114f91fe4395e8f18d1"
+        },
+        {
+          "scene": "portal",
+          "pngBytes": 1712446,
+          "sha256": "20f5ca76d51a84ceaed4164c3daf534bd9360365814be2c0ea1d397b5e192156"
+        }
+      ],
+      "localCollectionSurvived": true
+    },
+    {
+      "name": "actual ribbon inference while offline",
+      "ok": true,
+      "seconds": 16.931,
+      "diagnostics": "Render 32 fps\nVision 0.6 fps · 1804 ms\nGPU · High · auto",
+      "coldStartFirstReportedInferenceMs": 1804,
+      "path": ".local\\production-tests\\offline-ribbon.prismstage",
+      "manifest": {
+        "format": "prism-stage",
+        "version": 1,
+        "engineVersion": "1.0.0",
+        "id": "64fc3cad-85d3-4542-bb7c-21c641aacec7",
+        "name": "offline-ribbon",
+        "scene": "ribbon",
+        "createdAt": "2026-09-10T19:13:44.560Z",
+        "seed": 20260910,
+        "fixedDt": 0.016666666666666666,
+        "duration": 13.4,
+        "params": {
+          "palette": "aurora",
+          "intensity": 0.85,
+          "width": 0.6,
+          "trail": 0.72,
+          "speed": 0.65,
+          "feather": 0.5,
+          "material": "silk",
+          "quality": "auto"
+        },
+        "trim": {
+          "start": 0,
+          "end": 13.4
+        },
+        "aspect": "landscape",
+        "source": "video"
+      },
+      "samples": 804,
+      "sampleCountMeaning": "Stored hand samples follow the fixed simulation step and can reuse a model observation. Mask frames count distinct stored mask references. Neither count is the inference throughput metric.",
+      "handSamples": 680,
+      "maxHands": 2,
+      "pinchSamples": 0,
+      "maskFrames": 0,
+      "distinctMaskHashes": 0,
+      "foregroundMinimum": null,
+      "foregroundMaximum": null,
+      "archiveContainsOriginalMedia": false,
+      "performance": {
+        "warmup": "Waited for first reported positive inference FPS before recording",
+        "scheduledSamplingSeconds": 12,
+        "measuredSeconds": 13.246,
+        "samples": [
+          {
+            "second": 1,
+            "elapsedSeconds": 1.031,
+            "renderFps": 39,
+            "visionFps": null,
+            "inferenceMs": null,
+            "delegateAndQuality": null
+          },
+          {
+            "second": 2,
+            "elapsedSeconds": 2.052,
+            "renderFps": 50,
+            "visionFps": null,
+            "inferenceMs": null,
+            "delegateAndQuality": null
+          },
+          {
+            "second": 3,
+            "elapsedSeconds": 3.442,
+            "renderFps": 50,
+            "visionFps": 4.9,
+            "inferenceMs": 245,
+            "delegateAndQuality": "GPU · High · auto"
+          },
+          {
+            "second": 4,
+            "elapsedSeconds": 4.458,
+            "renderFps": 50,
+            "visionFps": null,
+            "inferenceMs": null,
+            "delegateAndQuality": null
+          },
+          {
+            "second": 5,
+            "elapsedSeconds": 5.472,
+            "renderFps": 59,
+            "visionFps": null,
+            "inferenceMs": null,
+            "delegateAndQuality": null
+          },
+          {
+            "second": 6,
+            "elapsedSeconds": 6.697,
+            "renderFps": 60,
+            "visionFps": 7.4,
+            "inferenceMs": 80,
+            "delegateAndQuality": "GPU · High · auto"
+          },
+          {
+            "second": 7,
+            "elapsedSeconds": 7.717,
+            "renderFps": 57,
+            "visionFps": null,
+            "inferenceMs": null,
+            "delegateAndQuality": null
+          },
+          {
+            "second": 8,
+            "elapsedSeconds": 8.722,
+            "renderFps": 60,
+            "visionFps": null,
+            "inferenceMs": null,
+            "delegateAndQuality": null
+          },
+          {
+            "second": 9,
+            "elapsedSeconds": 10.042,
+            "renderFps": 60,
+            "visionFps": 8.7,
+            "inferenceMs": 93,
+            "delegateAndQuality": "GPU · High · auto"
+          },
+          {
+            "second": 10,
+            "elapsedSeconds": 11.064,
+            "renderFps": 52,
+            "visionFps": null,
+            "inferenceMs": null,
+            "delegateAndQuality": null
+          },
+          {
+            "second": 11,
+            "elapsedSeconds": 12.081,
+            "renderFps": 56,
+            "visionFps": null,
+            "inferenceMs": null,
+            "delegateAndQuality": null
+          },
+          {
+            "second": 12,
+            "elapsedSeconds": 13.246,
+            "renderFps": 59,
+            "visionFps": 7.2,
+            "inferenceMs": 127,
+            "delegateAndQuality": "GPU · High · auto"
+          }
+        ],
+        "measurementConditions": "Ordinary studio visible for render samples. Help opened briefly after every third sample for inference/quality readings; no screen video encoder. Public UI and HTMLMediaElement only.",
+        "medianRenderFps": 56.5,
+        "medianInferenceMs": 110,
+        "medianVisionFps": 7.3,
+        "decodedVideo": {
+          "totalVideoFrames": 386,
+          "droppedVideoFrames": 24,
+          "scope": "Cumulative source-video decoder counters, including initialization and measurement; not inference frame drops.",
+          "looped": true,
+          "width": 1280,
+          "height": 720
+        },
+        "inferenceDroppedFrames": null,
+        "inferenceDroppedFramesReason": "Controller deliberately drops frames while busy, but does not expose a counter through public UI. Decoder drops above are a separate measure."
+      },
+      "savedLocallyOffline": true
+    },
+    {
+      "name": "actual gravity inference while offline",
+      "ok": true,
+      "seconds": 16.891,
+      "diagnostics": "Render 34 fps\nVision 0.5 fps · 2002 ms\nGPU · High · auto",
+      "coldStartFirstReportedInferenceMs": 2002,
+      "path": ".local\\production-tests\\offline-gravity.prismstage",
+      "manifest": {
+        "format": "prism-stage",
+        "version": 1,
+        "engineVersion": "1.0.0",
+        "id": "7d080994-2967-4a51-86d0-a418605b4b8a",
+        "name": "offline-gravity",
+        "scene": "gravity",
+        "createdAt": "2026-09-10T19:14:01.487Z",
+        "seed": 20260910,
+        "fixedDt": 0.016666666666666666,
+        "duration": 13.283333333333333,
+        "params": {
+          "palette": "aurora",
+          "intensity": 0.8,
+          "width": 0.6,
+          "trail": 0.7,
+          "speed": 0.65,
+          "feather": 0.5,
+          "material": "glass",
+          "quality": "auto"
+        },
+        "trim": {
+          "start": 0,
+          "end": 13.283333333333333
+        },
+        "aspect": "landscape",
+        "source": "video"
+      },
+      "samples": 797,
+      "sampleCountMeaning": "Stored hand samples follow the fixed simulation step and can reuse a model observation. Mask frames count distinct stored mask references. Neither count is the inference throughput metric.",
+      "handSamples": 677,
+      "maxHands": 2,
+      "pinchSamples": 0,
+      "maskFrames": 0,
+      "distinctMaskHashes": 0,
+      "foregroundMinimum": null,
+      "foregroundMaximum": null,
+      "archiveContainsOriginalMedia": false,
+      "performance": {
+        "warmup": "Waited for first reported positive inference FPS before recording",
+        "scheduledSamplingSeconds": 12,
+        "measuredSeconds": 13.134,
+        "samples": [
+          {
+            "second": 1,
+            "elapsedSeconds": 1.019,
+            "renderFps": 46,
+            "visionFps": null,
+            "inferenceMs": null,
+            "delegateAndQuality": null
+          },
+          {
+            "second": 2,
+            "elapsedSeconds": 2.037,
+            "renderFps": 60,
+            "visionFps": null,
+            "inferenceMs": null,
+            "delegateAndQuality": null
+          },
+          {
+            "second": 3,
+            "elapsedSeconds": 3.317,
+            "renderFps": 59,
+            "visionFps": 6.6,
+            "inferenceMs": 128,
+            "delegateAndQuality": "GPU · High · auto"
+          },
+          {
+            "second": 4,
+            "elapsedSeconds": 4.331,
+            "renderFps": 53,
+            "visionFps": null,
+            "inferenceMs": null,
+            "delegateAndQuality": null
+          },
+          {
+            "second": 5,
+            "elapsedSeconds": 5.353,
+            "renderFps": 60,
+            "visionFps": null,
+            "inferenceMs": null,
+            "delegateAndQuality": null
+          },
+          {
+            "second": 6,
+            "elapsedSeconds": 6.535,
+            "renderFps": 60,
+            "visionFps": 7.6,
+            "inferenceMs": 89,
+            "delegateAndQuality": "GPU · High · auto"
+          },
+          {
+            "second": 7,
+            "elapsedSeconds": 7.551,
+            "renderFps": 57,
+            "visionFps": null,
+            "inferenceMs": null,
+            "delegateAndQuality": null
+          },
+          {
+            "second": 8,
+            "elapsedSeconds": 8.571,
+            "renderFps": 60,
+            "visionFps": null,
+            "inferenceMs": null,
+            "delegateAndQuality": null
+          },
+          {
+            "second": 9,
+            "elapsedSeconds": 9.867,
+            "renderFps": 59,
+            "visionFps": 7.3,
+            "inferenceMs": 214,
+            "delegateAndQuality": "GPU · High · auto"
+          },
+          {
+            "second": 10,
+            "elapsedSeconds": 10.895,
+            "renderFps": 55,
+            "visionFps": null,
+            "inferenceMs": null,
+            "delegateAndQuality": null
+          },
+          {
+            "second": 11,
+            "elapsedSeconds": 11.91,
+            "renderFps": 60,
+            "visionFps": null,
+            "inferenceMs": null,
+            "delegateAndQuality": null
+          },
+          {
+            "second": 12,
+            "elapsedSeconds": 13.134,
+            "renderFps": 54,
+            "visionFps": 8.1,
+            "inferenceMs": 154,
+            "delegateAndQuality": "GPU · High · auto"
+          }
+        ],
+        "measurementConditions": "Ordinary studio visible for render samples. Help opened briefly after every third sample for inference/quality readings; no screen video encoder. Public UI and HTMLMediaElement only.",
+        "medianRenderFps": 59,
+        "medianInferenceMs": 141,
+        "medianVisionFps": 7.45,
+        "decodedVideo": {
+          "totalVideoFrames": 355,
+          "droppedVideoFrames": 3,
+          "scope": "Cumulative source-video decoder counters, including initialization and measurement; not inference frame drops.",
+          "looped": true,
+          "width": 1280,
+          "height": 720
+        },
+        "inferenceDroppedFrames": null,
+        "inferenceDroppedFramesReason": "Controller deliberately drops frames while busy, but does not expose a counter through public UI. Decoder drops above are a separate measure."
+      },
+      "savedLocallyOffline": true
+    },
+    {
+      "name": "actual portal inference while offline",
+      "ok": true,
+      "seconds": 19.185,
+      "diagnostics": "Render 6 fps\nVision 0.3 fps · 3571 ms\nGPU · High · auto",
+      "coldStartFirstReportedInferenceMs": 3571,
+      "path": ".local\\production-tests\\offline-portal.prismstage",
+      "manifest": {
+        "format": "prism-stage",
+        "version": 1,
+        "engineVersion": "1.0.0",
+        "id": "a43ea709-9dff-4632-9372-a4e47e6a116e",
+        "name": "offline-portal",
+        "scene": "portal",
+        "createdAt": "2026-09-10T19:14:19.938Z",
+        "seed": 20260910,
+        "fixedDt": 0.016666666666666666,
+        "duration": 12.95,
+        "params": {
+          "palette": "aurora",
+          "intensity": 0.85,
+          "width": 0.6,
+          "trail": 0.72,
+          "speed": 0.65,
+          "feather": 0.5,
+          "material": "silk",
+          "quality": "auto"
+        },
+        "trim": {
+          "start": 0,
+          "end": 12.95
+        },
+        "aspect": "landscape",
+        "source": "video"
+      },
+      "samples": 300,
+      "sampleCountMeaning": "Stored hand samples follow the fixed simulation step and can reuse a model observation. Mask frames count distinct stored mask references. Neither count is the inference throughput metric.",
+      "handSamples": 0,
+      "maxHands": 0,
+      "pinchSamples": 0,
+      "maskFrames": 299,
+      "distinctMaskHashes": 191,
+      "foregroundMinimum": 0.3325466579861111,
+      "foregroundMaximum": 0.3973524305555556,
+      "archiveContainsOriginalMedia": false,
+      "performance": {
+        "warmup": "Waited for first reported positive inference FPS before recording",
+        "scheduledSamplingSeconds": 12,
+        "measuredSeconds": 12.786,
+        "samples": [
+          {
+            "second": 1,
+            "elapsedSeconds": 1.016,
+            "renderFps": 51,
+            "visionFps": null,
+            "inferenceMs": null,
+            "delegateAndQuality": null
+          },
+          {
+            "second": 2,
+            "elapsedSeconds": 2.027,
+            "renderFps": 59,
+            "visionFps": null,
+            "inferenceMs": null,
+            "delegateAndQuality": null
+          },
+          {
+            "second": 3,
+            "elapsedSeconds": 3.179,
+            "renderFps": 60,
+            "visionFps": 16.6,
+            "inferenceMs": 27,
+            "delegateAndQuality": "GPU · High · auto"
+          },
+          {
+            "second": 4,
+            "elapsedSeconds": 4.202,
+            "renderFps": 58,
+            "visionFps": null,
+            "inferenceMs": null,
+            "delegateAndQuality": null
+          },
+          {
+            "second": 5,
+            "elapsedSeconds": 5.222,
+            "renderFps": 60,
+            "visionFps": null,
+            "inferenceMs": null,
+            "delegateAndQuality": null
+          },
+          {
+            "second": 6,
+            "elapsedSeconds": 6.357,
+            "renderFps": 59,
+            "visionFps": 23.4,
+            "inferenceMs": 27,
+            "delegateAndQuality": "GPU · High · auto"
+          },
+          {
+            "second": 7,
+            "elapsedSeconds": 7.367,
+            "renderFps": 59,
+            "visionFps": null,
+            "inferenceMs": null,
+            "delegateAndQuality": null
+          },
+          {
+            "second": 8,
+            "elapsedSeconds": 8.39,
+            "renderFps": 60,
+            "visionFps": null,
+            "inferenceMs": null,
+            "delegateAndQuality": null
+          },
+          {
+            "second": 9,
+            "elapsedSeconds": 9.586,
+            "renderFps": 60,
+            "visionFps": 24.3,
+            "inferenceMs": 31,
+            "delegateAndQuality": "GPU · High · auto"
+          },
+          {
+            "second": 10,
+            "elapsedSeconds": 10.611,
+            "renderFps": 57,
+            "visionFps": null,
+            "inferenceMs": null,
+            "delegateAndQuality": null
+          },
+          {
+            "second": 11,
+            "elapsedSeconds": 11.638,
+            "renderFps": 60,
+            "visionFps": null,
+            "inferenceMs": null,
+            "delegateAndQuality": null
+          },
+          {
+            "second": 12,
+            "elapsedSeconds": 12.786,
+            "renderFps": 60,
+            "visionFps": 24.4,
+            "inferenceMs": 27,
+            "delegateAndQuality": "GPU · High · auto"
+          }
+        ],
+        "measurementConditions": "Ordinary studio visible for render samples. Help opened briefly after every third sample for inference/quality readings; no screen video encoder. Public UI and HTMLMediaElement only.",
+        "medianRenderFps": 59.5,
+        "medianInferenceMs": 27,
+        "medianVisionFps": 23.85,
+        "decodedVideo": {
+          "totalVideoFrames": 371,
+          "droppedVideoFrames": 40,
+          "scope": "Cumulative source-video decoder counters, including initialization and measurement; not inference frame drops.",
+          "looped": true,
+          "width": 1280,
+          "height": 720
+        },
+        "inferenceDroppedFrames": null,
+        "inferenceDroppedFramesReason": "Controller deliberately drops frames while busy, but does not expose a counter through public UI. Decoder drops above are a separate measure."
+      },
+      "savedLocallyOffline": true
+    },
+    {
+      "name": "export video while offline",
+      "ok": true,
+      "seconds": 15.766,
+      "scene": "portal",
+      "kind": "offline",
+      "path": ".local\\exports\\portal-offline.webm",
+      "expectedSeconds": 12.95,
+      "exportWallSeconds": 15.613,
+      "bytes": 8455534,
+      "extension": ".webm",
+      "width": 1280,
+      "height": 720,
+      "duration": 12.808,
+      "durationInitiallyFinite": false,
+      "readyState": 4,
+      "decoded": {
+        "currentTime": 0.297664,
+        "nonDarkFraction": 0.3709722222222222,
+        "rgbSum": 2006322
+      }
+    },
+    {
+      "name": "CSP and no outbound upload requests",
+      "ok": true,
+      "seconds": 0.002,
+      "observedRequests": 128,
+      "thirdPartyRequests": [],
+      "outboundWrites": [],
+      "cspErrors": []
+    }
+  ],
+  "films": [
+    {
+      "scene": "fresh-acceptance",
+      "kind": "workflow",
+      "path": ".local\\exports\\fresh-acceptance-workflow.webm",
+      "expectedSeconds": 6.58,
+      "exportWallSeconds": 11.989,
+      "bytes": 848811,
+      "extension": ".webm",
+      "width": 1280,
+      "height": 720,
+      "duration": 6.499,
+      "durationInitiallyFinite": false,
+      "readyState": 4,
+      "decoded": {
+        "currentTime": 0.27773,
+        "nonDarkFraction": 0.008680555555555556,
+        "rgbSum": 463021
+      }
+    },
+    {
+      "scene": "ribbon",
+      "kind": "real",
+      "path": ".local\\exports\\ribbon-real.webm",
+      "expectedSeconds": 11.95,
+      "exportWallSeconds": 14.846,
+      "bytes": 961677,
+      "extension": ".webm",
+      "width": 1280,
+      "height": 720,
+      "duration": 11.83,
+      "durationInitiallyFinite": false,
+      "readyState": 4,
+      "decoded": {
+        "currentTime": 0.39334,
+        "nonDarkFraction": 0.0007638888888888889,
+        "rgbSum": 349580
+      }
+    },
+    {
+      "scene": "gravity",
+      "kind": "real",
+      "path": ".local\\exports\\gravity-real.webm",
+      "expectedSeconds": 11.98,
+      "exportWallSeconds": 15.16,
+      "bytes": 4413607,
+      "extension": ".webm",
+      "width": 1280,
+      "height": 720,
+      "duration": 11.916,
+      "durationInitiallyFinite": false,
+      "readyState": 4,
+      "decoded": {
+        "currentTime": 0.374873,
+        "nonDarkFraction": 0.08979166666666667,
+        "rgbSum": 571195
+      }
+    },
+    {
+      "scene": "portal",
+      "kind": "real",
+      "path": ".local\\exports\\portal-real.webm",
+      "expectedSeconds": 11.97,
+      "exportWallSeconds": 16.224,
+      "bytes": 7018854,
+      "extension": ".webm",
+      "width": 1280,
+      "height": 720,
+      "duration": 11.845,
+      "durationInitiallyFinite": false,
+      "readyState": 4,
+      "decoded": {
+        "currentTime": 0.400976,
+        "nonDarkFraction": 0.36243055555555553,
+        "rgbSum": 1975045
+      }
+    },
+    {
+      "scene": "ribbon",
+      "kind": "showcase",
+      "path": "public\\showcase\\ribbon.webm",
+      "expectedSeconds": 12,
+      "exportWallSeconds": 14.734,
+      "bytes": 1456187,
+      "extension": ".webm",
+      "width": 1280,
+      "height": 720,
+      "duration": 11.832,
+      "durationInitiallyFinite": false,
+      "readyState": 4,
+      "decoded": {
+        "currentTime": 0.364788,
+        "nonDarkFraction": 0.009722222222222222,
+        "rgbSum": 393345
+      }
+    },
+    {
+      "scene": "gravity",
+      "kind": "showcase",
+      "path": "public\\showcase\\gravity.webm",
+      "expectedSeconds": 12,
+      "exportWallSeconds": 15.182,
+      "bytes": 5476823,
+      "extension": ".webm",
+      "width": 1280,
+      "height": 720,
+      "duration": 11.846,
+      "durationInitiallyFinite": false,
+      "readyState": 4,
+      "decoded": {
+        "currentTime": 0.395823,
+        "nonDarkFraction": 0.08444444444444445,
+        "rgbSum": 526481
+      }
+    },
+    {
+      "scene": "portal",
+      "kind": "showcase",
+      "path": "public\\showcase\\portal.webm",
+      "expectedSeconds": 12,
+      "exportWallSeconds": 16.043,
+      "bytes": 5110811,
+      "extension": ".webm",
+      "width": 1280,
+      "height": 720,
+      "duration": 12.905,
+      "durationInitiallyFinite": false,
+      "readyState": 4,
+      "decoded": {
+        "currentTime": 0.351359,
+        "nonDarkFraction": 0.2063888888888889,
+        "rgbSum": 1290412
+      }
+    },
+    {
+      "scene": "portal",
+      "kind": "offline",
+      "path": ".local\\exports\\portal-offline.webm",
+      "expectedSeconds": 12.95,
+      "exportWallSeconds": 15.613,
+      "bytes": 8455534,
+      "extension": ".webm",
+      "width": 1280,
+      "height": 720,
+      "duration": 12.808,
+      "durationInitiallyFinite": false,
+      "readyState": 4,
+      "decoded": {
+        "currentTime": 0.297664,
+        "nonDarkFraction": 0.3709722222222222,
+        "rgbSum": 2006322
+      }
+    }
+  ],
+  "screenshots": [
+    "docs\\images\\studio-desktop.png",
+    "docs\\images\\studio-mobile.png"
+  ],
+  "screenRecordings": [],
+  "requests": [
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/",
+      "resource": "document"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/index-C0iOpsts.js",
+      "resource": "script"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/index-BeLrXD57.css",
+      "resource": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/favicon.svg",
+      "resource": "image"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/sw.js",
+      "resource": "script"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/inter-latin-wght-normal-Dx4kXJAl.woff2",
+      "resource": "font"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/favicon.svg",
+      "resource": "other"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/offline-manifest.json",
+      "resource": "fetch"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/offline-manifest.json",
+      "resource": "fetch"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/5a0651b8-064d-4a49-8f5d-b57a352ae55e",
+      "resource": "media"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/5a0651b8-064d-4a49-8f5d-b57a352ae55e",
+      "resource": "media"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/vision.worker-C3N6kDzZ.js",
+      "resource": "fetch"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/vision.worker-C3N6kDzZ.js",
+      "resource": "script"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/wasm/vision_wasm_module_internal.js",
+      "resource": "fetch"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/wasm/vision_wasm_module_internal.js",
+      "resource": "script"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/wasm/vision_wasm_module_internal.wasm",
+      "resource": "fetch"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/wasm/vision_wasm_module_internal.wasm",
+      "resource": "fetch"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/hand_landmarker.task",
+      "resource": "fetch"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/hand_landmarker.task",
+      "resource": "fetch"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/vision.worker-C3N6kDzZ.js",
+      "resource": "fetch"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/99083e16-7c47-4467-8862-d024f1a91923",
+      "resource": "media"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/vision.worker-C3N6kDzZ.js",
+      "resource": "script"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/wasm/vision_wasm_module_internal.js",
+      "resource": "fetch"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/wasm/vision_wasm_module_internal.js",
+      "resource": "script"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/wasm/vision_wasm_module_internal.wasm",
+      "resource": "fetch"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/wasm/vision_wasm_module_internal.wasm",
+      "resource": "fetch"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/hand_landmarker.task",
+      "resource": "fetch"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/hand_landmarker.task",
+      "resource": "fetch"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/67590c46-154a-4304-b5f1-2528ffbab7a4",
+      "resource": "media"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/vision.worker-C3N6kDzZ.js",
+      "resource": "script"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/vision.worker-C3N6kDzZ.js",
+      "resource": "fetch"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/wasm/vision_wasm_module_internal.js",
+      "resource": "script"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/wasm/vision_wasm_module_internal.js",
+      "resource": "fetch"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/wasm/vision_wasm_module_internal.wasm",
+      "resource": "fetch"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/wasm/vision_wasm_module_internal.wasm",
+      "resource": "fetch"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/hand_landmarker.task",
+      "resource": "fetch"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/hand_landmarker.task",
+      "resource": "fetch"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/67590c46-154a-4304-b5f1-2528ffbab7a4",
+      "resource": "media"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/5a0651b8-064d-4a49-8f5d-b57a352ae55e",
+      "resource": "media"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/b8086ec0-d3a9-4afa-99ac-245c9e0b375f",
+      "resource": "media"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/b8086ec0-d3a9-4afa-99ac-245c9e0b375f",
+      "resource": "media"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/GravityScene-DJ3KbXjK.js",
+      "resource": "script"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/GravityScene-DJ3KbXjK.js",
+      "resource": "fetch"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/rapier-DBjBuyhF.js",
+      "resource": "script"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/rapier-DBjBuyhF.js",
+      "resource": "fetch"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/b8086ec0-d3a9-4afa-99ac-245c9e0b375f",
+      "resource": "media"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/82cfffc6-ff67-48d9-803f-d9964dfbe6de",
+      "resource": "media"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/82cfffc6-ff67-48d9-803f-d9964dfbe6de",
+      "resource": "media"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/82cfffc6-ff67-48d9-803f-d9964dfbe6de",
+      "resource": "media"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/940c36d6-f346-438b-837d-207afeebc1b1",
+      "resource": "media"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/940c36d6-f346-438b-837d-207afeebc1b1",
+      "resource": "media"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/examples/ribbon.prismstage",
+      "resource": "fetch"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/examples/ribbon.prismstage",
+      "resource": "fetch"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/940c36d6-f346-438b-837d-207afeebc1b1",
+      "resource": "media"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/1a11c8a7-b91b-48d7-b92e-355e8190d202",
+      "resource": "media"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/1a11c8a7-b91b-48d7-b92e-355e8190d202",
+      "resource": "media"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/examples/gravity.prismstage",
+      "resource": "fetch"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/examples/gravity.prismstage",
+      "resource": "fetch"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/1a11c8a7-b91b-48d7-b92e-355e8190d202",
+      "resource": "media"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/65d0b786-e411-4db0-b7fe-82393d901533",
+      "resource": "media"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/65d0b786-e411-4db0-b7fe-82393d901533",
+      "resource": "media"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/examples/portal.prismstage",
+      "resource": "fetch"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/examples/portal.prismstage",
+      "resource": "fetch"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/65d0b786-e411-4db0-b7fe-82393d901533",
+      "resource": "media"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/780711f7-00ab-4a85-b7ed-42097f6f242c",
+      "resource": "media"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/780711f7-00ab-4a85-b7ed-42097f6f242c",
+      "resource": "media"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/offline-manifest.json",
+      "resource": "fetch"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/LICENSE",
+      "resource": "fetch"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/THIRD_PARTY_NOTICES.md",
+      "resource": "fetch"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/GravityScene-DJ3KbXjK.js",
+      "resource": "fetch"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/index-BeLrXD57.css",
+      "resource": "fetch"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/index-C0iOpsts.js",
+      "resource": "fetch"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/inter-cyrillic-ext-wght-normal-BOeWTOD4.woff2",
+      "resource": "fetch"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/inter-cyrillic-wght-normal-DqGufNeO.woff2",
+      "resource": "fetch"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/inter-greek-ext-wght-normal-DlzME5K_.woff2",
+      "resource": "fetch"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/inter-greek-wght-normal-CkhJZR-_.woff2",
+      "resource": "fetch"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/inter-latin-ext-wght-normal-DO1Apj_S.woff2",
+      "resource": "fetch"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/inter-latin-wght-normal-Dx4kXJAl.woff2",
+      "resource": "fetch"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/inter-vietnamese-wght-normal-CBcvBZtf.woff2",
+      "resource": "fetch"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/rapier-DBjBuyhF.js",
+      "resource": "fetch"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/vision.worker-C3N6kDzZ.js",
+      "resource": "fetch"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/examples/gravity.prismstage",
+      "resource": "fetch"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/examples/portal.prismstage",
+      "resource": "fetch"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/examples/ribbon.prismstage",
+      "resource": "fetch"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/favicon.svg",
+      "resource": "fetch"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/index.html",
+      "resource": "fetch"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/LICENSE-APACHE-2.0.txt",
+      "resource": "fetch"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/hand_landmarker.task",
+      "resource": "fetch"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/manifest.json",
+      "resource": "fetch"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/selfie_segmenter_landscape.tflite",
+      "resource": "fetch"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/wasm/vision_wasm_internal.js",
+      "resource": "fetch"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/wasm/vision_wasm_internal.wasm",
+      "resource": "fetch"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/wasm/vision_wasm_module_internal.js",
+      "resource": "fetch"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/wasm/vision_wasm_module_internal.wasm",
+      "resource": "fetch"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/wasm/vision_wasm_nosimd_internal.js",
+      "resource": "fetch"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/wasm/vision_wasm_nosimd_internal.wasm",
+      "resource": "fetch"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/",
+      "resource": "document"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/",
+      "resource": "fetch"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/index-C0iOpsts.js",
+      "resource": "script"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/index-BeLrXD57.css",
+      "resource": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/favicon.svg",
+      "resource": "image"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/inter-latin-wght-normal-Dx4kXJAl.woff2",
+      "resource": "font"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/favicon.svg",
+      "resource": "other"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/offline-manifest.json",
+      "resource": "fetch"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/offline-network-probe-1789067606877",
+      "resource": "fetch"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/offline-network-probe-1789067606877",
+      "resource": "fetch"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/GravityScene-DJ3KbXjK.js",
+      "resource": "script"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/rapier-DBjBuyhF.js",
+      "resource": "script"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/4b6aa51f-7e9f-40b3-b94d-4231a8285dc8",
+      "resource": "media"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/vision.worker-C3N6kDzZ.js",
+      "resource": "script"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/wasm/vision_wasm_module_internal.js",
+      "resource": "script"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/wasm/vision_wasm_module_internal.wasm",
+      "resource": "fetch"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/hand_landmarker.task",
+      "resource": "fetch"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/4b6aa51f-7e9f-40b3-b94d-4231a8285dc8",
+      "resource": "media"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/a03f5b45-0ee6-4f9c-b8dc-259e832f8aec",
+      "resource": "media"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/vision.worker-C3N6kDzZ.js",
+      "resource": "script"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/wasm/vision_wasm_module_internal.js",
+      "resource": "script"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/wasm/vision_wasm_module_internal.wasm",
+      "resource": "fetch"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/hand_landmarker.task",
+      "resource": "fetch"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/a03f5b45-0ee6-4f9c-b8dc-259e832f8aec",
+      "resource": "media"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/d5c319ac-7738-4157-bf84-9b1a6db0d96e",
+      "resource": "media"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/vision.worker-C3N6kDzZ.js",
+      "resource": "script"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/wasm/vision_wasm_module_internal.js",
+      "resource": "script"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/wasm/vision_wasm_module_internal.wasm",
+      "resource": "fetch"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/selfie_segmenter_landscape.tflite",
+      "resource": "fetch"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/d5c319ac-7738-4157-bf84-9b1a6db0d96e",
+      "resource": "media"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/92e8bddd-0134-4552-81ed-ba03247d3bfe",
+      "resource": "media"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/92e8bddd-0134-4552-81ed-ba03247d3bfe",
+      "resource": "media"
+    }
+  ],
+  "consoleErrors": [
+    {
+      "type": "console",
+      "text": "Failed to load resource: net::ERR_FAILED"
+    }
+  ],
+  "pageErrors": [],
+  "limitations": [
+    "GPU timing is affected by the host and concurrent desktop workloads. Headless video decoding verifies playable exported output; it does not replace frame-by-frame FFmpeg inspection."
+  ],
+  "workflowDemonstration": {
+    "complete": true,
+    "failure": null,
+    "recording": ".local\\browser-recordings\\page@6b02727e0f818d00e79d47ed322d6627.webm",
+    "film": {
+      "path": ".local\\exports\\fresh-workflow.webm",
+      "bytes": 671838,
+      "expectedSeconds": 7.2,
+      "width": 1280,
+      "height": 720,
+      "currentTime": 3.179043,
+      "duration": 6.985
+    },
+    "captureDiagnostics": null,
+    "screenRecording": true,
+    "viewport": {
+      "width": 1440,
+      "height": 960
+    },
+    "recordingSize": {
+      "width": 1440,
+      "height": 960
+    },
+    "source": "Built-in authored demo, visibly labelled; actual model inference evidence is separate.",
+    "markers": [
+      {
+        "action": "Studio ready; authored demo is explicitly labelled",
+        "seconds": 1.982
+      },
+      {
+        "action": "Record motion",
+        "seconds": 3.065
+      },
+      {
+        "action": "Finish take",
+        "seconds": 10.334
+      },
+      {
+        "action": "Recolor the recorded motion",
+        "seconds": 10.91
+      },
+      {
+        "action": "Replay restyled motion",
+        "seconds": 11.604
+      },
+      {
+        "action": "Save editable project in local collection",
+        "seconds": 14.889
+      },
+      {
+        "action": "Export silent canvas film",
+        "seconds": 16.809
+      },
+      {
+        "action": "Play the completed export",
+        "seconds": 29.641
+      },
+      {
+        "action": "Download the completed film",
+        "seconds": 34.657
+      },
+      {
+        "action": "End",
+        "seconds": 35.112
+      }
+    ]
+  },
+  "build": {
+    "version": "7068c13e94d07cf8",
+    "files": 29,
+    "totalBytes": 47321229
+  },
+  "finishedAt": "2026-09-10T19:14:38.272Z",
+  "ok": true,
+  "consoleErrorContext": "The test deliberately aborts a model request and rejects an uncached offline fetch. Generic network errors remain visible in this report; the final network check separately rejects CSP violations, uncaught page exceptions, third-party requests, and outbound writes."
+}

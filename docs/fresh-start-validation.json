@@ -1,0 +1,181 @@
+{
+  "generatedAt": "2026-09-10T19:12:37.783Z",
+  "input": ".local/exports/fresh-start-proof.webm",
+  "sha256": "03beda583c86b2a61191e88c8d8f50b25073c7876f7dac2c9731ac42af21c087",
+  "bytes": 850662,
+  "width": 1280,
+  "height": 720,
+  "fullDecodeExitCode": 0,
+  "durationSeconds": 6.943,
+  "decodedFrames": 179,
+  "uniqueFrameHashes": 179,
+  "firstFrameChangeSeconds": 0,
+  "firstSubstantialScaledPixelChangeSeconds": 0,
+  "substantialChangeDefinition": "At least 0.1 mean absolute RGB-channel difference on 0..255 scale, with at least 0.1% of channels differing by >=4 between consecutive 160x90 frames.",
+  "noMultiSecondFrozenPreroll": true,
+  "caveat": "Temporal pixel changes establish that the opening is animated, not whether every action is reproduced or whether a particular opening frame exactly matches the project.",
+  "segments": [
+    {
+      "second": 0,
+      "decodedFrames": 25,
+      "uniqueFrameHashes": 25,
+      "maximumMeanAbsoluteRgbChange": 0.89782,
+      "averageMeanAbsoluteRgbChange": 0.30519
+    },
+    {
+      "second": 1,
+      "decodedFrames": 21,
+      "uniqueFrameHashes": 21,
+      "maximumMeanAbsoluteRgbChange": 0.34259,
+      "averageMeanAbsoluteRgbChange": 0.15957
+    },
+    {
+      "second": 2,
+      "decodedFrames": 27,
+      "uniqueFrameHashes": 27,
+      "maximumMeanAbsoluteRgbChange": 0.11102,
+      "averageMeanAbsoluteRgbChange": 0.04106
+    },
+    {
+      "second": 3,
+      "decodedFrames": 27,
+      "uniqueFrameHashes": 27,
+      "maximumMeanAbsoluteRgbChange": 0.20127,
+      "averageMeanAbsoluteRgbChange": 0.06984
+    },
+    {
+      "second": 4,
+      "decodedFrames": 28,
+      "uniqueFrameHashes": 28,
+      "maximumMeanAbsoluteRgbChange": 1.61137,
+      "averageMeanAbsoluteRgbChange": 0.2645
+    },
+    {
+      "second": 5,
+      "decodedFrames": 27,
+      "uniqueFrameHashes": 27,
+      "maximumMeanAbsoluteRgbChange": 0.37801,
+      "averageMeanAbsoluteRgbChange": 0.15462
+    },
+    {
+      "second": 6,
+      "decodedFrames": 24,
+      "uniqueFrameHashes": 24,
+      "maximumMeanAbsoluteRgbChange": 0.16227,
+      "averageMeanAbsoluteRgbChange": 0.07633
+    }
+  ],
+  "openingFrames": [
+    {
+      "t": 0,
+      "duration": 0.001,
+      "md5": "ad3b49b1b7a241ec613adf4efe612260"
+    },
+    {
+      "t": 0,
+      "duration": 0.001,
+      "md5": "d01c5069699ab6b9f5c4168d924710c6",
+      "meanAbsoluteRgbChange": 0.16118,
+      "rgbChannelsChangedByAtLeast4Fraction": 0.00803
+    },
+    {
+      "t": 0.067,
+      "duration": 0.001,
+      "md5": "631ff76d34bf9edfb6ebfc248f14cc31",
+      "meanAbsoluteRgbChange": 0.2235,
+      "rgbChannelsChangedByAtLeast4Fraction": 0.0034
+    },
+    {
+      "t": 0.096,
+      "duration": 0.001,
+      "md5": "17aaf4e56cf5d6ddda36a26cfab7a9ca",
+      "meanAbsoluteRgbChange": 0.24984,
+      "rgbChannelsChangedByAtLeast4Fraction": 0.00671
+    },
+    {
+      "t": 0.108,
+      "duration": 0.001,
+      "md5": "c38ef493018ee62bb9ce7e2bbdfcc3a8",
+      "meanAbsoluteRgbChange": 0.3365,
+      "rgbChannelsChangedByAtLeast4Fraction": 0.00146
+    },
+    {
+      "t": 0.139,
+      "duration": 0.001,
+      "md5": "cd37fdc0aed503ddd875d1465d5e93bc",
+      "meanAbsoluteRgbChange": 0.72178,
+      "rgbChannelsChangedByAtLeast4Fraction": 0.01095
+    },
+    {
+      "t": 0.225,
+      "duration": 0.001,
+      "md5": "39bdee672fcef4d5a0fa0e7fac772053",
+      "meanAbsoluteRgbChange": 0.89782,
+      "rgbChannelsChangedByAtLeast4Fraction": 0.01769
+    },
+    {
+      "t": 0.276,
+      "duration": 0.001,
+      "md5": "7fda004770161fecf3d18b4beb5d82f3",
+      "meanAbsoluteRgbChange": 0.65775,
+      "rgbChannelsChangedByAtLeast4Fraction": 0.00428
+    },
+    {
+      "t": 0.298,
+      "duration": 0.001,
+      "md5": "a0c296a7e789dac98975516895fe2fe1",
+      "meanAbsoluteRgbChange": 0.53037,
+      "rgbChannelsChangedByAtLeast4Fraction": 0.00278
+    },
+    {
+      "t": 0.35,
+      "duration": 0.001,
+      "md5": "d8cf0fedb298a4778037393d2eea8bec",
+      "meanAbsoluteRgbChange": 0.62338,
+      "rgbChannelsChangedByAtLeast4Fraction": 0.00426
+    },
+    {
+      "t": 0.383,
+      "duration": 0.001,
+      "md5": "e72ea88135b2038bb87e2889a66dc72c",
+      "meanAbsoluteRgbChange": 0.15426,
+      "rgbChannelsChangedByAtLeast4Fraction": 0.00329
+    },
+    {
+      "t": 0.422,
+      "duration": 0.001,
+      "md5": "5fbe0189e18906e88acb222bbefd89fc",
+      "meanAbsoluteRgbChange": 0.18424,
+      "rgbChannelsChangedByAtLeast4Fraction": 0.00356
+    },
+    {
+      "t": 0.439,
+      "duration": 0.001,
+      "md5": "d89c6e39257547147c13fc7b0eaec386",
+      "meanAbsoluteRgbChange": 0.29049,
+      "rgbChannelsChangedByAtLeast4Fraction": 0.00271
+    },
+    {
+      "t": 0.478,
+      "duration": 0.001,
+      "md5": "635268a9126e266bc9914cfee20b97b1",
+      "meanAbsoluteRgbChange": 0.42546,
+      "rgbChannelsChangedByAtLeast4Fraction": 0.00387
+    },
+    {
+      "t": 0.557,
+      "duration": 0.001,
+      "md5": "6dba6d5ec590148f9c524c510c64f4eb",
+      "meanAbsoluteRgbChange": 0.21593,
+      "rgbChannelsChangedByAtLeast4Fraction": 0.0041
+    },
+    {
+      "t": 0.593,
+      "duration": 0.001,
+      "md5": "1993c13cdbb0c62fbc57ac3ac37e9c55",
+      "meanAbsoluteRgbChange": 0.15201,
+      "rgbChannelsChangedByAtLeast4Fraction": 0.0035
+    }
+  ],
+  "firstPositiveTimestampSubstantialChangeSeconds": 0.067
+}

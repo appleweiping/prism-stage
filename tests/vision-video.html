@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><title>Prism Stage • Real video validation</title>
+<style>body{font:15px system-ui;background:#141414;color:#ddd;padding:28px}button{padding:12px 20px}pre{white-space:pre-wrap}video{display:block;width:480px;max-height:300px;object-fit:contain;transform:scaleX(-1);margin:20px 0;background:#000}</style>
+<h1>Real-video input validation</h1>
+<p>Official Apache-2.0 MediaPipe test videos, loaded from .local/fixtures. This uses the production VisionController, real models and decoded video frames.</p>
+<label>Hand test fixture <select id="hand-fixture"><option value="hands">Hands test video</option><option value="gestures">Gestures test video</option></select></label>
+<button id="run">Run three stages</button><button id="save" disabled>Download measured results</button><button id="takes" disabled>Download real model takes</button>
+<video id="video" muted playsinline controls></video><pre id="output">Ready</pre>
+<script type="module">
+  import { VisionController } from '../src/vision/VisionController.ts';
+  import { encodeProject } from '../src/storage/projects.ts';
+  import { DEFAULT_PARAMS } from '../src/core/presets.ts';
+  import { zipSync } from 'fflate';
+  const video = document.querySelector('#video');
+  const output = document.querySelector('#output');
+  const results = [];
+  const takes = {};
+  let controller;
+  async function check(scene, fixture) {
+    const response = await fetch(new URL(`../.local/fixtures/${fixture}.mp4`, location.href));
+    if (!response.ok) throw Error('Download the fixtures listed in docs/validation-assets.json first.');
+    const file = new File([await response.blob()], fixture + '.mp4', {type:'video/mp4'});
+    const data = { scene, fixture, samples: 0, detectedHandFrames: 0, maxHands: 0, pinchFrames: 0, positionChanges: 0,
+      maskFrames: 0, maskChanges: 0, foregroundFractionMin: 1, foregroundFractionMax: 0, statuses: [], loops: 0 };
+    let priorMask; let priorHands; let previousT = -1; let first; let last;
+    const samples = []; let collecting = true;
+    let endTimer;
+    await new Promise(async (resolve, reject) => {
+      const timer = setTimeout(() => reject(Error('Actual-video inference timed out.')), 45000);
+      controller = new VisionController(sample => {
+        if (sample.source !== 'video' || !collecting) return;
+        const now = performance.now();
+        if (first === undefined) { first = now; endTimer = setTimeout(() => { clearTimeout(timer); resolve(); }, 12000); }
+        last = now; data.samples++;
+        samples.push({ ...sample, t:(now-first)/1000, hands:sample.hands.map(hand=>({...hand})),
+          ...(sample.mask ? {mask:{...sample.mask,data:sample.mask.data.slice()}} : {}) });
+        if (sample.t < previousT) data.loops++; previousT = sample.t;
+        if (sample.hands.length) data.detectedHandFrames++;
+        data.maxHands = Math.max(data.maxHands, sample.hands.length);
+        if (sample.hands.some(hand => hand.pinch)) data.pinchFrames++;
+        const hands = sample.hands.map(hand => `${hand.id}:${hand.x.toFixed(3)}:${hand.y.toFixed(3)}`).join('|');
+        if (priorHands !== undefined && hands !== priorHands) data.positionChanges++;
+        priorHands = hands;
+        if (sample.mask) {
+          data.maskFrames++;
+          const mask = sample.mask.data;
+          const foreground = mask.reduce((sum, value) => sum + Number(value > 127), 0) / mask.length;
+          data.foregroundFractionMin = Math.min(data.foregroundFractionMin, foreground);
+          data.foregroundFractionMax = Math.max(data.foregroundFractionMax, foreground);
+          if (priorMask && mask.some((value, index) => value !== priorMask[index])) data.maskChanges++;
+          priorMask = mask.slice();
+          data.maskDimensions = [sample.mask.width, sample.mask.height];
+        }
+        output.textContent = JSON.stringify(results, null, 2) + '\nCurrent: ' + JSON.stringify(data, null, 2);
+      }, status => {
+        if (status.state === 'error') { clearTimeout(timer); clearTimeout(endTimer); reject(Error(status.message)); }
+        if (status.inferenceMs !== undefined) data.statuses.push({delegate:status.delegate,inferenceMs:status.inferenceMs,fps:status.fps});
+      });
+      try { await controller.startVideo(scene, video, file); video.loop = true; data.video = { width:video.videoWidth,height:video.videoHeight,duration:video.duration }; }
+      catch (error) { clearTimeout(timer); clearTimeout(endTimer); reject(error); }
+    });
+    data.observationSeconds = (last - first) / 1000;
+    const latencies = data.statuses.slice(2).map(status => status.inferenceMs).sort((a,b)=>a-b);
+    data.warmInferenceMedianMs = latencies[Math.floor(latencies.length / 2)];
+    data.ok = scene === 'portal' ? data.maskFrames > 0 && data.maskChanges > 0 && data.foregroundFractionMax > 0.01
+      : data.detectedHandFrames > 0 && data.positionChanges > 0;
+    collecting=false; controller.dispose(); controller = undefined;
+    const duration=samples.at(-1).t;
+    const project={manifest:{format:'prism-stage',version:1,engineVersion:'1.0.0',id:`actual-${scene}-${fixture}`,
+      name:`Actual ${fixture} video — ${scene}`,scene,createdAt:new Date().toISOString(),seed:20260910,fixedDt:1/60,
+      duration,params:{...DEFAULT_PARAMS},trim:{start:0,end:duration},aspect:'landscape',source:'video'},samples};
+    const archive=await encodeProject(project);
+    takes[`${scene}-${fixture}.prismstage`]=new Uint8Array(await archive.arrayBuffer());
+    data.projectBytes=archive.size;
+    return data;
+  }
+  document.querySelector('#run').onclick = async () => {
+    document.querySelector('#run').disabled = true; results.length = 0;
+    const handFixture=document.querySelector('#hand-fixture').value;
+    for (const key of Object.keys(takes)) delete takes[key];
+    for (const [scene, fixture] of [['ribbon',handFixture],['gravity',handFixture],['portal','gestures']]) {
+      try { results.push(await check(scene, fixture)); }
+      catch (error) { results.push({scene,fixture,ok:false,error:error.message}); controller?.dispose(); }
+    }
+    output.textContent = JSON.stringify(results,null,2);
+    document.querySelector('#run').disabled = false; document.querySelector('#save').disabled = false;
+    document.querySelector('#takes').disabled = false;
+  };
+  document.querySelector('#takes').onclick = () => {
+    const blob=new Blob([zipSync(takes,{level:0})],{type:'application/zip'});
+    const url=URL.createObjectURL(blob); const a=document.createElement('a');a.href=url;a.download='real-model-takes.zip';a.click();setTimeout(()=>URL.revokeObjectURL(url),5000);
+  };
+  document.querySelector('#save').onclick = () => {
+    const blob = new Blob([JSON.stringify({date:new Date().toISOString(),method:'Production VisionController,12seconds per scene,official MediaPipe real-person videos. Loops where source is shorter; warm timings from500ms status samples exclude first2 readings.',results},null,2)],{type:'application/json'});
+    const url = URL.createObjectURL(blob); const a = document.createElement('a'); a.href=url;a.download='vision-video-results.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),5000);
+  };
+</script></html>

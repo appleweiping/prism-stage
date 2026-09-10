@@ -1,0 +1,223 @@
+{
+  "startedAt": "2026-09-10T19:17:54.288Z",
+  "base": "http://127.0.0.1:4173/",
+  "channel": "msedge",
+  "checks": [
+    {
+      "scene": "ribbon",
+      "kind": "render",
+      "ok": true,
+      "width": 1280,
+      "height": 720,
+      "coloredFraction": 0.12911349826388888,
+      "glError": 0
+    },
+    {
+      "scene": "gravity",
+      "kind": "render",
+      "ok": true,
+      "width": 1280,
+      "height": 720,
+      "coloredFraction": 0.03595377604166667,
+      "glError": 0
+    },
+    {
+      "scene": "portal",
+      "kind": "render",
+      "ok": true,
+      "width": 1280,
+      "height": 720,
+      "coloredFraction": 0.20095160590277777,
+      "glError": 0
+    },
+    {
+      "scene": "ribbon",
+      "kind": "actual local video inference",
+      "ok": true,
+      "diagnostics": "Render 10 fps\nVision 0.2 fps · 6339 ms\nGPU · High · auto"
+    },
+    {
+      "scene": "portal",
+      "kind": "actual local video inference",
+      "ok": true,
+      "diagnostics": "Render 30 fps\nVision 0.2 fps · 3998 ms\nGPU · High · auto"
+    },
+    {
+      "kind": "injected storage quota failure offers project download recovery",
+      "ok": true
+    },
+    {
+      "kind": "portrait canvas film",
+      "ok": true,
+      "width": 720,
+      "height": 1280
+    },
+    {
+      "kind": "0.1 second minimum trim decodes",
+      "ok": true,
+      "width": 720,
+      "height": 1280
+    }
+  ],
+  "requests": [
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/index-C0iOpsts.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/index-BeLrXD57.css"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/favicon.svg"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/inter-latin-wght-normal-Dx4kXJAl.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/sw.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/favicon.svg"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/offline-manifest.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/GravityScene-DJ3KbXjK.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/GravityScene-DJ3KbXjK.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/rapier-DBjBuyhF.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/rapier-DBjBuyhF.js"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/e1a8fbf5-6f78-4b36-8e64-b0c712d0b727"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/vision.worker-C3N6kDzZ.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/vision.worker-C3N6kDzZ.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/wasm/vision_wasm_module_internal.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/wasm/vision_wasm_module_internal.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/wasm/vision_wasm_module_internal.wasm"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/wasm/vision_wasm_module_internal.wasm"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/hand_landmarker.task"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/hand_landmarker.task"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/e1a8fbf5-6f78-4b36-8e64-b0c712d0b727"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/8381c9e3-b831-49d0-8e50-ddd709469772"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/vision.worker-C3N6kDzZ.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/vision.worker-C3N6kDzZ.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/wasm/vision_wasm_module_internal.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/wasm/vision_wasm_module_internal.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/wasm/vision_wasm_module_internal.wasm"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/wasm/vision_wasm_module_internal.wasm"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/selfie_segmenter_landscape.tflite"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/models/selfie_segmenter_landscape.tflite"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/8381c9e3-b831-49d0-8e50-ddd709469772"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/examples/ribbon.prismstage"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/examples/ribbon.prismstage"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/ab5bcd3c-e862-460d-a6f2-c3b594e0f96d"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/ab5bcd3c-e862-460d-a6f2-c3b594e0f96d"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/88578f75-d863-4c7c-bf90-18fe2a8e9c48"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4173/3408cf04-8e8d-4865-abd2-037f2e0dc82c"
+    }
+  ],
+  "consoleErrors": [],
+  "browserVersion": "152.0.4191.66",
+  "title": "Prism Stage — Motion becomes art.",
+  "ok": true,
+  "finishedAt": "2026-09-10T19:18:22.9Z",
+  "browserInternalRequestCount": 55,
+  "networkClassificationCorrection": "All application checks passed in this run. Original network assertion counted Edge browser-owned downloads-hub/fileicon resources. Reclassified the recorded requests: zero external application requests or writes; browser internal URLs removed to avoid recording temporary download paths."
+}

@@ -1,0 +1,384 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-10T19:16:11.141Z",
+  "method": "Decode the entire first video stream using FFmpeg -xerror with timestamp passthrough and framemd5. No mock encoder, re-encoding, resizing, or frame interpolation is used.",
+  "commandTemplate": "ffmpeg -hide_banner -nostdin -nostats -v info -xerror -i INPUT -map 0:v:0 -an -sn -dn -fps_mode passthrough -f framemd5 pipe:1",
+  "invocation": "node scripts/validate-media.mjs --require-all (set PRISM_FFMPEG when FFmpeg is not on PATH)",
+  "ffmpeg": {
+    "executableName": "ffmpeg-win-x86_64-v7.1.exe",
+    "version": "ffmpeg version 7.1-essentials_build-www.gyan.dev Copyright (c) 2000-2024 the FFmpeg developers",
+    "available": true
+  },
+  "requirements": {
+    "width": 1280,
+    "height": 720,
+    "minimumDurationSeconds": 10,
+    "minimumUniqueFrames": 2,
+    "fullDecodeExitCode": 0,
+    "noAudioStream": true
+  },
+  "notes": [
+    "Real-model-input clips come from saved observations produced by the production vision worker on licensed real-person test footage; no physical camera was used for these checks.",
+    "Authored-demo clips use procedural example takes. Their visual quality and successful encoding are separate from real-model inference validation.",
+    "Decoded frame hashes establish changing pixel content, not tracking correctness. Effective frame cadence is measured rather than assumed to be 30 fps.",
+    "Original input videos and real-input exports in .local are not distributed with the app. Processed model observations are committed in tests/fixtures, with project hashes and upstream input provenance in the validation records.",
+    "Missing files are pending; --require-all exits nonzero for pending results. Existing invalid files always make this script exit nonzero."
+  ],
+  "results": [
+    {
+      "scene": "ribbon",
+      "kind": "real-model-input",
+      "path": ".local/exports/ribbon-real.webm",
+      "status": "passed",
+      "bytes": 961677,
+      "sha256": "b82d0db957db270497087bdd2192bf84456a9da22686cc31c0a7db6928adbc74",
+      "provenance": {
+        "status": "verified-manifest",
+        "projectPath": "tests/fixtures/ribbon-gestures.prismstage",
+        "projectSha256": "794ebd8938518ce54bfed46a61abbf15bfbc5ac6782b2ad51dc6026f4d653c15",
+        "projectId": "actual-ribbon-gestures",
+        "scene": "ribbon",
+        "source": "video",
+        "sampleSources": [
+          "video"
+        ],
+        "durationSeconds": 11.951199999999256,
+        "engineVersion": "1.0.0",
+        "samples": 69,
+        "handSamples": 61,
+        "pinchingSamples": 6,
+        "maskSamples": 0,
+        "inputEvidence": "docs/vision-gesture-results.json",
+        "assetLicenseEvidence": "docs/validation-assets.json",
+        "association": "Capture workflow associates this filename with the editable take above. Decoding verifies media integrity and motion, not model accuracy or a cryptographic linkage between input and output."
+      },
+      "fullDecode": {
+        "exitCode": 0,
+        "signal": null,
+        "ok": true
+      },
+      "decoded": {
+        "width": 1280,
+        "height": 720,
+        "durationSeconds": 11.831,
+        "durationMethod": "Last decoded frame PTS plus its duration minus first decoded PTS; not the optional WebM container duration field.",
+        "timeBase": "1/1000",
+        "decodedFrames": 333,
+        "uniqueDecodedFrameHashes": 314,
+        "consecutiveFrameChanges": 332,
+        "changingFrameFraction": 1,
+        "decodedFramesPerSecond": 28.146,
+        "timestampsNondecreasing": true,
+        "firstFrameMd5": "c7b75bc0645e9bb55c962b3889e6d984",
+        "lastFrameMd5": "583c46160ecd8970460364a39fa06b0e",
+        "hasAudioStream": false
+      },
+      "checks": {
+        "dimensions": true,
+        "duration": true,
+        "changingFrames": true,
+        "fullDecode": true,
+        "timestamps": true,
+        "noAudio": true,
+        "sceneAndProvenance": true
+      }
+    },
+    {
+      "scene": "gravity",
+      "kind": "real-model-input",
+      "path": ".local/exports/gravity-real.webm",
+      "status": "passed",
+      "bytes": 4413607,
+      "sha256": "626836f3436e6bcb99d9b23185fbdcbb1ef85c953ab70009a79a66527fa3972e",
+      "provenance": {
+        "status": "verified-manifest",
+        "projectPath": "tests/fixtures/gravity-gestures.prismstage",
+        "projectSha256": "4e12d509fb7674f31bcccfaa46e5a0c36a588d232d9e0b8f4454e2d239a0c6d7",
+        "projectId": "actual-gravity-gestures",
+        "scene": "gravity",
+        "source": "video",
+        "sampleSources": [
+          "video"
+        ],
+        "durationSeconds": 11.98020000000298,
+        "engineVersion": "1.0.0",
+        "samples": 67,
+        "handSamples": 57,
+        "pinchingSamples": 0,
+        "maskSamples": 0,
+        "inputEvidence": "docs/vision-gesture-results.json",
+        "assetLicenseEvidence": "docs/validation-assets.json",
+        "association": "Capture workflow associates this filename with the editable take above. Decoding verifies media integrity and motion, not model accuracy or a cryptographic linkage between input and output."
+      },
+      "fullDecode": {
+        "exitCode": 0,
+        "signal": null,
+        "ok": true
+      },
+      "decoded": {
+        "width": 1280,
+        "height": 720,
+        "durationSeconds": 11.917,
+        "durationMethod": "Last decoded frame PTS plus its duration minus first decoded PTS; not the optional WebM container duration field.",
+        "timeBase": "1/1000",
+        "decodedFrames": 349,
+        "uniqueDecodedFrameHashes": 349,
+        "consecutiveFrameChanges": 348,
+        "changingFrameFraction": 1,
+        "decodedFramesPerSecond": 29.286,
+        "timestampsNondecreasing": true,
+        "firstFrameMd5": "d0df52a74b7e0c2569f7b22d32e77f34",
+        "lastFrameMd5": "d253f7e9cd6bb0e0976cb7ce470e1eba",
+        "hasAudioStream": false
+      },
+      "checks": {
+        "dimensions": true,
+        "duration": true,
+        "changingFrames": true,
+        "fullDecode": true,
+        "timestamps": true,
+        "noAudio": true,
+        "sceneAndProvenance": true
+      }
+    },
+    {
+      "scene": "portal",
+      "kind": "real-model-input",
+      "path": ".local/exports/portal-real.webm",
+      "status": "passed",
+      "bytes": 7018854,
+      "sha256": "7b57c2275f718c896e9c0ebd03dbb786a396be8dc6d5129343777accd3664cd9",
+      "provenance": {
+        "status": "verified-manifest",
+        "projectPath": "tests/fixtures/portal-gestures.prismstage",
+        "projectSha256": "1a5ff1e14c5bc59c1dacefbbd5a0efe40fab3276b7f22b5a4fdb4dbc60d82a90",
+        "projectId": "actual-portal-gestures",
+        "scene": "portal",
+        "source": "video",
+        "sampleSources": [
+          "video"
+        ],
+        "durationSeconds": 11.97439999999851,
+        "engineVersion": "1.0.0",
+        "samples": 235,
+        "handSamples": 0,
+        "pinchingSamples": 0,
+        "maskSamples": 235,
+        "inputEvidence": "docs/vision-gesture-results.json",
+        "assetLicenseEvidence": "docs/validation-assets.json",
+        "association": "Capture workflow associates this filename with the editable take above. Decoding verifies media integrity and motion, not model accuracy or a cryptographic linkage between input and output."
+      },
+      "fullDecode": {
+        "exitCode": 0,
+        "signal": null,
+        "ok": true
+      },
+      "decoded": {
+        "width": 1280,
+        "height": 720,
+        "durationSeconds": 11.846,
+        "durationMethod": "Last decoded frame PTS plus its duration minus first decoded PTS; not the optional WebM container duration field.",
+        "timeBase": "1/1000",
+        "decodedFrames": 301,
+        "uniqueDecodedFrameHashes": 301,
+        "consecutiveFrameChanges": 300,
+        "changingFrameFraction": 1,
+        "decodedFramesPerSecond": 25.409,
+        "timestampsNondecreasing": true,
+        "firstFrameMd5": "c7b75bc0645e9bb55c962b3889e6d984",
+        "lastFrameMd5": "58638e0c49adb289769cb7b82a73bf5b",
+        "hasAudioStream": false
+      },
+      "checks": {
+        "dimensions": true,
+        "duration": true,
+        "changingFrames": true,
+        "fullDecode": true,
+        "timestamps": true,
+        "noAudio": true,
+        "sceneAndProvenance": true
+      }
+    },
+    {
+      "scene": "ribbon",
+      "kind": "authored-demo",
+      "path": "public/showcase/ribbon.webm",
+      "status": "passed",
+      "bytes": 1456187,
+      "sha256": "11a1d66d5c95934b8beb2495c353ef93be0de8b8eb57d56db4bbe6e8dca7e67c",
+      "provenance": {
+        "status": "verified-manifest",
+        "projectPath": "public/examples/ribbon.prismstage",
+        "projectSha256": "02ee8e0c6ecd92c210c4e0d29f9a391bc755afc7adadbc5af9ba0b12e59995e3",
+        "projectId": "a61b0000-1234-4567-8900-202609100001",
+        "scene": "ribbon",
+        "source": "demo",
+        "sampleSources": [
+          "demo"
+        ],
+        "durationSeconds": 12,
+        "engineVersion": "1.0.0",
+        "samples": 720,
+        "handSamples": 720,
+        "pinchingSamples": 684,
+        "maskSamples": 0,
+        "inputEvidence": "scripts/make-examples.ts",
+        "assetLicenseEvidence": "THIRD_PARTY_NOTICES.md",
+        "association": "Capture workflow associates this filename with the editable take above. Decoding verifies media integrity and motion, not model accuracy or a cryptographic linkage between input and output."
+      },
+      "fullDecode": {
+        "exitCode": 0,
+        "signal": null,
+        "ok": true
+      },
+      "decoded": {
+        "width": 1280,
+        "height": 720,
+        "durationSeconds": 11.833,
+        "durationMethod": "Last decoded frame PTS plus its duration minus first decoded PTS; not the optional WebM container duration field.",
+        "timeBase": "1/1000",
+        "decodedFrames": 322,
+        "uniqueDecodedFrameHashes": 322,
+        "consecutiveFrameChanges": 321,
+        "changingFrameFraction": 1,
+        "decodedFramesPerSecond": 27.212,
+        "timestampsNondecreasing": true,
+        "firstFrameMd5": "c7b75bc0645e9bb55c962b3889e6d984",
+        "lastFrameMd5": "2f75063247e607bcc1fa88b5b62f7331",
+        "hasAudioStream": false
+      },
+      "checks": {
+        "dimensions": true,
+        "duration": true,
+        "changingFrames": true,
+        "fullDecode": true,
+        "timestamps": true,
+        "noAudio": true,
+        "sceneAndProvenance": true
+      }
+    },
+    {
+      "scene": "gravity",
+      "kind": "authored-demo",
+      "path": "public/showcase/gravity.webm",
+      "status": "passed",
+      "bytes": 5476823,
+      "sha256": "cb12552f413fe48dd880905335fa3ecb1557a614fb144731362732088a902466",
+      "provenance": {
+        "status": "verified-manifest",
+        "projectPath": "public/examples/gravity.prismstage",
+        "projectSha256": "4a1a235b254b048291f53dce151295a0cd98aeb79f998609026262a5c5601a51",
+        "projectId": "a61b0001-1234-4567-8900-202609100001",
+        "scene": "gravity",
+        "source": "demo",
+        "sampleSources": [
+          "demo"
+        ],
+        "durationSeconds": 12,
+        "engineVersion": "1.0.0",
+        "samples": 720,
+        "handSamples": 720,
+        "pinchingSamples": 654,
+        "maskSamples": 0,
+        "inputEvidence": "scripts/make-examples.ts",
+        "assetLicenseEvidence": "THIRD_PARTY_NOTICES.md",
+        "association": "Capture workflow associates this filename with the editable take above. Decoding verifies media integrity and motion, not model accuracy or a cryptographic linkage between input and output."
+      },
+      "fullDecode": {
+        "exitCode": 0,
+        "signal": null,
+        "ok": true
+      },
+      "decoded": {
+        "width": 1280,
+        "height": 720,
+        "durationSeconds": 11.847,
+        "durationMethod": "Last decoded frame PTS plus its duration minus first decoded PTS; not the optional WebM container duration field.",
+        "timeBase": "1/1000",
+        "decodedFrames": 323,
+        "uniqueDecodedFrameHashes": 323,
+        "consecutiveFrameChanges": 322,
+        "changingFrameFraction": 1,
+        "decodedFramesPerSecond": 27.264,
+        "timestampsNondecreasing": true,
+        "firstFrameMd5": "ce59d27606b1f6b86152a7681322488b",
+        "lastFrameMd5": "03038127f48435e37d8c438c8e9afe2f",
+        "hasAudioStream": false
+      },
+      "checks": {
+        "dimensions": true,
+        "duration": true,
+        "changingFrames": true,
+        "fullDecode": true,
+        "timestamps": true,
+        "noAudio": true,
+        "sceneAndProvenance": true
+      }
+    },
+    {
+      "scene": "portal",
+      "kind": "authored-demo",
+      "path": "public/showcase/portal.webm",
+      "status": "passed",
+      "bytes": 5110811,
+      "sha256": "b4948a154e26facf55ca6de4ae09a5c592d539f38a06bf4fc6f78b4f41be8ff7",
+      "provenance": {
+        "status": "verified-manifest",
+        "projectPath": "public/examples/portal.prismstage",
+        "projectSha256": "13d9adf45301f8bff65f6d44929c771f36151e7ef1ce5d149d7d0ea0953c5838",
+        "projectId": "a61b0002-1234-4567-8900-202609100001",
+        "scene": "portal",
+        "source": "demo",
+        "sampleSources": [
+          "demo"
+        ],
+        "durationSeconds": 12,
+        "engineVersion": "1.0.0",
+        "samples": 180,
+        "handSamples": 0,
+        "pinchingSamples": 0,
+        "maskSamples": 180,
+        "inputEvidence": "scripts/make-examples.ts",
+        "assetLicenseEvidence": "THIRD_PARTY_NOTICES.md",
+        "association": "Capture workflow associates this filename with the editable take above. Decoding verifies media integrity and motion, not model accuracy or a cryptographic linkage between input and output."
+      },
+      "fullDecode": {
+        "exitCode": 0,
+        "signal": null,
+        "ok": true
+      },
+      "decoded": {
+        "width": 1280,
+        "height": 720,
+        "durationSeconds": 12.906,
+        "durationMethod": "Last decoded frame PTS plus its duration minus first decoded PTS; not the optional WebM container duration field.",
+        "timeBase": "1/1000",
+        "decodedFrames": 323,
+        "uniqueDecodedFrameHashes": 323,
+        "consecutiveFrameChanges": 322,
+        "changingFrameFraction": 1,
+        "decodedFramesPerSecond": 25.027,
+        "timestampsNondecreasing": true,
+        "firstFrameMd5": "c7b75bc0645e9bb55c962b3889e6d984",
+        "lastFrameMd5": "c03f8ea20b359150d75e87e94dc49fd9",
+        "hasAudioStream": false
+      },
+      "checks": {
+        "dimensions": true,
+        "duration": true,
+        "changingFrames": true,
+        "fullDecode": true,
+        "timestamps": true,
+        "noAudio": true,
+        "sceneAndProvenance": true
+      }
+    }
+  ],
+  "summary": {
+    "total": 6,
+    "passed": 6,
+    "pending": 0,
+    "failed": 0
+  },
+  "status": "passed"
+}

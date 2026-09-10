@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-10T19:18:40.080Z",
+  "status": "passed",
+  "provenance": {
+    "type": "Actual application UI screen recording",
+    "source": "Built-in authored demo input, explicitly labelled in the application. This film demonstrates the complete creation workflow; it is separate from real-model inference evidence.",
+    "browser": "152.0.7977.83",
+    "productionEvidence": "docs/production-validation.json",
+    "workflow": [
+      "Record motion",
+      "Finish take",
+      "Recolor recorded motion",
+      "Replay",
+      "Save editable project locally",
+      "Export a silent canvas film",
+      "Play completed export",
+      "Download completed film"
+    ],
+    "footage": "The full Playwright page recording from start through close is preserved. No synthetic UI, replacement scenes, cuts, added captions, sound, or retiming.",
+    "originalDistributed": false
+  },
+  "transcode": {
+    "encoder": "libx264",
+    "crf": 21,
+    "preset": "medium",
+    "threads": 2,
+    "pixelFormat": "yuv420p",
+    "fastStart": true,
+    "command": "ffmpeg -threads 2 -i INPUT -map 0:v:0 -an -sn -dn -c:v libx264 -threads 2 -preset medium -crf 21 -pix_fmt yuv420p -fps_mode vfr -movflags +faststart public/showcase/workflow.mp4"
+  },
+  "source": {
+    "path": ".local/browser-recordings/page@6b02727e0f818d00e79d47ed322d6627.webm",
+    "bytes": 2118289,
+    "sha256": "a01c4f1ddf39eeeb8a48576a61262a5240f646ea30901f2ce005b9cacf36e451",
+    "codec": "vp8",
+    "pixelFormatYuv420p": true,
+    "width": 1440,
+    "height": 960,
+    "fullDecodeExitCode": 0,
+    "hasAudioStream": false,
+    "durationSeconds": 34.52,
+    "decodedFrames": 863,
+    "uniqueFrameHashes": 712,
+    "firstDecodedPtsSeconds": 0,
+    "lastDecodedPtsSeconds": 34.48
+  },
+  "output": {
+    "path": "public/showcase/workflow.mp4",
+    "bytes": 1327801,
+    "sha256": "5f1a651b02a673f0fd05f4d5eafa389df7bff320f8c27f30034b816e1c66a30a",
+    "codec": "h264",
+    "pixelFormatYuv420p": true,
+    "width": 1440,
+    "height": 960,
+    "fullDecodeExitCode": 0,
+    "hasAudioStream": false,
+    "durationSeconds": 34.52,
+    "decodedFrames": 863,
+    "uniqueFrameHashes": 860,
+    "firstDecodedPtsSeconds": 0,
+    "lastDecodedPtsSeconds": 34.48
+  },
+  "checks": {
+    "fullSourceAndOutputDecode": true,
+    "dimensionsPreserved": true,
+    "entireRecordingPreserved": true,
+    "h264Yuv420p": true,
+    "noAudio": true,
+    "fastStart": true,
+    "completedActualUiWorkflow": true
+  },
+  "validationMethod": "Full FFmpeg -xerror framemd5 decode of original and output, with timestamp passthrough. Identical frame counts, dimensions and decoded durations verify preservation of the entire source; lossy H.264 frame hashes are not expected to equal VP8 hashes.",
+  "workflowMarkerReference": "Approximate action markers in docs/production-validation.json use harness elapsed time and are not exact recording timestamps."
+}

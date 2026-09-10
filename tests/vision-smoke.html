@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><title>Prism Stage • Vision compatibility check</title>
+<style>body{font:16px system-ui;background:#141414;color:#ddd;padding:32px}button{padding:12px 20px}pre{white-space:pre-wrap}</style>
+<h1>Real-model Worker compatibility check</h1>
+<p>Uses a blank canvas to verify initialization, image transfer and inference. No camera or video is captured.</p>
+<button id="run">Run four checks</button><pre id="output">Ready</pre>
+<script type="module">
+  const output = document.querySelector('#output');
+  const results = [];
+  async function check(scene, delegate) {
+    const worker = new Worker(new URL('../src/vision/vision.worker.ts', import.meta.url), { type: 'module' });
+    try {
+      return await new Promise((resolve, reject) => {
+        const timeout = setTimeout(() => reject(new Error('Worker timed out after 45 s')), 45000);
+        worker.onerror = event => { clearTimeout(timeout); reject(new Error(event.message)); };
+        const timings = [];
+        const frame = () => {
+          const canvas = new OffscreenCanvas(640, 360);
+          const context = canvas.getContext('2d'); context.fillStyle = '#333'; context.fillRect(0, 0, 640, 360);
+          const bitmap = canvas.transferToImageBitmap();
+          worker.postMessage({ type: 'frame', bitmap, timestampMs: performance.now(), sourceT: timings.length / 30, source: 'video', epoch: 1 }, [bitmap]);
+        };
+        worker.onmessage = async ({ data }) => {
+          if (data.type === 'error') { clearTimeout(timeout); reject(new Error(data.message)); }
+          if (data.type === 'ready') {
+            frame();
+          }
+          if (data.type === 'result') {
+            timings.push(data.inferenceMs);
+            if (timings.length < 8) { frame(); return; }
+            clearTimeout(timeout);
+            const mask = data.sample.mask;
+            resolve({ scene, delegate, hands: data.sample.hands.length, inferenceMs: data.inferenceMs,
+              coldMs: timings[0], warmMedianMs: timings.slice(1).sort((a, b) => a - b)[3], frames: timings.length,
+              mask: mask ? { width: mask.width, height: mask.height, length: mask.data.length,
+                minimum: Math.min(...mask.data), maximum: Math.max(...mask.data) } : null });
+          }
+        };
+        worker.postMessage({ type: 'init', scene, delegate, base: new URL('../', location.href).href });
+      });
+    } finally { worker.terminate(); }
+  }
+  document.querySelector('#run').onclick = async () => {
+    document.querySelector('#run').disabled = true;
+    results.length = 0;
+    for (const scene of ['ribbon', 'portal']) for (const delegate of ['GPU', 'CPU']) {
+      output.textContent = JSON.stringify(results, null, 2) + `\nRunning ${scene} / ${delegate}…`;
+      try { results.push({ ok: true, ...await check(scene, delegate) }); }
+      catch (error) { results.push({ ok: false, scene, delegate, error: error.message }); }
+    }
+    output.textContent = JSON.stringify(results, null, 2);
+    document.querySelector('#run').disabled = false;
+  };
+</script></html>

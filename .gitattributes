@@ -1,0 +1,9 @@
+* text=auto eol=lf
+*.png binary
+*.webm binary
+*.mp4 binary
+*.wasm binary
+*.task binary
+*.tflite binary
+*.prismstage binary
+public/wasm/* linguist-vendored -whitespace
