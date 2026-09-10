@@ -24,6 +24,11 @@ The v1.0.0 build passes **80 automated tests** across five suites.
 
 These tests assert output behavior and failure recovery; they do not replace a real-model or browser check.
 
+A [fresh independent checkout](fresh-checkout-validation.json) also passed
+`npm ci`, all 80 tests, and the production build. All 35 generated files matched
+the tested build byte for byte; the complete dependency audit reported no known
+vulnerabilities at validation time.
+
 ## Actual model inference
 
 Provenance and SHA-256 of the official Google sample videos are in [validation-assets.json](validation-assets.json). Test fixtures are downloaded into the ignored `.local/fixtures` directory and are not quietly included in the public application.
@@ -113,6 +118,13 @@ checks, not an Edge performance benchmark. Edge's internal downloads hub appears
 in browser-context events; those `edge://` resources are classified separately
 from the studio's network requests. There were no external application requests
 or upload/write requests.
+
+The same eight functional checks also passed against the deployed HTTPS
+[GitHub Pages site](https://appleweiping.github.io/prism-stage/), including real
+model inference and portrait/minimum-trim export; see [Pages smoke evidence](smoke-pages.json).
+Decoded Edge output is recorded in [edge-export-validation.json](edge-export-validation.json).
+The complete 34.52-second UI walkthrough is separately decoded and attributed in
+[workflow-validation.json](workflow-validation.json).
 
 The pinned MediaPipe SDK has a periodic usage logger. The Worker installs a same-origin fetch guard before model creation, preventing its external request. The production page includes a restrictive CSP; test reports distinguish policy presence from observed violations.
 

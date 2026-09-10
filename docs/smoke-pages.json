@@ -1,0 +1,222 @@
+{
+  "startedAt": "2026-09-10T19:23:23.905Z",
+  "base": "https://appleweiping.github.io/prism-stage/",
+  "channel": "chrome",
+  "checks": [
+    {
+      "scene": "ribbon",
+      "kind": "render",
+      "ok": true,
+      "width": 1280,
+      "height": 720,
+      "coloredFraction": 0.12911349826388888,
+      "glError": 0
+    },
+    {
+      "scene": "gravity",
+      "kind": "render",
+      "ok": true,
+      "width": 1280,
+      "height": 720,
+      "coloredFraction": 0.03595377604166667,
+      "glError": 0
+    },
+    {
+      "scene": "portal",
+      "kind": "render",
+      "ok": true,
+      "width": 1280,
+      "height": 720,
+      "coloredFraction": 0.20095160590277777,
+      "glError": 0
+    },
+    {
+      "scene": "ribbon",
+      "kind": "actual local video inference",
+      "ok": true,
+      "diagnostics": "Render 6 fps\nVision 0.1 fps · 9337 ms\nGPU · High · auto"
+    },
+    {
+      "scene": "portal",
+      "kind": "actual local video inference",
+      "ok": true,
+      "diagnostics": "Render 4 fps\nVision 0.2 fps · 4675 ms\nGPU · High · auto"
+    },
+    {
+      "kind": "injected storage quota failure offers project download recovery",
+      "ok": true
+    },
+    {
+      "kind": "portrait canvas film",
+      "ok": true,
+      "width": 720,
+      "height": 1280
+    },
+    {
+      "kind": "0.1 second minimum trim decodes",
+      "ok": true,
+      "width": 720,
+      "height": 1280
+    }
+  ],
+  "requests": [
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/assets/index-C0iOpsts.js"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/assets/index-BeLrXD57.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/favicon.svg"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/sw.js"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/assets/inter-latin-wght-normal-Dx4kXJAl.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/favicon.svg"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/offline-manifest.json"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/assets/GravityScene-DJ3KbXjK.js"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/assets/GravityScene-DJ3KbXjK.js"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/assets/rapier-DBjBuyhF.js"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/assets/rapier-DBjBuyhF.js"
+    },
+    {
+      "method": "GET",
+      "url": "blob:https://appleweiping.github.io/b01584ff-8284-4c18-a383-4f058862f8e2"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/assets/vision.worker-C3N6kDzZ.js"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/assets/vision.worker-C3N6kDzZ.js"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/wasm/vision_wasm_module_internal.js"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/wasm/vision_wasm_module_internal.js"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/wasm/vision_wasm_module_internal.wasm"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/wasm/vision_wasm_module_internal.wasm"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/models/hand_landmarker.task"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/models/hand_landmarker.task"
+    },
+    {
+      "method": "GET",
+      "url": "blob:https://appleweiping.github.io/b01584ff-8284-4c18-a383-4f058862f8e2"
+    },
+    {
+      "method": "GET",
+      "url": "blob:https://appleweiping.github.io/d9a0f221-0aae-494d-bcd8-595e7d64913a"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/assets/vision.worker-C3N6kDzZ.js"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/assets/vision.worker-C3N6kDzZ.js"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/wasm/vision_wasm_module_internal.js"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/wasm/vision_wasm_module_internal.js"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/wasm/vision_wasm_module_internal.wasm"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/wasm/vision_wasm_module_internal.wasm"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/models/selfie_segmenter_landscape.tflite"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/models/selfie_segmenter_landscape.tflite"
+    },
+    {
+      "method": "GET",
+      "url": "blob:https://appleweiping.github.io/d9a0f221-0aae-494d-bcd8-595e7d64913a"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/examples/ribbon.prismstage"
+    },
+    {
+      "method": "GET",
+      "url": "https://appleweiping.github.io/prism-stage/examples/ribbon.prismstage"
+    },
+    {
+      "method": "GET",
+      "url": "blob:https://appleweiping.github.io/1f11f8c6-5a92-4c06-b2d6-7706771de012"
+    },
+    {
+      "method": "GET",
+      "url": "blob:https://appleweiping.github.io/1f11f8c6-5a92-4c06-b2d6-7706771de012"
+    },
+    {
+      "method": "GET",
+      "url": "blob:https://appleweiping.github.io/d75ad23d-3b7b-4176-9841-96259b44341d"
+    },
+    {
+      "method": "GET",
+      "url": "blob:https://appleweiping.github.io/0a2d8fdd-c51f-49c5-9ad7-b2e802b69686"
+    }
+  ],
+  "consoleErrors": [],
+  "browserInternalRequestCount": 0,
+  "browserVersion": "152.0.7977.83",
+  "title": "Prism Stage — Motion becomes art.",
+  "ok": true,
+  "finishedAt": "2026-09-10T19:24:00.144Z"
+}

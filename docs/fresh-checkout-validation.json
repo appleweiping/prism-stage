@@ -1,0 +1,52 @@
+{
+  "checkedAt": "2026-09-10T19:25:19.645Z",
+  "method": "New independent local clone with --no-hardlinks. No existing node_modules or dist copied. The documented npm ci, check and build commands were run; examples were not regenerated.",
+  "commit": "3a27b30a101c23f48589f6ca9841fd2d35181a4f",
+  "environment": {
+    "platform": "Windows",
+    "node": "22.21.1",
+    "npm": "11.17.0",
+    "registry": "https://registry.npmjs.org"
+  },
+  "commands": [
+    {
+      "command": "git clone --no-hardlinks <local repository> .local/fresh-checkout",
+      "exitCode": 0
+    },
+    {
+      "command": "npm ci --registry=https://registry.npmjs.org",
+      "exitCode": 0,
+      "packagesAdded": 119,
+      "auditedPackages": 120,
+      "reportedVulnerabilities": 0
+    },
+    {
+      "command": "npm run check",
+      "exitCode": 0,
+      "typecheck": "passed",
+      "testFiles": 5,
+      "testsPassed": 80,
+      "testsFailed": 0
+    },
+    {
+      "command": "npm run build",
+      "exitCode": 0,
+      "modulesTransformed": 1600
+    }
+  ],
+  "build": {
+    "offlineVersion": "7068c13e94d07cf8",
+    "expectedVersion": "7068c13e94d07cf8",
+    "offlineFiles": 29,
+    "offlineBytes": 47321229,
+    "offlineManifestSha256": "217d0cb42eced888524e980d45afe71649f776b3590b1e9b65ac129433f6d419",
+    "manifestMatchesReference": true,
+    "comparedDistFiles": 35,
+    "differingDistFiles": []
+  },
+  "notes": [
+    "npm 11.17.0 emitted an esbuild install-script approval advisory; check and build succeeded without additional approval or configuration.",
+    "Vite reported the expected large Rapier chunk size warning."
+  ],
+  "ok": true
+}

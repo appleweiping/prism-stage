@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-10T19:20:54.862Z",
+  "generatedAt": "2026-09-10T19:22:28.622Z",
   "status": "passed",
   "browser": {
     "name": "Microsoft Edge",
@@ -8,8 +8,8 @@
     "evidence": "docs/smoke-msedge.json"
   },
   "provenance": "Actual application canvas exports from explicitly labelled authored ribbon example input, using the Edge production UI. These test portrait export and the minimum trim; model inference validation is recorded separately.",
-  "method": "Complete FFmpeg -xerror framemd5 decode with timestamp passthrough; no re-encoding, scaling, or frame interpolation.",
-  "durationMethod": "Last decoded frame PTS plus reported frame duration minus first decoded PTS. Browser real-time export duration and cadence are approximate, particularly for a 0.1-second selection.",
+  "method": "Complete FFmpeg -xerror framemd5 decode with timestamp passthrough and -enc_time_base demux to retain original millisecond timestamps; no re-encoding, scaling, or frame interpolation.",
+  "durationMethod": "Last decoded frame PTS plus FFmpeg reported frame duration minus first decoded PTS. Final frame duration may be inferred; original PTS span is also reported. Browser real-time export duration and cadence are approximate, particularly for a 0.1-second selection.",
   "results": [
     {
       "name": "portrait film",
@@ -24,7 +24,7 @@
       "durationDifferenceFromRequestedSeconds": -0.087,
       "decodedFrames": 77,
       "uniqueFrameHashes": 77,
-      "effectiveFramesPerSecond": 26.433,
+      "decodedPtsSpanSeconds": 2.912,
       "codec": "vp8",
       "hasAudioStream": false,
       "fullDecodeExitCode": 0,
@@ -47,39 +47,39 @@
       "sha256": "bbb5b2125d57373aa97143d88c35788a84b554e02411dd05c3799507d8f02e63",
       "width": 720,
       "height": 1280,
-      "durationSeconds": 0.0625,
-      "durationDifferenceFromRequestedSeconds": -0.0375,
+      "durationSeconds": 0.069,
+      "durationDifferenceFromRequestedSeconds": -0.031,
       "decodedFrames": 4,
       "uniqueFrameHashes": 4,
-      "effectiveFramesPerSecond": 64,
+      "decodedPtsSpanSeconds": 0.056,
       "codec": "vp8",
       "hasAudioStream": false,
       "fullDecodeExitCode": 0,
-      "timeBase": "1/80",
+      "timeBase": "1/1000",
       "frames": [
         {
           "pts": 0,
-          "duration": 1,
+          "duration": 13,
           "md5": "99192105dd59bfd0ad3667b996a7ee62",
           "seconds": 0
         },
         {
-          "pts": 0,
-          "duration": 1,
+          "pts": 5,
+          "duration": 13,
           "md5": "626c7e71bfca2f4d0f9e71dcbf7838dd",
-          "seconds": 0
+          "seconds": 0.005
         },
         {
-          "pts": 2,
-          "duration": 1,
+          "pts": 19,
+          "duration": 13,
           "md5": "0113e2aac739928e31f99dd9523a11c7",
-          "seconds": 0.025
+          "seconds": 0.019
         },
         {
-          "pts": 4,
-          "duration": 1,
+          "pts": 56,
+          "duration": 13,
           "md5": "5c7c374f40a8211260018ec29dc5ecb3",
-          "seconds": 0.05
+          "seconds": 0.056
         }
       ],
       "checks": {
